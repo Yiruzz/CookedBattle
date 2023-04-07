@@ -1,13 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://yd5cdcqygnbb"]
+[gd_scene load_steps=7 format=3 uid="uid://yd5cdcqygnbb"]
 
 [ext_resource type="Texture2D" uid="uid://cxigqrd6ksgcq" path="res://icon.svg" id="1_4sum7"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_lq3uu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cswfv"]
 
 [sub_resource type="TileSet" id="TileSet_15u2r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3xhpr"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2wak"]
+
 [node name="Main" type="Node2D"]
+
+[node name="Player2" type="CharacterBody2D" parent="."]
+script = ExtResource("1_lq3uu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+shape = SubResource("CapsuleShape2D_cswfv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player2"]
+texture = ExtResource("1_4sum7")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_15u2r")
@@ -20,4 +33,12 @@ script = ExtResource("1_lq3uu")
 shape = SubResource("CapsuleShape2D_3xhpr")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player1"]
+position = Vector2(-341, 9)
 texture = ExtResource("1_4sum7")
+
+[node name="Horno1" type="StaticBody2D" parent="."]
+position = Vector2(239, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Horno1"]
+position = Vector2(161, 8)
+shape = SubResource("RectangleShape2D_p2wak")
