@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://f2aqbu45a6qa"]
+
+[ext_resource type="Texture2D" uid="uid://blsoayf3geowf" path="res://assets/characters/Chef A1.png" id="1_2f1hj"]
+
+[node name="player" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2f1hj")
+frame = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
