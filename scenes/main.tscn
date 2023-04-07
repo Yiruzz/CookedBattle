@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://yd5cdcqygnbb"]
+[gd_scene load_steps=5 format=3 uid="uid://yd5cdcqygnbb"]
+
+[ext_resource type="Texture2D" uid="uid://blsoayf3geowf" path="res://assets/characters/Chef A1.png" id="1_8lv36"]
+[ext_resource type="Texture2D" uid="uid://cxigqrd6ksgcq" path="res://icon.svg" id="2_sdumu"]
 
 [sub_resource type="TileSet" id="TileSet_15u2r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kof2a"]
+size = Vector2(32, 32)
 
 [node name="Main" type="Node2D"]
 
@@ -8,4 +14,18 @@
 tile_set = SubResource("TileSet_15u2r")
 format = 2
 
-[node name="Player1" type="CharacterBody2D" parent="."]
+[node name="ChefA1" type="Sprite2D" parent="."]
+position = Vector2(92, 153)
+texture = ExtResource("1_8lv36")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(68, 145)
+scale = Vector2(10.6983, 1.00137)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_kof2a")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_sdumu")
