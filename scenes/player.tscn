@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://f2aqbu45a6qa"]
+[gd_scene load_steps=14 format=3 uid="uid://f2aqbu45a6qa"]
 
 [ext_resource type="Texture2D" uid="uid://creabd3afvmbp" path="res://assets/characters/ChefV1.png" id="1_tqq36"]
 
@@ -22,6 +22,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -8)]
+}
 
 [sub_resource type="Animation" id="Animation_ar0cl"]
 length = 0.001
@@ -37,9 +49,95 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -9)]
+}
 
 [sub_resource type="Animation" id="Animation_eb6pf"]
 resource_name = "run"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -8), Vector2(0, -9), Vector2(0, -8), Vector2(0, -8)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o28ve"]
 _data = {
@@ -48,11 +146,36 @@ _data = {
 "run": SubResource("Animation_eb6pf")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mlp1r"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7wdgu"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b76w2"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a085q"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7wsf6"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_x80kb"]
+states/Idle/node = SubResource("AnimationNodeAnimation_mlp1r")
+states/Idle/position = Vector2(371, 64)
+states/run/node = SubResource("AnimationNodeAnimation_7wdgu")
+states/run/position = Vector2(594, 64)
+transitions = ["run", "Idle", SubResource("AnimationNodeStateMachineTransition_b76w2"), "Idle", "run", SubResource("AnimationNodeStateMachineTransition_a085q"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_7wsf6")]
+graph_offset = Vector2(-5, 22)
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_fh6cc"]
+
 [node name="player" type="CharacterBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_tqq36")
-offset = Vector2(0, -8)
+offset = Vector2(0, -9)
 hframes = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -62,3 +185,9 @@ shape = SubResource("CapsuleShape2D_iyovv")
 libraries = {
 "": SubResource("AnimationLibrary_o28ve")
 }
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_x80kb")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_fh6cc")
