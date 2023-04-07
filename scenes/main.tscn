@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://yd5cdcqygnbb"]
+[gd_scene load_steps=5 format=3 uid="uid://yd5cdcqygnbb"]
+
+[ext_resource type="Texture2D" uid="uid://cxigqrd6ksgcq" path="res://icon.svg" id="1_4sum7"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_lq3uu"]
 
 [sub_resource type="TileSet" id="TileSet_15u2r"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3xhpr"]
 
 [node name="Main" type="Node2D"]
 
@@ -9,3 +14,10 @@ tile_set = SubResource("TileSet_15u2r")
 format = 2
 
 [node name="Player1" type="CharacterBody2D" parent="."]
+script = ExtResource("1_lq3uu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
+shape = SubResource("CapsuleShape2D_3xhpr")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player1"]
+texture = ExtResource("1_4sum7")
