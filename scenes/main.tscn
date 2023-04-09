@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ds1vks6trlgm"]
+[gd_scene load_steps=8 format=3 uid="uid://bdb4n0fmkygr7"]
 
 [ext_resource type="Texture2D" uid="uid://cxigqrd6ksgcq" path="res://icon.svg" id="1_4sum7"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_lq3uu"]
+[ext_resource type="Script" path="res://Scripts/StateMachine.gd" id="3_87wh8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cswfv"]
 
@@ -20,6 +21,7 @@ script = ExtResource("1_lq3uu")
 shape = SubResource("CapsuleShape2D_cswfv")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player2"]
+position = Vector2(4, 0)
 texture = ExtResource("1_4sum7")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -30,6 +32,7 @@ format = 2
 script = ExtResource("1_lq3uu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
+position = Vector2(134, -148)
 shape = SubResource("CapsuleShape2D_3xhpr")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player1"]
@@ -38,6 +41,7 @@ texture = ExtResource("1_4sum7")
 
 [node name="Horno1" type="StaticBody2D" parent="."]
 position = Vector2(239, -8)
+script = ExtResource("3_87wh8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Horno1"]
 position = Vector2(161, 8)

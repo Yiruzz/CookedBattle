@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://f2aqbu45a6qa"]
+[gd_scene load_steps=17 format=3 uid="uid://f2aqbu45a6qa"]
 
 [ext_resource type="Texture2D" uid="uid://creabd3afvmbp" path="res://assets/characters/ChefV1.png" id="1_tqq36"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="2_5f5bp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iyovv"]
 radius = 3.0
@@ -8,7 +9,7 @@ height = 16.0
 
 [sub_resource type="Animation" id="Animation_rel0b"]
 resource_name = "Idle"
-length = 0.1
+length = 1.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -17,10 +18,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0]
+"values": [0, 1, 2, 3]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -88,7 +89,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_eb6pf"]
 resource_name = "run"
-length = 0.4
+length = 0.6454
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -97,10 +98,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [5, 6, 7, 10]
+"values": [5, 6, 7, 8, 9, 10]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -133,10 +134,10 @@ tracks/3/path = NodePath("Sprite2D:offset")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -8), Vector2(0, -9), Vector2(0, -8), Vector2(0, -8)]
+"values": [Vector2(0, -8)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o28ve"]
@@ -145,6 +146,8 @@ _data = {
 "RESET": SubResource("Animation_ar0cl"),
 "run": SubResource("Animation_eb6pf")
 }
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_5q55k"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mlp1r"]
 animation = &"Idle"
@@ -161,12 +164,18 @@ switch_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7wsf6"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yevr7"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_x80kb"]
+states/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_5q55k")
+states/BlendSpace2D/position = Vector2(426, 160)
 states/Idle/node = SubResource("AnimationNodeAnimation_mlp1r")
 states/Idle/position = Vector2(371, 64)
+states/Start/position = Vector2(191, 88)
 states/run/node = SubResource("AnimationNodeAnimation_7wdgu")
-states/run/position = Vector2(594, 64)
-transitions = ["run", "Idle", SubResource("AnimationNodeStateMachineTransition_b76w2"), "Idle", "run", SubResource("AnimationNodeStateMachineTransition_a085q"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_7wsf6")]
+states/run/position = Vector2(595, 64)
+transitions = ["run", "Idle", SubResource("AnimationNodeStateMachineTransition_b76w2"), "Idle", "run", SubResource("AnimationNodeStateMachineTransition_a085q"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_7wsf6"), "Start", "BlendSpace2D", SubResource("AnimationNodeStateMachineTransition_yevr7")]
 graph_offset = Vector2(-5, 22)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_fh6cc"]
@@ -177,6 +186,7 @@ graph_offset = Vector2(-5, 22)
 texture = ExtResource("1_tqq36")
 offset = Vector2(0, -9)
 hframes = 15
+script = ExtResource("2_5f5bp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_iyovv")
@@ -191,3 +201,4 @@ tree_root = SubResource("AnimationNodeStateMachine_x80kb")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_fh6cc")
+parameters/BlendSpace2D/blend_position = Vector2(0, 0)
