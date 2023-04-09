@@ -181,12 +181,12 @@ graph_offset = Vector2(-5, 22)
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_fh6cc"]
 
 [node name="player" type="CharacterBody2D"]
+script = ExtResource("2_5f5bp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_tqq36")
 offset = Vector2(0, -9)
 hframes = 15
-script = ExtResource("2_5f5bp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_iyovv")
@@ -201,4 +201,4 @@ tree_root = SubResource("AnimationNodeStateMachine_x80kb")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_fh6cc")
-parameters/BlendSpace2D/blend_position = Vector2(0, 0)
+parameters/BlendSpace2D/blend_position = Vector2(-0.00160003, 0)
