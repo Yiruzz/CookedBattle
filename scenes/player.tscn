@@ -136,6 +136,7 @@ graph_offset = Vector2(-5, 22)
 [sub_resource type="CircleShape2D" id="CircleShape2D_a2lmn"]
 
 [node name="player" type="CharacterBody2D"]
+scale = Vector2(2, 2)
 script = ExtResource("2_5f5bp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

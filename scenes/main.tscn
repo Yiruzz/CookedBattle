@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdb4n0fmkygr7"]
+[gd_scene load_steps=8 format=3 uid="uid://bdb4n0fmkygr7"]
 
 [ext_resource type="Script" path="res://Scripts/Horno.gd" id="3_fl4vt"]
 [ext_resource type="Script" path="res://Scripts/Masa.gd" id="4_iwtkv"]
 [ext_resource type="PackedScene" uid="uid://f2aqbu45a6qa" path="res://scenes/player.tscn" id="4_l0bqa"]
+[ext_resource type="PackedScene" uid="uid://b7j43slhaubfe" path="res://scenes/escena_tile_map.tscn" id="5_b8fd6"]
 [ext_resource type="Script" path="res://Scripts/Pan.gd" id="5_swto8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2wak"]
@@ -27,14 +28,16 @@ shape = SubResource("RectangleShape2D_us1ql")
 [node name="Masa" type="Node2D" parent="."]
 script = ExtResource("4_iwtkv")
 
+[node name="EscenaTileMap" parent="." instance=ExtResource("5_b8fd6")]
+
 [node name="Pan" type="Node2D" parent="."]
 script = ExtResource("5_swto8")
 
 [node name="player" parent="." groups=["Player1"] instance=ExtResource("4_l0bqa")]
-position = Vector2(21, -2)
+position = Vector2(81, 91)
 
 [node name="player2" parent="." groups=["Player2"] instance=ExtResource("4_l0bqa")]
-position = Vector2(62, -2)
+position = Vector2(146, 84)
 BtnDer = "ui_right2"
 BtnIzq = "ui_left2"
 BtnArr = "ui_up2"
