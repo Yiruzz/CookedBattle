@@ -1,48 +1,43 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdb4n0fmkygr7"]
+[gd_scene load_steps=7 format=3 uid="uid://bdb4n0fmkygr7"]
 
-[ext_resource type="Texture2D" uid="uid://cxigqrd6ksgcq" path="res://icon.svg" id="1_4sum7"]
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_lq3uu"]
-[ext_resource type="Script" path="res://Scripts/StateMachine.gd" id="3_87wh8"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cswfv"]
-
-[sub_resource type="TileSet" id="TileSet_15u2r"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3xhpr"]
+[ext_resource type="Script" path="res://Scripts/Horno.gd" id="3_fl4vt"]
+[ext_resource type="Script" path="res://Scripts/Masa.gd" id="4_iwtkv"]
+[ext_resource type="PackedScene" uid="uid://f2aqbu45a6qa" path="res://scenes/player.tscn" id="4_l0bqa"]
+[ext_resource type="Script" path="res://Scripts/Pan.gd" id="5_swto8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2wak"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_us1ql"]
+
 [node name="Main" type="Node2D"]
-
-[node name="Player2" type="CharacterBody2D" parent="."]
-script = ExtResource("1_lq3uu")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
-shape = SubResource("CapsuleShape2D_cswfv")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player2"]
-position = Vector2(4, 0)
-texture = ExtResource("1_4sum7")
-
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_15u2r")
-format = 2
-
-[node name="Player1" type="CharacterBody2D" parent="."]
-script = ExtResource("1_lq3uu")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
-position = Vector2(134, -148)
-shape = SubResource("CapsuleShape2D_3xhpr")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player1"]
-position = Vector2(-341, 9)
-texture = ExtResource("1_4sum7")
 
 [node name="Horno1" type="StaticBody2D" parent="."]
 position = Vector2(239, -8)
-script = ExtResource("3_87wh8")
+script = ExtResource("3_fl4vt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Horno1"]
 position = Vector2(161, 8)
 shape = SubResource("RectangleShape2D_p2wak")
+
+[node name="Area2D" type="Area2D" parent="Horno1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Horno1/Area2D"]
+shape = SubResource("RectangleShape2D_us1ql")
+
+[node name="Masa" type="Node2D" parent="."]
+script = ExtResource("4_iwtkv")
+
+[node name="Pan" type="Node2D" parent="."]
+script = ExtResource("5_swto8")
+
+[node name="player" parent="." instance=ExtResource("4_l0bqa")]
+position = Vector2(21, -2)
+
+[node name="player2" parent="." instance=ExtResource("4_l0bqa")]
+position = Vector2(62, -2)
+BtnDer = "ui_right2"
+BtnIzq = "ui_left2"
+BtnArr = "ui_up2"
+BtnAbj = "ui_down2"
+
+[connection signal="body_entered" from="Horno1/Area2D" to="Horno1" method="_on_area_2d_body_entered"]
