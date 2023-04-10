@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+const SPEED = 200.0
 @export var Vida = 100
 @onready var anim = $AnimationPlayer
 @export var BtnDer = "ui_right"
@@ -33,7 +33,10 @@ func atacar(Enemigo):
 #Funcion que se llama para quitar vida al personaje de este objeto
 func recibirDaño():
 	Vida = Vida - 10
-	print(str(Vida) + " " + self.get_node(".").name)
+	if Vida <= 0:
+		print("The player is dead")
+	else:
+		print(str(Vida) + " " + self.get_node(".").name)
 	
 
 #Funcion que posiciona la hitbox del ataque cuerpo a cuerpo
@@ -45,7 +48,6 @@ func posicionarAtaque(direccion):
 	self.get_node("Area2D/CollisionShape2D").disabled = false
 	
 func _terminarAtaqueMelee():
-	print("Debug")
 	self.get_node("Area2D").hide()#ocultamos el arma y desactivamos su hitbox
 	self.get_node("Area2D/CollisionShape2D").disabled = true
 	animandose = false
