@@ -30,14 +30,15 @@ script = ExtResource("4_iwtkv")
 [node name="Pan" type="Node2D" parent="."]
 script = ExtResource("5_swto8")
 
-[node name="player" parent="." instance=ExtResource("4_l0bqa")]
+[node name="player" parent="." groups=["Player1"] instance=ExtResource("4_l0bqa")]
 position = Vector2(21, -2)
 
-[node name="player2" parent="." instance=ExtResource("4_l0bqa")]
+[node name="player2" parent="." groups=["Player2"] instance=ExtResource("4_l0bqa")]
 position = Vector2(62, -2)
 BtnDer = "ui_right2"
 BtnIzq = "ui_left2"
 BtnArr = "ui_up2"
 BtnAbj = "ui_down2"
+BtnAttck = "ui_attack2"
 
 [connection signal="body_entered" from="Horno1/Area2D" to="Horno1" method="_on_area_2d_body_entered"]
