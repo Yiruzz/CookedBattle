@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://f2aqbu45a6qa"]
+[gd_scene load_steps=23 format=3 uid="uid://f2aqbu45a6qa"]
 
 [ext_resource type="Texture2D" uid="uid://creabd3afvmbp" path="res://assets/characters/ChefV1.png" id="1_tqq36"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="2_5f5bp"]
@@ -93,17 +93,49 @@ tracks/1/keys = {
 "values": [Vector2(0, -8)]
 }
 
+[sub_resource type="Animation" id="Animation_ukc3d"]
+resource_name = "melee_atack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 10]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_terminarAtaqueMelee"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o28ve"]
 _data = {
 "Idle": SubResource("Animation_rel0b"),
 "RESET": SubResource("Animation_ar0cl"),
+"melee_atack": SubResource("Animation_ukc3d"),
 "run": SubResource("Animation_eb6pf")
 }
 
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_5q55k"]
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mlp1r"]
 animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pwknx"]
+animation = &"melee_atack"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7wdgu"]
 animation = &"run"
@@ -117,18 +149,26 @@ switch_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7wsf6"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yevr7"]
-advance_mode = 2
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_enurl"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4ffrb"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ybs3t"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rn5c1"]
+switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_x80kb"]
-states/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_5q55k")
-states/BlendSpace2D/position = Vector2(426, 160)
+states/End/position = Vector2(897, 99)
 states/Idle/node = SubResource("AnimationNodeAnimation_mlp1r")
-states/Idle/position = Vector2(371, 64)
-states/Start/position = Vector2(191, 88)
+states/Idle/position = Vector2(336, 58)
+states/Start/position = Vector2(192, 88)
+states/melee_atack/node = SubResource("AnimationNodeAnimation_pwknx")
+states/melee_atack/position = Vector2(470, 177)
 states/run/node = SubResource("AnimationNodeAnimation_7wdgu")
 states/run/position = Vector2(596, 64)
-transitions = ["run", "Idle", SubResource("AnimationNodeStateMachineTransition_b76w2"), "Idle", "run", SubResource("AnimationNodeStateMachineTransition_a085q"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_7wsf6"), "Start", "BlendSpace2D", SubResource("AnimationNodeStateMachineTransition_yevr7")]
+transitions = ["run", "Idle", SubResource("AnimationNodeStateMachineTransition_b76w2"), "Idle", "run", SubResource("AnimationNodeStateMachineTransition_a085q"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_7wsf6"), "run", "melee_atack", SubResource("AnimationNodeStateMachineTransition_enurl"), "Idle", "melee_atack", SubResource("AnimationNodeStateMachineTransition_4ffrb"), "melee_atack", "run", SubResource("AnimationNodeStateMachineTransition_ybs3t"), "melee_atack", "Idle", SubResource("AnimationNodeStateMachineTransition_rn5c1")]
 graph_offset = Vector2(-5, 22)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_fh6cc"]
@@ -158,7 +198,6 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_x80kb")
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_fh6cc")
-parameters/BlendSpace2D/blend_position = Vector2(-0.00160003, 0)
 
 [node name="Area2D" type="Area2D" parent="."]
 
