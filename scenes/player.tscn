@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://f2aqbu45a6qa"]
+[gd_scene load_steps=19 format=3 uid="uid://f2aqbu45a6qa"]
 
 [ext_resource type="Texture2D" uid="uid://creabd3afvmbp" path="res://assets/characters/ChefV1.png" id="1_tqq36"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="2_5f5bp"]
+[ext_resource type="Texture2D" uid="uid://cxigqrd6ksgcq" path="res://icon.svg" id="3_tpxhe"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iyovv"]
 radius = 3.0
@@ -132,6 +133,8 @@ graph_offset = Vector2(-5, 22)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_fh6cc"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_a2lmn"]
+
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("2_5f5bp")
 
@@ -155,3 +158,15 @@ tree_root = SubResource("AnimationNodeStateMachine_x80kb")
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_fh6cc")
 parameters/BlendSpace2D/blend_position = Vector2(-0.00160003, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+scale = Vector2(0.0703125, 0.0703125)
+texture = ExtResource("3_tpxhe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_a2lmn")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
