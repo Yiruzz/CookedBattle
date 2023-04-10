@@ -33,10 +33,10 @@ script = ExtResource("4_iwtkv")
 [node name="Pan" type="Node2D" parent="."]
 script = ExtResource("5_swto8")
 
-[node name="player" parent="." groups=["Player1"] instance=ExtResource("4_l0bqa")]
+[node name="player" parent="." groups=["Player1", "Players"] instance=ExtResource("4_l0bqa")]
 position = Vector2(81, 91)
 
-[node name="player2" parent="." groups=["Player2"] instance=ExtResource("4_l0bqa")]
+[node name="player2" parent="." groups=["Player2", "Players"] instance=ExtResource("4_l0bqa")]
 position = Vector2(146, 84)
 BtnDer = "ui_right2"
 BtnIzq = "ui_left2"
