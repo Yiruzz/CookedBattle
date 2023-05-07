@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0sntv34sbkm6"]
+
+[ext_resource type="Script" path="res://Scripts/Pan.gd" id="1_73iui"]
+[ext_resource type="Texture2D" uid="uid://issd03gd17hb" path="res://assets/tileset/comida.png" id="2_fkx4y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l210u"]
+
+[node name="pan" type="Node2D"]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_73iui")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fkx4y")
+hframes = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_l210u")

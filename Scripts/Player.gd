@@ -10,9 +10,9 @@ const SPEED = 200.0
 @export var BtnAbj = "ui_down"
 @export var BtnAttck = "ui_attack"
 @export var BtnTesting = "ui_test"
+@export var ingrediente = preload("res://pan.tscn")
 var animandose = false
 var ultimoBoton = Vector2(1,0)
-var ingrediente = false #Para la demo esto funcionara para mostrar si tiene un pan o no
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -21,6 +21,12 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	self.get_node("Area2D").hide()#ocultamos el arma y desactivamos su hitbox
 	self.get_node("Area2D/CollisionShape2D").disabled = true
+	if ingrediente != null:
+		ingrediente = ingrediente.instantiate()
+		add_child(ingrediente)
+	
+	
+	
 	
 
 
@@ -42,22 +48,31 @@ func recibirDaño():
 #Funcion que posiciona la hitbox del ataque cuerpo a cuerpo
 func posicionarAtaque(direccion):
 	anim.play("melee_atack")
-	self.get_node("Area2D").show()
-	var area = self.get_node("Area2D")
+	ingrediente.show()
+	var area = ingrediente
 	area.position = self.get_node("Sprite2D").position + direccion*10	
 	self.get_node("Area2D/CollisionShape2D").disabled = false
 	
 func _terminarAtaqueMelee():
-	self.get_node("Area2D").hide()#ocultamos el arma y desactivamos su hitbox
-	self.get_node("Area2D/CollisionShape2D").disabled = true
+	ingrediente.hide()#ocultamos el arma y desactivamos su hitbox
+	ingrediente.show()#mira esta wea solo pa testing lo dejare junto a la linea anterior
+	ingrediente.position = self.get_node("Sprite2D").position
+	ingrediente.get_node("Area2D/CollisionShape2D").disabled = true
 	animandose = false
 	anim.play("run")
 	
 	
 #Funcion que entrega un ingrediente a una herramienta de cocina
 func entregaIngrediente(Cocina):
+	Cocina.RecibirIngrediente(ingrediente)
 	pass
-	
+
+func recibirIngrediente(Ingrediente):
+	ingrediente = Ingrediente
+	print("recogido")
+	if ingrediente != null:
+		add_child(ingrediente)
+	pass
 	
 #Funcion que recibe una señal de un input cualquiera
 func _input(event):
@@ -70,7 +85,7 @@ func _input(event):
 		ultimoBoton = dir
 		
 	if event.is_action_pressed(BtnTesting): #Solo pa la demo
-		if ingrediente:
+		if ingrediente!=null:
 			self.get_node("Area2D").hide()#ocultamos el arma y desactivamos su hitbox
 			self.get_node("Area2D/CollisionShape2D").disabled = true
 		else:
@@ -80,10 +95,6 @@ func _input(event):
 
 #
 func _physics_process(delta):
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	
-
 	var dir = Vector2(Input.get_axis(BtnIzq, BtnDer),Input.get_axis(BtnArr, BtnAbj))
 	velocity = dir*SPEED
 	

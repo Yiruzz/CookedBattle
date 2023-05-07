@@ -1,30 +1,15 @@
 [gd_scene load_steps=9 format=3 uid="uid://bdb4n0fmkygr7"]
 
-[ext_resource type="Script" path="res://Scripts/Horno.gd" id="3_fl4vt"]
 [ext_resource type="Script" path="res://Scripts/Masa.gd" id="4_iwtkv"]
 [ext_resource type="PackedScene" uid="uid://f2aqbu45a6qa" path="res://scenes/player.tscn" id="4_l0bqa"]
 [ext_resource type="PackedScene" uid="uid://b7j43slhaubfe" path="res://scenes/escena_tile_map.tscn" id="5_b8fd6"]
 [ext_resource type="Script" path="res://Scripts/Pan.gd" id="5_swto8"]
 [ext_resource type="Texture2D" uid="uid://cxigqrd6ksgcq" path="res://icon.svg" id="6_objpv"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2wak"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_us1ql"]
+[ext_resource type="PackedScene" uid="uid://bjr0767xviyax" path="res://horno.tscn" id="7_a5r5s"]
+[ext_resource type="PackedScene" uid="uid://dhcklqwjyrq6k" path="res://pan_horneado.tscn" id="8_ounwa"]
+[ext_resource type="PackedScene" uid="uid://d0sntv34sbkm6" path="res://pan.tscn" id="8_selsw"]
 
 [node name="Main" type="Node2D"]
-
-[node name="Horno1" type="StaticBody2D" parent="."]
-position = Vector2(239, -8)
-script = ExtResource("3_fl4vt")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Horno1"]
-position = Vector2(161, 8)
-shape = SubResource("RectangleShape2D_p2wak")
-
-[node name="Area2D" type="Area2D" parent="Horno1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Horno1/Area2D"]
-shape = SubResource("RectangleShape2D_us1ql")
 
 [node name="Masa" type="Node2D" parent="."]
 script = ExtResource("4_iwtkv")
@@ -61,4 +46,12 @@ position = Vector2(305, 137)
 scale = Vector2(0.136719, 0.128906)
 texture = ExtResource("6_objpv")
 
-[connection signal="body_entered" from="Horno1/Area2D" to="Horno1" method="_on_area_2d_body_entered"]
+[node name="Horno" parent="." instance=ExtResource("7_a5r5s")]
+position = Vector2(223, 74)
+scale = Vector2(2.209, 2.209)
+
+[node name="pan" parent="." instance=ExtResource("8_selsw")]
+position = Vector2(118, 63)
+scale = Vector2(1, 1)
+
+[node name="PanHorneado" parent="." instance=ExtResource("8_ounwa")]
