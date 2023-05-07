@@ -3,21 +3,6 @@
 [ext_resource type="Script" path="res://Scripts/Horno.gd" id="1_gx218"]
 [ext_resource type="Texture2D" uid="uid://df0j7kjenytd5" path="res://assets/tileset/oven.png" id="1_u7e42"]
 
-[sub_resource type="Animation" id="Animation_ehi0o"]
-resource_name = "Idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-
 [sub_resource type="Animation" id="Animation_v33vx"]
 resource_name = "Cocinando"
 length = 3.0
@@ -46,6 +31,21 @@ tracks/1/keys = {
 "args": [],
 "method": &"terminarCocina"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_ehi0o"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
 }
 
 [sub_resource type="Animation" id="Animation_isf4f"]
@@ -120,7 +120,7 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_aa7tx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1puut"]
-size = Vector2(30, 50)
+size = Vector2(30, 26)
 
 [node name="Horno" type="Node2D"]
 script = ExtResource("1_gx218")
@@ -138,7 +138,7 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_aa7tx")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.5, 2.5)
+position = Vector2(-0.5, -3.5)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_1puut")
 

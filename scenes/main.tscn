@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdb4n0fmkygr7"]
+[gd_scene load_steps=10 format=3 uid="uid://bdb4n0fmkygr7"]
 
 [ext_resource type="Script" path="res://Scripts/Masa.gd" id="4_iwtkv"]
 [ext_resource type="PackedScene" uid="uid://f2aqbu45a6qa" path="res://scenes/player.tscn" id="4_l0bqa"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bjr0767xviyax" path="res://horno.tscn" id="7_a5r5s"]
 [ext_resource type="PackedScene" uid="uid://dhcklqwjyrq6k" path="res://pan_horneado.tscn" id="8_ounwa"]
 [ext_resource type="PackedScene" uid="uid://d0sntv34sbkm6" path="res://pan.tscn" id="8_selsw"]
+[ext_resource type="AudioStream" uid="uid://b3gddnfosjqr1" path="res://assets/music/Ludum Dare 30 - Track 7.wav" id="9_2jfim"]
 
 [node name="Main" type="Node2D"]
 
@@ -18,6 +19,14 @@ script = ExtResource("4_iwtkv")
 
 [node name="Pan" type="Node2D" parent="."]
 script = ExtResource("5_swto8")
+
+[node name="Horno" parent="." instance=ExtResource("7_a5r5s")]
+position = Vector2(306, 34)
+scale = Vector2(2.209, 2.209)
+
+[node name="Horno2" parent="." instance=ExtResource("7_a5r5s")]
+position = Vector2(113, 34)
+scale = Vector2(2.209, 2.209)
 
 [node name="player" parent="." groups=["Player1", "Players"] instance=ExtResource("4_l0bqa")]
 position = Vector2(81, 91)
@@ -46,12 +55,12 @@ position = Vector2(305, 137)
 scale = Vector2(0.136719, 0.128906)
 texture = ExtResource("6_objpv")
 
-[node name="Horno" parent="." instance=ExtResource("7_a5r5s")]
-position = Vector2(223, 74)
-scale = Vector2(2.209, 2.209)
-
 [node name="pan" parent="." instance=ExtResource("8_selsw")]
 position = Vector2(118, 63)
 scale = Vector2(1, 1)
 
 [node name="PanHorneado" parent="." instance=ExtResource("8_ounwa")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_2jfim")
+autoplay = true
