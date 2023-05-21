@@ -120,7 +120,7 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_aa7tx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1puut"]
-size = Vector2(30, 26)
+size = Vector2(30, 40)
 
 [node name="Horno" type="Node2D"]
 script = ExtResource("1_gx218")
@@ -138,7 +138,7 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_aa7tx")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.5, -3.5)
+position = Vector2(-0.5, 0)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_1puut")
 

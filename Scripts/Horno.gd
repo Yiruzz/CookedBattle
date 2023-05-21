@@ -16,7 +16,10 @@ func _process(delta):
 	pass
 
 func recibirIngrediente(ingrediente):
+	if ingrediente.tipo != "Masa" and ingrediente.tipo != "TomatePicado":
+		return
 	listaIngredientes.append(ingrediente.tipo)
+	ingrediente.queue_free()
 	if (listaIngredientes.size() >= 2):
 		_receta()
 		cocinarIngrediente()
@@ -48,7 +51,7 @@ func _entregarIngrediente(player):
 	
 
 func _on_area_2d_body_entered(body): #COLISION
-	
+
 	if body.is_in_group("Players"): #Caso choca con un jugador
 		#esta listo la cocina
 		if ingredienteListo:

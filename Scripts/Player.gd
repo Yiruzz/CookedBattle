@@ -73,18 +73,16 @@ func recibirDaño():
 #Funcion que entrega un ingrediente a una herramienta de cocina
 func entregaIngrediente(Cocina):
 	Cocina.recibirIngrediente(ingrediente)
-	ingrediente.queue_free()
-	ingrediente = null
+	
 	
 	
 
 func recibirIngrediente(Ingrediente):
 	ingrediente = Ingrediente
-	
 	if ingrediente != null:
 		print("ingrediente recibido: " + ingrediente.tipo )
 		add_child(ingrediente)
-	pass
+	
 	
 #Funcion que recibe una señal de un input cualquiera
 func _input(event):
@@ -98,12 +96,10 @@ func _input(event):
 		_atacar()
 		
 	if event.is_action_pressed(BtnTesting): #Solo pa la demo
-		if ingrediente!=null:
-			self.get_node("Area2D").hide()#ocultamos el arma y desactivamos su hitbox
-			self.get_node("Area2D/CollisionShape2D").disabled = true
+		if ingrediente == null:
+			print("no hay ingrediente")
 		else:
-			self.get_node("Area2D").show()#ocultamos el arma y desactivamos su hitbox
-			self.get_node("Area2D/CollisionShape2D").disabled = false
+			print(ingrediente.tipo)
 
 
 #
