@@ -1,8 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://f2aqbu45a6qa"]
+[gd_scene load_steps=28 format=3 uid="uid://f2aqbu45a6qa"]
 
 [ext_resource type="Texture2D" uid="uid://creabd3afvmbp" path="res://assets/characters/ChefV1.png" id="1_tqq36"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="2_5f5bp"]
-[ext_resource type="Texture2D" uid="uid://cxigqrd6ksgcq" path="res://icon.svg" id="3_tpxhe"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iyovv"]
 radius = 3.0
@@ -217,7 +216,9 @@ graph_offset = Vector2(-5, 22)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_fh6cc"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_a2lmn"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wvixc"]
+radius = 3.0
+height = 16.0
 
 [node name="player" type="CharacterBody2D"]
 scale = Vector2(2, 2)
@@ -246,14 +247,8 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_fh6cc")
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-scale = Vector2(0.0703125, 0.0703125)
-texture = ExtResource("3_tpxhe")
-region_enabled = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(6, 0.5)
-scale = Vector2(0.5, 0.5)
-shape = SubResource("CircleShape2D_a2lmn")
+shape = SubResource("CapsuleShape2D_wvixc")
+debug_color = Color(0, 0.635294, 0.396078, 0.419608)
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

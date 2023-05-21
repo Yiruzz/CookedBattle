@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://j70e28yl3ki6"]
+[gd_scene load_steps=11 format=3 uid="uid://cnq44m8t24vxw"]
 
 [ext_resource type="Script" path="res://Scripts/Masa.gd" id="4_iwtkv"]
 [ext_resource type="PackedScene" uid="uid://f2aqbu45a6qa" path="res://scenes/player.tscn" id="4_l0bqa"]
 [ext_resource type="PackedScene" uid="uid://b7j43slhaubfe" path="res://scenes/escena_tile_map.tscn" id="5_b8fd6"]
-[ext_resource type="Script" path="res://Scripts/Pan.gd" id="5_swto8"]
-[ext_resource type="Texture2D" uid="uid://cxigqrd6ksgcq" path="res://icon.svg" id="6_objpv"]
 [ext_resource type="PackedScene" uid="uid://bjr0767xviyax" path="res://horno.tscn" id="7_a5r5s"]
 [ext_resource type="PackedScene" uid="uid://dhcklqwjyrq6k" path="res://pan_horneado.tscn" id="8_ounwa"]
 [ext_resource type="PackedScene" uid="uid://d0sntv34sbkm6" path="res://pan.tscn" id="8_selsw"]
 [ext_resource type="AudioStream" uid="uid://b3gddnfosjqr1" path="res://assets/music/Ludum Dare 30 - Track 7.wav" id="9_2jfim"]
+[ext_resource type="PackedScene" uid="uid://cjh5b6rf5clli" path="res://spawner.tscn" id="9_gco36"]
+[ext_resource type="PackedScene" uid="uid://6o0xijosu53v" path="res://picadora.tscn" id="10_3jnsy"]
+[ext_resource type="PackedScene" uid="uid://38dw3csij5in" path="res://refrigerador.tscn" id="11_s66jm"]
 
 [node name="Main" type="Node2D"]
 
@@ -18,7 +19,6 @@ script = ExtResource("4_iwtkv")
 [node name="EscenaTileMap" parent="." instance=ExtResource("5_b8fd6")]
 
 [node name="Pan" type="Node2D" parent="."]
-script = ExtResource("5_swto8")
 
 [node name="Horno" parent="." instance=ExtResource("7_a5r5s")]
 position = Vector2(306, 34)
@@ -32,7 +32,7 @@ scale = Vector2(2.209, 2.209)
 position = Vector2(81, 91)
 
 [node name="player2" parent="." groups=["Player2", "Players"] instance=ExtResource("4_l0bqa")]
-position = Vector2(146, 84)
+position = Vector2(187, 84)
 BtnDer = "ui_right2"
 BtnIzq = "ui_left2"
 BtnArr = "ui_up2"
@@ -40,27 +40,36 @@ BtnAbj = "ui_down2"
 BtnAttck = "ui_attack2"
 BtnTesting = "ui_test2"
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(112, 138)
-scale = Vector2(0.148438, 0.171875)
-texture = ExtResource("6_objpv")
-
-[node name="Icon2" type="Sprite2D" parent="."]
-position = Vector2(206, 139)
-scale = Vector2(0.179688, 0.179688)
-texture = ExtResource("6_objpv")
-
-[node name="Icon3" type="Sprite2D" parent="."]
-position = Vector2(305, 137)
-scale = Vector2(0.136719, 0.128906)
-texture = ExtResource("6_objpv")
-
 [node name="pan" parent="." instance=ExtResource("8_selsw")]
-position = Vector2(118, 63)
+position = Vector2(-51, 48)
 scale = Vector2(1, 1)
 
-[node name="PanHorneado" parent="." instance=ExtResource("8_ounwa")]
+[node name="PanHorneado" parent="." groups=["Daños"] instance=ExtResource("8_ounwa")]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_2jfim")
 autoplay = true
+
+[node name="Spawner" parent="." instance=ExtResource("9_gco36")]
+position = Vector2(113, 141)
+
+[node name="Spawner2" parent="." instance=ExtResource("9_gco36")]
+position = Vector2(181, 138)
+
+[node name="Spawner3" parent="." instance=ExtResource("9_gco36")]
+position = Vector2(306, 139)
+
+[node name="Spawner4" parent="." instance=ExtResource("9_gco36")]
+position = Vector2(232, 137)
+
+[node name="Picadora" parent="." instance=ExtResource("10_3jnsy")]
+position = Vector2(386, 101)
+
+[node name="Picadora2" parent="." instance=ExtResource("10_3jnsy")]
+position = Vector2(29, 197)
+
+[node name="Refrigerador" parent="." instance=ExtResource("11_s66jm")]
+position = Vector2(352, 55)
+
+[node name="Refrigerador2" parent="." instance=ExtResource("11_s66jm")]
+position = Vector2(64, 56)

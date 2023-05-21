@@ -16,19 +16,34 @@ func _process(delta):
 	pass
 #esta funcion recibe un ingrediente y lo coloca en la lista de ingredientes del refrigerador
 func recibirIngrediente(ingrediente):
-	listaIngredientes.append(ingrediente.tipo) #Dios perdoname pero tendre que usar strings como tipado temporalmente
-	if (listaIngredientes.size() >= 2):
-		_receta()
-		cocinarIngrediente()
-		listaIngredientes = []
+	#si no es alguno de los ingredientes que admite el horno entonces no hace nada
+	if ingrediente.tipo != "Leche" and ingrediente.tipo != "TomatePicado" and ingrediente.tipo != "Masa": 
+		return
+	#se agrega a la lista de ingredientes que estan dentro del horno
+	listaIngredientes.append(ingrediente.tipo)
+	print("recibido: " + ingrediente.tipo)
+	ingrediente.queue_free() #se destruye el objeto del ingrediente ya que no es necesario ya
+	print(listaIngredientes)
+	if (listaIngredientes.size() >= 2): #si hay mas de 2 ingredientes entonces empieza a cocinar
+		_receta() #se crea el resultado a partir de las recetas
+		print(ingredienteARecoger)
+		if ingredienteARecoger == null: #en caso se equivoco al colocar los ingredientes no se cocina nada
+			return
+			
+		print(ingredienteARecoger)
+		cocinarIngrediente() #se empieza a cocinar
+		listaIngredientes = [] #la lista de ingredientes se resetea
 	
 func _receta():
 	if listaIngredientes.count("Leche") == 1 and listaIngredientes.count("Masa") == 1: #Se cocina una masa pastelera
-		ingredienteARecoger = preload("res://pan_horneado.tscn").instantiate()
+		ingredienteARecoger = preload("res://masa_pastelera.tscn").instantiate()
+		return
 	if listaIngredientes.count("Leche") == 1 and listaIngredientes.count("TomatePicado") == 1: #Se cocina la sopa
-		ingredienteARecoger = preload("res://pan_horneado.tscn").instantiate()
+		ingredienteARecoger = preload("res://jalea.tscn").instantiate()
+		return
 	if listaIngredientes.count("Leche") == 2: #Se cocina un yogurt
-		ingredienteARecoger = preload("res://pan_horneado.tscn").instantiate()
+		ingredienteARecoger = preload("res://yoghurt.tscn").instantiate()
+		return
 
 func cocinarIngrediente():
 	print("empezo")
@@ -40,9 +55,14 @@ func terminarCocina():
 	ingredienteListo = true
 
 func _entregarIngrediente(player):
-	print("recogido")
+	print("ingrediente entregado")
 	ingredienteListo = false
 	Anim.play("Idle")
+	ingredienteARecoger.add_to_group(player.get_groups()[0]) #mira si lees esto y no entiendes esta linea de codigo
+															#es porque son las 4 am y literal hise todas las colisiones
+															#se detecten por grupos si el arma que recibe no detecta
+															#que es por ejempplo parte del player 1, le pegaran sus
+															#propios wates 
 	player.recibirIngrediente(ingredienteARecoger)
 	ingredienteARecoger = null
 	
@@ -52,8 +72,7 @@ func _on_area_2d_body_entered(body): #COLISION
 	if body.is_in_group("Players"): #Caso choca con un jugador
 		#esta listo la cocina
 		if ingredienteListo:
-			print("recogeringrediente")
-			print(ingredienteListo)
+			print("recogiendo ingrediente")
 			_entregarIngrediente(body)
 		#caso contrario
 		if body.ingrediente == null:
@@ -66,4 +85,3 @@ func _on_area_2d_body_entered(body): #COLISION
 			#	print("ingrediente tiene metodo")
 			#	body.ingrediente.cocinarHorno(self)
 			
-		

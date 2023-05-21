@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bjr0767xviyax"]
+[gd_scene load_steps=19 format=3 uid="uid://bjr0767xviyax"]
 
 [ext_resource type="Script" path="res://Scripts/Horno.gd" id="1_gx218"]
 [ext_resource type="Texture2D" uid="uid://df0j7kjenytd5" path="res://assets/tileset/oven.png" id="1_u7e42"]
@@ -122,6 +122,9 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1puut"]
 size = Vector2(30, 40)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8box"]
+size = Vector2(15, 5)
+
 [node name="Horno" type="Node2D"]
 script = ExtResource("1_gx218")
 
@@ -148,5 +151,11 @@ scale = Vector2(0.46875, 0.45)
 texture = ExtResource("1_u7e42")
 hframes = 3
 frame = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.5, -7.5)
+shape = SubResource("RectangleShape2D_y8box")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

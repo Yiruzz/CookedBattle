@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 200.0
+var SPEED = 200.0
 @export var Vida = 100
 @onready var anim = $AnimationPlayer
 #Botones para el player
@@ -12,23 +12,25 @@ const SPEED = 200.0
 @export var BtnAttck = "ui_attack"
 @export var BtnTesting = "ui_test"
 #Ingrediente inicial para tener en la mano
-@export var ingrediente = preload("res://pan.tscn")
+@export var ingrediente = preload("res://jalea.tscn")
 var animandose = false
 var ultimoBoton = Vector2(1,0)
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+signal picar
 
 
 #Funcion que se llama al inicio de la partida
 func _ready():
 	self.get_node("Area2D").hide()#ocultamos el arma y desactivamos su hitbox
-	self.get_node("Area2D/CollisionShape2D").disabled = true
+
 	if ingrediente != null:
 		ingrediente = ingrediente.instantiate()
 		add_child(ingrediente)
 	
 	
-	
+func setSpeed(newSpeed):
+	SPEED = newSpeed
 	
 
 
@@ -45,8 +47,8 @@ func _terminarAtacar():
 		ingrediente.terminarAtacar(self)
 
 #Funcion que se llama para quitar vida al personaje de este objeto
-func recibirDaño():
-	Vida = Vida - 10
+func recibirDaño(Daño):
+	Vida = Vida - Daño
 	if Vida <= 0:
 		print("The player is dead")
 	else:
@@ -78,6 +80,7 @@ func entregaIngrediente(Cocina):
 	
 
 func recibirIngrediente(Ingrediente):
+	
 	ingrediente = Ingrediente
 	if ingrediente != null:
 		print("ingrediente recibido: " + ingrediente.tipo )
@@ -96,10 +99,8 @@ func _input(event):
 		_atacar()
 		
 	if event.is_action_pressed(BtnTesting): #Solo pa la demo
-		if ingrediente == null:
-			print("no hay ingrediente")
-		else:
-			print(ingrediente.tipo)
+		picar.emit()
+		
 
 
 #
@@ -129,8 +130,15 @@ func _physics_process(delta):
 
 
 
-func _on_area_2d_body_entered(body):
+
+
+func _on_area_2d_area_entered(area):
+
+	var body = area.get_parent()
 	if !body.is_in_group(self.get_groups()[0]):
-		if body.is_in_group("Players"):
-			body.recibirDaño()
+		if body.is_in_group("Daños"):
+			recibirDaño(body.daño)
+
 		
+		#recibirDaño(area.daño)
+

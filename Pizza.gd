@@ -1,7 +1,7 @@
 extends Node
-var tipo = "PanHorneado"
+var tipo = "Pizza"
 var golpesDados = 0
-var daño = 10
+var daño = 25
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.add_to_group("Daños")
@@ -39,7 +39,7 @@ func terminarAtacar(jugador):
 	self.get_node("Area2D/CollisionShape2D").disabled = true
 	jugador.anim.play("run")
 	jugador.animandose = false
-	if golpesDados >= 3:
+	if golpesDados >= 2:
 		jugador.recibirIngrediente(null)
 		self.queue_free()
 		
