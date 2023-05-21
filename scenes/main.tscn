@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cnq44m8t24vxw"]
+[gd_scene load_steps=12 format=3 uid="uid://cnq44m8t24vxw"]
 
 [ext_resource type="Script" path="res://Scripts/Masa.gd" id="4_iwtkv"]
 [ext_resource type="PackedScene" uid="uid://f2aqbu45a6qa" path="res://scenes/player.tscn" id="4_l0bqa"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://b3gddnfosjqr1" path="res://assets/music/Ludum Dare 30 - Track 7.wav" id="9_2jfim"]
 [ext_resource type="PackedScene" uid="uid://cjh5b6rf5clli" path="res://spawner.tscn" id="9_gco36"]
 [ext_resource type="PackedScene" uid="uid://6o0xijosu53v" path="res://picadora.tscn" id="10_3jnsy"]
+[ext_resource type="PackedScene" uid="uid://dr55s4lugef1p" path="res://pause_menu.tscn" id="11_68vm6"]
 [ext_resource type="PackedScene" uid="uid://38dw3csij5in" path="res://refrigerador.tscn" id="11_s66jm"]
 
 [node name="Main" type="Node2D"]
@@ -73,3 +74,14 @@ position = Vector2(352, 55)
 
 [node name="Refrigerador2" parent="." instance=ExtResource("11_s66jm")]
 position = Vector2(64, 56)
+
+[node name="PauseMenu" parent="." instance=ExtResource("11_68vm6")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 126.0
+offset_top = 51.0
+offset_right = 238.0
+offset_bottom = 174.0
+grow_horizontal = 1
+grow_vertical = 1
