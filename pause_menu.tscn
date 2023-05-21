@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr55s4lugef1p"]
+
+[ext_resource type="Script" path="res://pause_menu.gd" id="1_65rtx"]
+[ext_resource type="Theme" uid="uid://c4jjocbci4vgw" path="res://resources/uiTheme.tres" id="1_i1uli"]
+
+[node name="PauseMenu" type="MarginContainer"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 64.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_65rtx")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme = ExtResource("1_i1uli")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_i1uli")
+theme_type_variation = &"HeaderMedium"
+theme_override_colors/font_shadow_color = Color(0.294118, 0.717647, 0.403922, 1)
+text = "Pause"
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Resume"
+
+[node name="Main_Menu" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Main Menu"

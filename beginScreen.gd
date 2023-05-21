@@ -17,5 +17,6 @@ func _on_play_pressed():
 func _on_credits_pressed():
 	pass
 
+
 func _on_exit_pressed():
 	get_tree().quit()
