@@ -48,12 +48,11 @@ func terminarAtacar(jugador):
 		
 		
 
-
 func _on_area_2d_body_entered(body):
-	if lanzado and !body.is_in_group(self.get_groups()[0]):
+	if lanzado and !self.is_in_group(body.get_groups()[0]):
 		body.setSpeed(body.SPEED/10)
 
 
 func _on_area_2d_body_exited(body):
-	if lanzado and !body.is_in_group(self.get_groups()[0]):
+	if lanzado and !self.is_in_group(body.get_groups()[0]):
 		body.setSpeed(body.SPEED*10)

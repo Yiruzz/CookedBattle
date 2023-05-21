@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://b3gddnfosjqr1" path="res://assets/music/Ludum Dare 30 - Track 7.wav" id="9_2jfim"]
 [ext_resource type="PackedScene" uid="uid://cjh5b6rf5clli" path="res://spawner.tscn" id="9_gco36"]
 [ext_resource type="PackedScene" uid="uid://6o0xijosu53v" path="res://picadora.tscn" id="10_3jnsy"]
-[ext_resource type="PackedScene" uid="uid://dr55s4lugef1p" path="res://pause_menu.tscn" id="11_68vm6"]
+[ext_resource type="PackedScene" path="res://pause_menu.tscn" id="11_68vm6"]
 [ext_resource type="PackedScene" uid="uid://38dw3csij5in" path="res://refrigerador.tscn" id="11_s66jm"]
 
 [node name="Main" type="Node2D"]
