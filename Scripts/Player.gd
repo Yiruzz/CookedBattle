@@ -37,11 +37,11 @@ func _ready():
 #	Enemigo.Vida = Enemigo.Vida - 10
 	
 func _atacar():
-	if ingrediente.has_method("atacar") and ingrediente != null:
+	if ingrediente != null and ingrediente.has_method("atacar"):
 		ingrediente.atacar(self)
 		
 func _terminarAtacar():
-	if ingrediente.has_method("terminarAtacar"):
+	if ingrediente != null and ingrediente.has_method("terminarAtacar"):
 		ingrediente.terminarAtacar(self)
 
 #Funcion que se llama para quitar vida al personaje de este objeto
@@ -73,6 +73,9 @@ func recibirDaño():
 #Funcion que entrega un ingrediente a una herramienta de cocina
 func entregaIngrediente(Cocina):
 	Cocina.recibirIngrediente(ingrediente)
+	ingrediente.queue_free()
+	ingrediente = null
+	
 	
 
 func recibirIngrediente(Ingrediente):
