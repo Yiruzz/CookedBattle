@@ -1,17 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://vf6o3e5p0xlt"]
+[gd_scene load_steps=4 format=3 uid="uid://l7obitsrs8kr"]
 
-[ext_resource type="Script" path="res://Scripts/Pan.gd" id="1_xooi3"]
+[ext_resource type="Script" path="res://Tomate_picado.gd" id="1_47dek"]
 [ext_resource type="Texture2D" uid="uid://issd03gd17hb" path="res://assets/tileset/comida.png" id="2_el14h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l210u"]
 
 [node name="tomatePicado" type="Node2D"]
 scale = Vector2(0.4, 0.4)
-script = ExtResource("1_xooi3")
+script = ExtResource("1_47dek")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.14902, 0.14902, 1)
 texture = ExtResource("2_el14h")
-hframes = 2
+hframes = 4
 
 [node name="Area2D" type="Area2D" parent="."]
 

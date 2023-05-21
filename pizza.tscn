@@ -1,17 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqgv4hwhwq44x"]
+[gd_scene load_steps=4 format=3 uid="uid://cit4vnrf4nead"]
 
-[ext_resource type="Script" path="res://Scripts/Pan.gd" id="1_21i7m"]
-[ext_resource type="Texture2D" uid="uid://issd03gd17hb" path="res://assets/tileset/comida.png" id="2_bvu68"]
+[ext_resource type="Script" path="res://Pizza.gd" id="1_peaij"]
+[ext_resource type="Texture2D" uid="uid://cxigqrd6ksgcq" path="res://icon.svg" id="2_17skp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l210u"]
 
 [node name="pizza" type="Node2D"]
 scale = Vector2(0.4, 0.4)
-script = ExtResource("1_21i7m")
+script = ExtResource("1_peaij")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_bvu68")
-hframes = 2
+modulate = Color(1, 0.121569, 0.121569, 1)
+scale = Vector2(0.15625, 0.15625)
+texture = ExtResource("2_17skp")
 
 [node name="Area2D" type="Area2D" parent="."]
 
