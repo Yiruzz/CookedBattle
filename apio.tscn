@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://m5wlgap1b5sg"]
+
+[ext_resource type="Script" path="res://Scripts/Pan.gd" id="1_1h14l"]
+[ext_resource type="Texture2D" uid="uid://issd03gd17hb" path="res://assets/tileset/comida.png" id="2_uof6j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l210u"]
+
+[node name="apio" type="Node2D"]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_1h14l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_uof6j")
+hframes = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_l210u")

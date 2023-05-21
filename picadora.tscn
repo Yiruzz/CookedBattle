@@ -1,0 +1,152 @@
+[gd_scene load_steps=18 format=3 uid="uid://6o0xijosu53v"]
+
+[ext_resource type="Script" path="res://Picadora.gd" id="1_i21w3"]
+[ext_resource type="Texture2D" uid="uid://df0j7kjenytd5" path="res://assets/tileset/oven.png" id="2_4d1c4"]
+
+[sub_resource type="Animation" id="Animation_v33vx"]
+resource_name = "Cocinando"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 1]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"terminarCocina"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ehi0o"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_isf4f"]
+resource_name = "Listo"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_h52cg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rs70a"]
+_data = {
+"Cocinando": SubResource("Animation_v33vx"),
+"Idle": SubResource("Animation_ehi0o"),
+"Listo": SubResource("Animation_isf4f"),
+"RESET": SubResource("Animation_h52cg")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xs2br"]
+animation = &"Cocinando"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xfj82"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8nd8c"]
+animation = &"Listo"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p8f1e"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ipgi1"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sry30"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_78ody"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_shlf2"]
+states/Cocinando/node = SubResource("AnimationNodeAnimation_xs2br")
+states/Cocinando/position = Vector2(722, 48)
+states/Idle/node = SubResource("AnimationNodeAnimation_xfj82")
+states/Idle/position = Vector2(526, 48)
+states/Listo/node = SubResource("AnimationNodeAnimation_8nd8c")
+states/Listo/position = Vector2(612, 136)
+states/Start/position = Vector2(386, 100)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_p8f1e"), "Idle", "Cocinando", SubResource("AnimationNodeStateMachineTransition_ipgi1"), "Cocinando", "Listo", SubResource("AnimationNodeStateMachineTransition_sry30"), "Listo", "Idle", SubResource("AnimationNodeStateMachineTransition_78ody")]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_g2w43"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1puut"]
+size = Vector2(30, 26)
+
+[node name="Picadora" type="Node2D"]
+script = ExtResource("1_i21w3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rs70a")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_shlf2")
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_g2w43")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -3.5)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_1puut")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.5, -1)
+scale = Vector2(0.46875, 0.45)
+texture = ExtResource("2_4d1c4")
+hframes = 3
+frame = 2
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered" flags=18]

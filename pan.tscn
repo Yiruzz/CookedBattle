@@ -5,7 +5,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l210u"]
 
-[node name="pan" type="Node2D"]
+[node name="masa" type="Node2D"]
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_73iui")
 

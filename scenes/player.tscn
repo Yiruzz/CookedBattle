@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://f2aqbu45a6qa"]
+[gd_scene load_steps=29 format=3 uid="uid://f2aqbu45a6qa"]
 
 [ext_resource type="Texture2D" uid="uid://creabd3afvmbp" path="res://assets/characters/ChefV1.png" id="1_tqq36"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="2_5f5bp"]
@@ -42,7 +42,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ukc3d"]
 resource_name = "melee_atack"
-length = 0.5
+length = 0.3
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -50,11 +50,11 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.5),
+"times": PackedFloat32Array(0.3),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"_terminarAtaqueMelee"
+"method": &"_terminarAtacar"
 }]
 }
 tracks/1/type = "value"
@@ -87,22 +87,96 @@ tracks/0/keys = {
 "values": [6, 7, 8, 7]
 }
 
+[sub_resource type="Animation" id="Animation_7qcex"]
+resource_name = "iddle_panhorneado"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [15, 16, 17, 18]
+}
+
+[sub_resource type="Animation" id="Animation_bl1xj"]
+resource_name = "run_panhorneado"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [19, 20, 21, 22, 23, 24]
+}
+
+[sub_resource type="Animation" id="Animation_o0q5w"]
+resource_name = "atack_panhorneado"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [25, 26, 27]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_terminarAtacar"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o28ve"]
 _data = {
 "Idle": SubResource("Animation_rel0b"),
 "RESET": SubResource("Animation_ar0cl"),
+"atack_panhorneado": SubResource("Animation_o0q5w"),
+"iddle_panhorneado": SubResource("Animation_7qcex"),
 "melee_atack": SubResource("Animation_ukc3d"),
-"run": SubResource("Animation_eb6pf")
+"run": SubResource("Animation_eb6pf"),
+"run_panhorneado": SubResource("Animation_bl1xj")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mlp1r"]
 animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4aval"]
+animation = &"atack_panhorneado"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kbfhm"]
+animation = &"iddle_panhorneado"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pwknx"]
 animation = &"melee_atack"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7wdgu"]
 animation = &"run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_df73a"]
+animation = &"run_panhorneado"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b76w2"]
 switch_mode = 2
@@ -118,20 +192,26 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4ffrb"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ybs3t"]
-switch_mode = 1
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rn5c1"]
-switch_mode = 1
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_x80kb"]
-states/End/position = Vector2(897, 99)
+states/End/position = Vector2(1240, 126)
 states/Idle/node = SubResource("AnimationNodeAnimation_mlp1r")
 states/Idle/position = Vector2(336, 58)
 states/Start/position = Vector2(192, 88)
+states/atack_panhorneado/node = SubResource("AnimationNodeAnimation_4aval")
+states/atack_panhorneado/position = Vector2(994, 73)
+states/iddle_panhorneado/node = SubResource("AnimationNodeAnimation_kbfhm")
+states/iddle_panhorneado/position = Vector2(776, 73)
 states/melee_atack/node = SubResource("AnimationNodeAnimation_pwknx")
 states/melee_atack/position = Vector2(470, 177)
 states/run/node = SubResource("AnimationNodeAnimation_7wdgu")
 states/run/position = Vector2(596, 64)
+states/run_panhorneado/node = SubResource("AnimationNodeAnimation_df73a")
+states/run_panhorneado/position = Vector2(892, 137)
 transitions = ["run", "Idle", SubResource("AnimationNodeStateMachineTransition_b76w2"), "Idle", "run", SubResource("AnimationNodeStateMachineTransition_a085q"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_7wsf6"), "run", "melee_atack", SubResource("AnimationNodeStateMachineTransition_enurl"), "Idle", "melee_atack", SubResource("AnimationNodeStateMachineTransition_4ffrb"), "melee_atack", "run", SubResource("AnimationNodeStateMachineTransition_ybs3t"), "melee_atack", "Idle", SubResource("AnimationNodeStateMachineTransition_rn5c1")]
 graph_offset = Vector2(-5, 22)
 
@@ -146,7 +226,8 @@ script = ExtResource("2_5f5bp")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_tqq36")
 offset = Vector2(0, -8)
-hframes = 15
+hframes = 6
+vframes = 5
 frame = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -168,8 +249,10 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_fh6cc")
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 scale = Vector2(0.0703125, 0.0703125)
 texture = ExtResource("3_tpxhe")
+region_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(6, 0.5)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_a2lmn")
 

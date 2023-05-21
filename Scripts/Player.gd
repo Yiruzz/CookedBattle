@@ -4,12 +4,14 @@ extends CharacterBody2D
 const SPEED = 200.0
 @export var Vida = 100
 @onready var anim = $AnimationPlayer
+#Botones para el player
 @export var BtnDer = "ui_right"
 @export var BtnIzq = "ui_left"
 @export var BtnArr = "ui_up"
 @export var BtnAbj = "ui_down"
 @export var BtnAttck = "ui_attack"
 @export var BtnTesting = "ui_test"
+#Ingrediente inicial para tener en la mano
 @export var ingrediente = preload("res://pan.tscn")
 var animandose = false
 var ultimoBoton = Vector2(1,0)
@@ -31,10 +33,16 @@ func _ready():
 
 
 #Funcion que se llama para atacar con el dispatch del enemigo
-func atacar(Enemigo):
-	Enemigo.Vida = Enemigo.Vida - 10
+#func atacar(Enemigo):
+#	Enemigo.Vida = Enemigo.Vida - 10
 	
-
+func _atacar():
+	if ingrediente.has_method("atacar") and ingrediente != null:
+		ingrediente.atacar(self)
+		
+func _terminarAtacar():
+	if ingrediente.has_method("terminarAtacar"):
+		ingrediente.terminarAtacar(self)
 
 #Funcion que se llama para quitar vida al personaje de este objeto
 func recibirDaño():
@@ -46,31 +54,32 @@ func recibirDaño():
 	
 
 #Funcion que posiciona la hitbox del ataque cuerpo a cuerpo
-func posicionarAtaque(direccion):
-	anim.play("melee_atack")
-	ingrediente.show()
-	var area = ingrediente
-	area.position = self.get_node("Sprite2D").position + direccion*10	
-	self.get_node("Area2D/CollisionShape2D").disabled = false
+#func posicionarAtaque(direccion):
+#	anim.play("melee_atack")
+#	ingrediente.show()
+#	var area = ingrediente
+#	area.position = self.get_node("Sprite2D").position + direccion*10	
+#	self.get_node("Area2D/CollisionShape2D").disabled = false
 	
-func _terminarAtaqueMelee():
-	ingrediente.hide()#ocultamos el arma y desactivamos su hitbox
-	ingrediente.show()#mira esta wea solo pa testing lo dejare junto a la linea anterior
-	ingrediente.position = self.get_node("Sprite2D").position
-	ingrediente.get_node("Area2D/CollisionShape2D").disabled = true
-	animandose = false
-	anim.play("run")
+#func _terminarAtaqueMelee():
+#	ingrediente.hide()#ocultamos el arma y desactivamos su hitbox
+#	ingrediente.show()#mira esta wea solo pa testing lo dejare junto a la linea anterior
+#	ingrediente.position = self.get_node("Sprite2D").position
+#	ingrediente.get_node("Area2D/CollisionShape2D").disabled = true
+#	animandose = false
+#	anim.play("run")
 	
 	
 #Funcion que entrega un ingrediente a una herramienta de cocina
 func entregaIngrediente(Cocina):
-	Cocina.RecibirIngrediente(ingrediente)
-	pass
+	Cocina.recibirIngrediente(ingrediente)
+	
 
 func recibirIngrediente(Ingrediente):
 	ingrediente = Ingrediente
-	print("recogido")
+	
 	if ingrediente != null:
+		print("ingrediente recibido: " + ingrediente.tipo )
 		add_child(ingrediente)
 	pass
 	
@@ -80,9 +89,10 @@ func _input(event):
 		var dir = Vector2(Input.get_axis(BtnIzq, BtnDer),Input.get_axis(BtnArr, BtnAbj))
 		if dir.length() == 0: #si no se proporciona direccion se usa la ultima direccion elegida
 			dir = ultimoBoton
-		animandose = true
-		posicionarAtaque(dir)
+		#animandose = true
+		#posicionarAtaque(dir)
 		ultimoBoton = dir
+		_atacar()
 		
 	if event.is_action_pressed(BtnTesting): #Solo pa la demo
 		if ingrediente!=null:
@@ -100,13 +110,20 @@ func _physics_process(delta):
 	
 	if !animandose: 
 		if (velocity.length() > 0 ):
-			anim.play("run")
+			if ingrediente != null and ingrediente.has_method("run"):
+				ingrediente.run(self)
+			else:
+				anim.play("run")
+				
 			if(velocity.x > 0):
 				$Sprite2D.flip_h = false
 			else:
 				$Sprite2D.flip_h = true
 		else:
-			anim.play("Idle")
+			if ingrediente != null and ingrediente.has_method("iddle"):
+				ingrediente.iddle(self)
+			else:
+				anim.play("Idle")
 	move_and_slide()
 	
 

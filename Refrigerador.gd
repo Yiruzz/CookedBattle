@@ -14,24 +14,24 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
+#esta funcion recibe un ingrediente y lo coloca en la lista de ingredientes del refrigerador
 func recibirIngrediente(ingrediente):
-	listaIngredientes.append(ingrediente.tipo)
+	listaIngredientes.append(ingrediente.tipo) #Dios perdoname pero tendre que usar strings como tipado temporalmente
 	if (listaIngredientes.size() >= 2):
 		_receta()
 		cocinarIngrediente()
 		listaIngredientes = []
 	
 func _receta():
-	if listaIngredientes.count("Masa") == 1 and listaIngredientes.count("TomatePicado") == 1: #Se cocina una pizza
+	if listaIngredientes.count("Leche") == 1 and listaIngredientes.count("Masa") == 1: #Se cocina una masa pastelera
 		ingredienteARecoger = preload("res://pan_horneado.tscn").instantiate()
-	if listaIngredientes.count("TomatePicado") == 2: #Se cocina la sopa
+	if listaIngredientes.count("Leche") == 1 and listaIngredientes.count("TomatePicado") == 1: #Se cocina la sopa
 		ingredienteARecoger = preload("res://pan_horneado.tscn").instantiate()
-	if listaIngredientes.count("Masa") == 2: #Se cocina Bagguete
+	if listaIngredientes.count("Leche") == 2: #Se cocina un yogurt
 		ingredienteARecoger = preload("res://pan_horneado.tscn").instantiate()
 
 func cocinarIngrediente():
-	print("cocinando")
+	print("empezo")
 	Anim.play("Cocinando")
 
 func terminarCocina():
@@ -40,7 +40,7 @@ func terminarCocina():
 	ingredienteListo = true
 
 func _entregarIngrediente(player):
-	print("ingrediente entregado")
+	print("recogido")
 	ingredienteListo = false
 	Anim.play("Idle")
 	player.recibirIngrediente(ingredienteARecoger)
@@ -52,14 +52,15 @@ func _on_area_2d_body_entered(body): #COLISION
 	if body.is_in_group("Players"): #Caso choca con un jugador
 		#esta listo la cocina
 		if ingredienteListo:
-			print("recogiendo ingrediente")
+			print("recogeringrediente")
+			print(ingredienteListo)
 			_entregarIngrediente(body)
 		#caso contrario
 		if body.ingrediente == null:
 			return
 		#caso se entrega ingrediente 
 		else:	
-			print("entregando ingrediente")
+			
 			body.entregaIngrediente(self)
 			#if body.ingrediente.has_method('cocinarHorno') :  DEPRECADO
 			#	print("ingrediente tiene metodo")

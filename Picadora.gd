@@ -5,6 +5,7 @@ var listaIngredientes = []
 
 var ingredienteListo = false
 var ingredienteARecoger = null
+var porcentajeDePicado
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,21 +18,24 @@ func _process(delta):
 
 func recibirIngrediente(ingrediente):
 	listaIngredientes.append(ingrediente.tipo)
-	if (listaIngredientes.size() >= 2):
+	if (listaIngredientes.size() >= 1):
 		_receta()
 		cocinarIngrediente()
 		listaIngredientes = []
 	
+func picar():
+	porcentajeDePicado += 10
+	if porcentajeDePicado >= 100:
+		terminarCocina()
+	
 func _receta():
-	if listaIngredientes.count("Masa") == 1 and listaIngredientes.count("TomatePicado") == 1: #Se cocina una pizza
+	if listaIngredientes.count("Apio") == 1: #Se cocina un apio afilado
 		ingredienteARecoger = preload("res://pan_horneado.tscn").instantiate()
-	if listaIngredientes.count("TomatePicado") == 2: #Se cocina la sopa
-		ingredienteARecoger = preload("res://pan_horneado.tscn").instantiate()
-	if listaIngredientes.count("Masa") == 2: #Se cocina Bagguete
+	if listaIngredientes.count("Tomate") == 1: #Se cocina un tomate picado
 		ingredienteARecoger = preload("res://pan_horneado.tscn").instantiate()
 
 func cocinarIngrediente():
-	print("cocinando")
+	print("empezo")
 	Anim.play("Cocinando")
 
 func terminarCocina():
@@ -40,7 +44,7 @@ func terminarCocina():
 	ingredienteListo = true
 
 func _entregarIngrediente(player):
-	print("ingrediente entregado")
+	print("recogido")
 	ingredienteListo = false
 	Anim.play("Idle")
 	player.recibirIngrediente(ingredienteARecoger)
@@ -52,14 +56,15 @@ func _on_area_2d_body_entered(body): #COLISION
 	if body.is_in_group("Players"): #Caso choca con un jugador
 		#esta listo la cocina
 		if ingredienteListo:
-			print("recogiendo ingrediente")
+			print("recogeringrediente")
+			print(ingredienteListo)
 			_entregarIngrediente(body)
 		#caso contrario
 		if body.ingrediente == null:
 			return
 		#caso se entrega ingrediente 
 		else:	
-			print("entregando ingrediente")
+			
 			body.entregaIngrediente(self)
 			#if body.ingrediente.has_method('cocinarHorno') :  DEPRECADO
 			#	print("ingrediente tiene metodo")

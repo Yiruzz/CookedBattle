@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdb4n0fmkygr7"]
+[gd_scene load_steps=10 format=3 uid="uid://j70e28yl3ki6"]
 
 [ext_resource type="Script" path="res://Scripts/Masa.gd" id="4_iwtkv"]
 [ext_resource type="PackedScene" uid="uid://f2aqbu45a6qa" path="res://scenes/player.tscn" id="4_l0bqa"]
