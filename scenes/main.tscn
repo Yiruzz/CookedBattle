@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cnq44m8t24vxw"]
+[gd_scene load_steps=14 format=3 uid="uid://cnq44m8t24vxw"]
 
 [ext_resource type="Script" path="res://Scripts/Masa.gd" id="4_iwtkv"]
 [ext_resource type="PackedScene" uid="uid://f2aqbu45a6qa" path="res://scenes/player.tscn" id="4_l0bqa"]
@@ -9,8 +9,10 @@
 [ext_resource type="AudioStream" uid="uid://b3gddnfosjqr1" path="res://assets/music/Ludum Dare 30 - Track 7.wav" id="9_2jfim"]
 [ext_resource type="PackedScene" uid="uid://cjh5b6rf5clli" path="res://spawner.tscn" id="9_gco36"]
 [ext_resource type="PackedScene" uid="uid://6o0xijosu53v" path="res://picadora.tscn" id="10_3jnsy"]
-[ext_resource type="PackedScene" path="res://pause_menu.tscn" id="11_68vm6"]
+[ext_resource type="PackedScene" uid="uid://dr55s4lugef1p" path="res://pause_menu.tscn" id="11_68vm6"]
 [ext_resource type="PackedScene" uid="uid://38dw3csij5in" path="res://refrigerador.tscn" id="11_s66jm"]
+[ext_resource type="PackedScene" uid="uid://i5amdvjakpud" path="res://hud.tscn" id="12_th1u2"]
+[ext_resource type="PackedScene" uid="uid://dsq57kv2f3fov" path="res://hud_2.tscn" id="13_nc8k5"]
 
 [node name="Main" type="Node2D"]
 
@@ -33,7 +35,7 @@ scale = Vector2(2.209, 2.209)
 position = Vector2(81, 91)
 
 [node name="player2" parent="." groups=["Player2", "Players"] instance=ExtResource("4_l0bqa")]
-position = Vector2(187, 84)
+position = Vector2(211, 85)
 BtnDer = "ui_right2"
 BtnIzq = "ui_left2"
 BtnArr = "ui_up2"
@@ -85,3 +87,15 @@ offset_right = 238.0
 offset_bottom = 174.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="HUD" parent="." instance=ExtResource("12_th1u2")]
+offset_left = 13.0
+offset_right = 113.0
+offset_bottom = 10.0
+
+[node name="HUD2" parent="." instance=ExtResource("13_nc8k5")]
+offset_left = 303.0
+offset_top = 1.0
+offset_right = 403.0
+offset_bottom = 11.0
+nombrePlayer = "player2"

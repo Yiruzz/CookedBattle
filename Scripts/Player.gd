@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 var SPEED = 200.0
+const VidaMaxima = 100
 @export var Vida = 100
 @onready var anim = $AnimationPlayer
 #Botones para el player
@@ -18,6 +19,7 @@ var ultimoBoton = Vector2(1,0)
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 signal picar
+signal hud
 
 
 #Funcion que se llama al inicio de la partida
@@ -49,6 +51,8 @@ func _terminarAtacar():
 #Funcion que se llama para quitar vida al personaje de este objeto
 func recibirDaño(Daño):
 	Vida = Vida - Daño
+	hud.emit()
+	# hud.set_health(Vida)
 	if Vida <= 0:
 		print("The player is dead")
 	else:

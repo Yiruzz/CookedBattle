@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsq57kv2f3fov"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_p5s7h"]
+[ext_resource type="Theme" uid="uid://c4jjocbci4vgw" path="res://resources/uiTheme.tres" id="2_m4402"]
+
+[node name="HUD2" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+script = ExtResource("1_p5s7h")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_m4402")
+value = 100.0
+fill_mode = 1
+show_percentage = false
