@@ -1,33 +1,38 @@
 extends Node
 var tipo = "Pizza"
-var golpesDados = 0
 var daño = 25
+const SPEED = 50.0
+var lanzado = false
+var dir = Vector2(0,0)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.add_to_group("Daños")
 	self.get_node("Area2D/CollisionShape2D").disabled = true
-
+	
 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-	
-func iddle(jugador):
-	jugador.anim.play("iddle_panhorneado")
-	
-func run(jugador):
-	jugador.anim.play("run_panhorneado")
+func _physics_process(delta):
+	if lanzado: 
+		self.global_position = self.global_position + dir*SPEED*delta
 	
 
+func _lanzar(ultimoBoton):
+	dir = ultimoBoton
+	lanzado = true
 
 func atacar(jugador):
 	jugador.animandose = true
-	jugador.anim.play("atack_panhorneado")
-	self.position = jugador.get_node("Sprite2D").position + jugador.ultimoBoton*10	
+	jugador.anim.play("melee_atack")
+	var new_parent = get_parent().get_parent()
+	get_parent().remove_child(self)
+	new_parent.add_child(self)
+	
+	self.global_position  = jugador.get_node("Sprite2D").global_position + jugador.ultimoBoton*50	
+	_lanzar(jugador.ultimoBoton)	
 	self.get_node("Area2D/CollisionShape2D").disabled = false
-	golpesDados += 1
+
 
 func terminarAtacar(jugador):
 	#ingrediente.hide()#ocultamos el arma y desactivamos su hitbox
@@ -36,10 +41,13 @@ func terminarAtacar(jugador):
 #	ingrediente.get_node("Area2D/CollisionShape2D").disabled = true
 #	animandose = false
 #	anim.play("run")
-	self.get_node("Area2D/CollisionShape2D").disabled = true
 	jugador.anim.play("run")
 	jugador.animandose = false
-	if golpesDados >= 2:
-		jugador.recibirIngrediente(null)
-		self.queue_free()
+	jugador.ingrediente = null
 		
+		
+
+
+func _on_area_2d_body_entered(body):
+	if lanzado:
+		self.queue_free()
