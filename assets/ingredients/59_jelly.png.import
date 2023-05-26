@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buo3xq7snrvss"
-path="res://.godot/imported/pie_fome2.png-11d1a8e403dbca1c884515f548a77ef4.ctex"
+uid="uid://1xbras5xwlg8"
+path="res://.godot/imported/59_jelly.png-b1038d3156a6ca36a7f7fc845006f67c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredients/pie_fome2.png"
-dest_files=["res://.godot/imported/pie_fome2.png-11d1a8e403dbca1c884515f548a77ef4.ctex"]
+source_file="res://assets/ingredients/59_jelly.png"
+dest_files=["res://.godot/imported/59_jelly.png-b1038d3156a6ca36a7f7fc845006f67c.ctex"]
 
 [params]
 
