@@ -28,6 +28,8 @@ func atacar(jugador):
 	var new_parent = get_parent().get_parent()
 	get_parent().remove_child(self)
 	new_parent.add_child(self)
+	self.scale.x = 1
+	self.scale.y = 1	
 	
 	self.global_position  = jugador.get_node("Sprite2D").global_position + jugador.ultimoBoton*50	
 	_lanzar(jugador.ultimoBoton)	
