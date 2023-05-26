@@ -44,7 +44,7 @@ func terminarAtacar(jugador):
 #	anim.play("run")
 	jugador.anim.play("run")
 	jugador.animandose = false
-	jugador.recibirIngrediente(null)
+	jugador.ingrediente = null
 		
 		
 
