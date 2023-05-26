@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t6jytoayslm6"
-path="res://.godot/imported/sopa_2.png-22104718f16ee54b2508fe0d2fe79256.ctex"
+uid="uid://duk0u8kfon5b5"
+path="res://.godot/imported/fruits-veggies.png-9d171f5bf621e800dd9cfb327939fc1a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredients/sopa_2.png"
-dest_files=["res://.godot/imported/sopa_2.png-22104718f16ee54b2508fe0d2fe79256.ctex"]
+source_file="res://assets/ingredients/fruits-veggies.png"
+dest_files=["res://.godot/imported/fruits-veggies.png-9d171f5bf621e800dd9cfb327939fc1a.ctex"]
 
 [params]
 

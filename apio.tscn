@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cdb5bajuy3clj"]
 
 [ext_resource type="Script" path="res://Apio.gd" id="1_p8o4h"]
-[ext_resource type="Texture2D" uid="uid://ixj5ahm18agw" path="res://assets/ingredients/Comida1.png" id="2_hylml"]
+[ext_resource type="Texture2D" uid="uid://dyc2o1rrp2nau" path="res://assets/ingredients/esparrago.png" id="2_h7o6h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l210u"]
 
@@ -11,11 +11,7 @@ script = ExtResource("1_p8o4h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-2.38419e-07, 2.38419e-07)
-scale = Vector2(0.625, 0.625)
-texture = ExtResource("2_hylml")
-hframes = 10
-vframes = 13
-frame = 96
+texture = ExtResource("2_h7o6h")
 
 [node name="Area2D" type="Area2D" parent="."]
 

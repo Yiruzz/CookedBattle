@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://nk0sqq6kx1r"]
+[gd_scene load_steps=4 format=3 uid="uid://nk0sqq6kx1r"]
 
 [ext_resource type="Texture2D" uid="uid://creabd3afvmbp" path="res://assets/characters/ChefV1.png" id="1_wfic2"]
-[ext_resource type="Texture2D" uid="uid://ot7cwexlqg25" path="res://assets/ingredients/baguette_1.png" id="2_fct4c"]
 [ext_resource type="Texture2D" uid="uid://bcn8dfkgehrlh" path="res://assets/characters/Chef_player2_sombra_media.png" id="3_8smrs"]
 [ext_resource type="Texture2D" uid="uid://dyc2o1rrp2nau" path="res://assets/ingredients/esparrago.png" id="4_1tn1y"]
 
@@ -14,12 +13,6 @@ texture = ExtResource("1_wfic2")
 hframes = 6
 vframes = 5
 frame = 13
-
-[node name="Baguette1" type="Sprite2D" parent="ChefV1"]
-position = Vector2(11.5, 5.5)
-rotation = -0.45204
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_fct4c")
 
 [node name="ChefPlayer2SombraMedia" type="Sprite2D" parent="."]
 position = Vector2(112, 89)
