@@ -1,6 +1,6 @@
 extends Node
 var tipo = "Sopa" #no pregunten y no juzgen xfavor
-var daño = 15
+var daño = 17
 const SPEED = 50.0
 var lanzado = false
 var dir = Vector2(0,0)

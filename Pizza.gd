@@ -1,6 +1,6 @@
 extends Node
 var tipo = "Pizza"
-var daño = 25
+var daño = 14
 const SPEED = 50.0
 var lanzado = false
 var dir = Vector2(0,0)
