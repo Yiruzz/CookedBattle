@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cnq44m8t24vxw"]
+[gd_scene load_steps=15 format=3 uid="uid://cnq44m8t24vxw"]
 
 [ext_resource type="Script" path="res://Scripts/Masa.gd" id="4_iwtkv"]
 [ext_resource type="PackedScene" uid="uid://f2aqbu45a6qa" path="res://scenes/player.tscn" id="4_l0bqa"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://38dw3csij5in" path="res://refrigerador.tscn" id="11_s66jm"]
 [ext_resource type="PackedScene" uid="uid://i5amdvjakpud" path="res://hud.tscn" id="12_th1u2"]
 [ext_resource type="PackedScene" uid="uid://dsq57kv2f3fov" path="res://hud_2.tscn" id="13_nc8k5"]
+[ext_resource type="PackedScene" uid="uid://b6qoekm87f253" path="res://WinMenu.tscn" id="14_fnf6i"]
 
 [node name="Main" type="Node2D"]
 
@@ -31,7 +32,7 @@ scale = Vector2(2.209, 2.209)
 position = Vector2(113, 34)
 scale = Vector2(2.209, 2.209)
 
-[node name="player" parent="." groups=["Player1", "Players"] instance=ExtResource("4_l0bqa")]
+[node name="player1" parent="." groups=["Player1", "Players"] instance=ExtResource("4_l0bqa")]
 position = Vector2(81, 91)
 
 [node name="player2" parent="." groups=["Player2", "Players"] instance=ExtResource("4_l0bqa")]
@@ -88,14 +89,29 @@ offset_bottom = 174.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="HUD" parent="." instance=ExtResource("12_th1u2")]
+[node name="BarraVida" parent="." instance=ExtResource("12_th1u2")]
 offset_left = 13.0
 offset_right = 113.0
 offset_bottom = 10.0
+nombrePlayer = "player1"
 
-[node name="HUD2" parent="." instance=ExtResource("13_nc8k5")]
+[node name="BarraVida2" parent="." instance=ExtResource("13_nc8k5")]
 offset_left = 303.0
 offset_top = 1.0
 offset_right = 403.0
 offset_bottom = 11.0
+nombrePlayer = "player2"
+
+[node name="WinMenu" parent="." instance=ExtResource("14_fnf6i")]
+offset_left = 126.0
+offset_top = 51.0
+offset_right = 238.0
+offset_bottom = 174.0
+nombrePlayer = "player1"
+
+[node name="WinMenu2" parent="." instance=ExtResource("14_fnf6i")]
+offset_left = 126.0
+offset_top = 51.0
+offset_right = 238.0
+offset_bottom = 174.0
 nombrePlayer = "player2"

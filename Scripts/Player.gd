@@ -20,6 +20,7 @@ var ultimoBoton = Vector2(1,0)
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 signal picar
 signal hud
+signal winscreen
 
 
 #Funcion que se llama al inicio de la partida
@@ -52,9 +53,8 @@ func _terminarAtacar():
 func recibirDaño(Daño):
 	Vida = Vida - Daño
 	hud.emit()
-	# hud.set_health(Vida)
 	if Vida <= 0:
-		print("The player is dead")
+		winscreen.emit()
 	else:
 		print(str(Vida) + " " + self.get_node(".").name)
 	

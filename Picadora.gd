@@ -30,6 +30,8 @@ func recibirIngrediente(ingrediente):
 		listaIngredientes = [] #la lista de ingredientes se resetea
 	
 func _picar():
+	if ingredienteARecoger == null:
+		return
 	print("picando")
 	porcentajeDePicado += 10
 	if porcentajeDePicado >= 100:
