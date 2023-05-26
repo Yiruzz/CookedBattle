@@ -50,5 +50,8 @@ func _on_area_2d_body_entered(body):
 				body.ingrediente.queue_free()
 			body.recibirIngrediente(ingrediente)
 			ingredienteListo = false
-			self.get_node("Sprite2D").visible = false
+			self.get_node("Sprite2D1").visible = false
+			self.get_node("Sprite2D2").visible = false
+			self.get_node("Sprite2D3").visible = false
+			self.get_node("Sprite2D4").visible = false
 			tdelta = 0

@@ -20,16 +20,20 @@ position = Vector2(-8.9407e-07, 1.43051e-05)
 shape = SubResource("RectangleShape2D_x0p18")
 
 [node name="Sprite2D1" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
 texture = ExtResource("2_ncfup")
 hframes = 2
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
 texture = ExtResource("3_ss26g")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
 texture = ExtResource("4_ru8g3")
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]
+scale = Vector2(8.4, 8.4)
 texture = ExtResource("5_0bb0x")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
