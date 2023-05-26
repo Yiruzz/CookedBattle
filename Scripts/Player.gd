@@ -13,7 +13,7 @@ const VidaMaxima = 100
 @export var BtnAttck = "ui_attack"
 @export var BtnTesting = "ui_test"
 #Ingrediente inicial para tener en la mano
-@export var ingrediente = preload("res://jalea.tscn")
+var ingrediente = null
 var animandose = false
 var ultimoBoton = Vector2(1,0)
 # Get the gravity from the project settings to be synced with RigidBody nodes.
