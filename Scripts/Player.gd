@@ -141,7 +141,7 @@ func _on_area_2d_area_entered(area):
 
 	var body = area.get_parent()
 	if !body.is_in_group(self.get_groups()[0]):
-		if body.is_in_group("Daños"):
+		if body.is_in_group("Daños") and area.get_node("CollisionShape2D").disabled == false:
 			recibirDaño(body.daño)
 
 		
