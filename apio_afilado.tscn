@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dpjwloil2pmj1"]
 
 [ext_resource type="Script" path="res://Apio_afilado.gd" id="1_ykgf4"]
-[ext_resource type="Texture2D" uid="uid://cxigqrd6ksgcq" path="res://icon.svg" id="2_3q3vo"]
+[ext_resource type="Texture2D" uid="uid://btifn6vgal2au" path="res://assets/ingredients/esparrago_afilado.png" id="2_27agq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l210u"]
 
@@ -11,10 +11,8 @@ script = ExtResource("1_ykgf4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.0588235, 1, 0.113725, 1)
-position = Vector2(-9.53674e-07, -1.90735e-06)
-scale = Vector2(0.3125, 0.15625)
-texture = ExtResource("2_3q3vo")
-hframes = 2
+position = Vector2(0.390624, -0.390626)
+texture = ExtResource("2_27agq")
 
 [node name="Area2D" type="Area2D" parent="."]
 
