@@ -84,7 +84,8 @@ func entregaIngrediente(Cocina):
 	
 
 func recibirIngrediente(Ingrediente):
-	
+	if ingrediente != null:
+		ingrediente.queue_free()
 	ingrediente = Ingrediente
 	if ingrediente != null:
 		print("ingrediente recibido: " + ingrediente.tipo )
