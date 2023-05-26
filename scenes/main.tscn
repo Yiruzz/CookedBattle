@@ -52,6 +52,7 @@ scale = Vector2(1, 1)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_2jfim")
+volume_db = -33.333
 autoplay = true
 
 [node name="Spawner" parent="." instance=ExtResource("9_gco36")]
