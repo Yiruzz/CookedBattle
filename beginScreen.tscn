@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7whkrk2rci26"]
+[gd_scene load_steps=7 format=3 uid="uid://b7whkrk2rci26"]
 
 [ext_resource type="Script" path="res://beginScreen.gd" id="1_0wh68"]
 [ext_resource type="Theme" uid="uid://c4jjocbci4vgw" path="res://resources/uiTheme.tres" id="2_xr2um"]
+[ext_resource type="Texture2D" uid="uid://creabd3afvmbp" path="res://assets/characters/ChefV1.png" id="3_shma7"]
+[ext_resource type="Texture2D" uid="uid://clvy808uyc442" path="res://assets/ingredients/baguette.png" id="4_wj7o2"]
+[ext_resource type="Texture2D" uid="uid://bcn8dfkgehrlh" path="res://assets/characters/Chef_player2_sombra_media.png" id="5_stseb"]
+[ext_resource type="Texture2D" uid="uid://bm1ctthtm8dk3" path="res://assets/ingredients/esparrago_afilado.png" id="6_bdpb3"]
 
 [node name="BeginMenu" type="MarginContainer"]
 anchors_preset = 15
@@ -51,3 +55,31 @@ text = "Credits"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Exit"
+
+[node name="ChefV1" type="Sprite2D" parent="PanelContainer/MarginContainer"]
+position = Vector2(-50, 90)
+scale = Vector2(4, 4)
+texture = ExtResource("3_shma7")
+hframes = 6
+vframes = 5
+frame = 13
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer/MarginContainer/ChefV1"]
+position = Vector2(11, 6)
+rotation = -0.359538
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_wj7o2")
+
+[node name="ChefPlayer2SombraMedia" type="Sprite2D" parent="PanelContainer/MarginContainer"]
+position = Vector2(211, 90)
+scale = Vector2(4, 4)
+texture = ExtResource("5_stseb")
+flip_h = true
+hframes = 16
+frame = 14
+
+[node name="Esparrago" type="Sprite2D" parent="PanelContainer/MarginContainer/ChefPlayer2SombraMedia"]
+position = Vector2(-7.5, 6)
+rotation = -1.51669
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_bdpb3")
