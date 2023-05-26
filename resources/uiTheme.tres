@@ -1,10 +1,16 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://c4jjocbci4vgw"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://c4jjocbci4vgw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w4avy"]
 bg_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uo54n"]
 bg_color = Color(0.217988, 0.636877, 0.214849, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_173o0"]
+bg_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_26lip"]
+bg_color = Color(0.258824, 0.647059, 0.823529, 1)
 
 [resource]
 MarginContainer/constants/margin_bottom = 8
@@ -13,3 +19,6 @@ MarginContainer/constants/margin_right = 8
 MarginContainer/constants/margin_top = 8
 ProgressBar/styles/background = SubResource("StyleBoxFlat_w4avy")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_uo54n")
+WorkProgress/base_type = &"ProgressBar"
+WorkProgress/styles/background = SubResource("StyleBoxFlat_173o0")
+WorkProgress/styles/fill = SubResource("StyleBoxFlat_26lip")
