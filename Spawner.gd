@@ -10,16 +10,26 @@ func _ready():
 
 func _crearIngrediente():
 	var n = rng.randi_range(1, 4)
+	self.get_node("Sprite2D1").visible = false
+	self.get_node("Sprite2D2").visible = false
+	self.get_node("Sprite2D3").visible = false
+	self.get_node("Sprite2D4").visible = false
+	
 	if n == 1:
 		ingrediente = preload("res://pan.tscn").instantiate()
+		self.get_node("Sprite2D1").visible = false
 	if n == 2:
+		self.get_node("Sprite2D2").visible = false
 		ingrediente = preload("res://leche.tscn").instantiate()
 	if n == 3:
+		self.get_node("Sprite2D3").visible = false
 		ingrediente = preload("res://apio.tscn").instantiate()
 	if n == 4:
+		self.get_node("Sprite2D4").visible = false
 		ingrediente = preload("res://tomate.tscn").instantiate()
 	ingredienteListo = true
 	self.get_node("Sprite2D").visible = true
+	
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
