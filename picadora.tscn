@@ -160,7 +160,6 @@ offset_right = 15.0
 offset_bottom = -32.0
 size_flags_horizontal = 0
 theme = ExtResource("3_t268p")
-theme_type_variation = &"WorkProgress"
 value = 100.0
 show_percentage = false
 
