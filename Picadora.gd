@@ -6,9 +6,12 @@ var listaIngredientes = []
 var ingredienteListo = false
 var ingredienteARecoger = null
 var porcentajeDePicado = 0
+@onready var progressbar = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	progressbar = self.get_node("ProgressBar")
+	progressbar.visible = false
 	pass # Replace with function body.
 
 
@@ -34,6 +37,7 @@ func _picar():
 		return
 	print("picando")
 	porcentajeDePicado += 10
+	progressbar.value = porcentajeDePicado
 	if porcentajeDePicado >= 100:
 		terminarCocina()
 	
@@ -49,6 +53,8 @@ func _receta():
 func cocinarIngrediente():
 	print("empezo")
 	porcentajeDePicado = 0
+	progressbar.visible = true
+	progressbar.value = 0 
 	
 
 func terminarCocina():
@@ -56,6 +62,7 @@ func terminarCocina():
 	Anim.play("Listo")
 	ingredienteListo = true
 	porcentajeDePicado = 0
+	progressbar.visible = false
 
 func _entregarIngrediente(player):
 	print("ingrediente entregado")

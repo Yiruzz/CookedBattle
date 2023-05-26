@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://bjr0767xviyax"]
+[gd_scene load_steps=20 format=3 uid="uid://bjr0767xviyax"]
 
 [ext_resource type="Script" path="res://Scripts/Horno.gd" id="1_gx218"]
 [ext_resource type="Texture2D" uid="uid://df0j7kjenytd5" path="res://assets/tileset/oven.png" id="1_u7e42"]
+[ext_resource type="Theme" uid="uid://c4jjocbci4vgw" path="res://resources/uiTheme.tres" id="3_ck5qg"]
 
 [sub_resource type="Animation" id="Animation_v33vx"]
 resource_name = "Cocinando"
@@ -31,6 +32,30 @@ tracks/1/keys = {
 "args": [],
 "method": &"terminarCocina"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ProgressBar:value")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ProgressBar:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_ehi0o"]
@@ -76,6 +101,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ProgressBar:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ProgressBar:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rs70a"]
@@ -151,6 +200,17 @@ scale = Vector2(0.46875, 0.45)
 texture = ExtResource("1_u7e42")
 hframes = 3
 frame = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -9.0
+offset_top = -7.0
+offset_right = 8.0
+offset_bottom = -5.0
+size_flags_horizontal = 0
+theme = ExtResource("3_ck5qg")
+theme_type_variation = &"WorkProgress"
+value = 100.0
+show_percentage = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
