@@ -15,14 +15,17 @@ func _process(delta):
 	pass
 	
 func iddle(jugador):
+	get_node("Sprite2D").visible = false
 	jugador.anim.play("iddle_panhorneado")
 	
 func run(jugador):
+	get_node("Sprite2D").visible = false
 	jugador.anim.play("run_panhorneado")
 	
 
 
 func atacar(jugador):
+	get_node("Sprite2D").visible = false
 	jugador.animandose = true
 	jugador.anim.play("atack_panhorneado")
 	self.position = jugador.get_node("Sprite2D").position + jugador.ultimoBoton*10	
@@ -36,6 +39,7 @@ func terminarAtacar(jugador):
 #	ingrediente.get_node("Area2D/CollisionShape2D").disabled = true
 #	animandose = false
 #	anim.play("run")
+	get_node("Sprite2D").visible = false
 	self.get_node("Area2D/CollisionShape2D").disabled = true
 	jugador.anim.play("run")
 	jugador.animandose = false

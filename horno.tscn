@@ -218,4 +218,10 @@ show_percentage = false
 position = Vector2(-0.5, -7.5)
 shape = SubResource("RectangleShape2D_y8box")
 
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = -5.0
+offset_top = -9.0
+offset_right = 4.0
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
