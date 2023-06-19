@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://f2aqbu45a6qa"]
+[gd_scene load_steps=29 format=3 uid="uid://f2aqbu45a6qa"]
 
 [ext_resource type="Texture2D" uid="uid://creabd3afvmbp" path="res://assets/characters/ChefV1.png" id="1_tqq36"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="2_5f5bp"]
@@ -6,6 +6,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iyovv"]
 radius = 3.0
 height = 16.0
+
+[sub_resource type="Animation" id="Animation_umjcr"]
+resource_name = "Iddle_tomato"
 
 [sub_resource type="Animation" id="Animation_rel0b"]
 resource_name = "Idle"
@@ -150,6 +153,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o28ve"]
 _data = {
+"Iddle_tomato": SubResource("Animation_umjcr"),
 "Idle": SubResource("Animation_rel0b"),
 "RESET": SubResource("Animation_ar0cl"),
 "atack_panhorneado": SubResource("Animation_o0q5w"),
@@ -212,7 +216,7 @@ states/run/position = Vector2(596, 64)
 states/run_panhorneado/node = SubResource("AnimationNodeAnimation_df73a")
 states/run_panhorneado/position = Vector2(892, 137)
 transitions = ["run", "Idle", SubResource("AnimationNodeStateMachineTransition_b76w2"), "Idle", "run", SubResource("AnimationNodeStateMachineTransition_a085q"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_7wsf6"), "run", "melee_atack", SubResource("AnimationNodeStateMachineTransition_enurl"), "Idle", "melee_atack", SubResource("AnimationNodeStateMachineTransition_4ffrb"), "melee_atack", "run", SubResource("AnimationNodeStateMachineTransition_ybs3t"), "melee_atack", "Idle", SubResource("AnimationNodeStateMachineTransition_rn5c1")]
-graph_offset = Vector2(-5, 22)
+graph_offset = Vector2(118, -11)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_fh6cc"]
 

@@ -23,6 +23,7 @@ signal hud
 signal winscreen
 
 
+
 #Funcion que se llama al inicio de la partida
 func _ready():
 	self.get_node("Area2D").hide()#ocultamos el arma y desactivamos su hitbox
@@ -79,6 +80,7 @@ func recibirDaño(Daño):
 #Funcion que entrega un ingrediente a una herramienta de cocina
 func entregaIngrediente(Cocina):
 	Cocina.recibirIngrediente(ingrediente)
+	$Sprite2D.texture = preload("res://assets/characters/ChefV1.png")
 	
 	
 	
@@ -90,6 +92,12 @@ func recibirIngrediente(Ingrediente):
 	if ingrediente != null:
 		print("ingrediente recibido: " + ingrediente.tipo )
 		add_child(ingrediente)
+		
+		# If solo es necesario mientras hayan armas que no tengan el método.
+		if ingrediente.has_method("changePlayerTexture"):
+			$Sprite2D.texture = ingrediente.changePlayerTexture()
+			
+				
 	
 	
 #Funcion que recibe una señal de un input cualquiera

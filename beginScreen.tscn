@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://creabd3afvmbp" path="res://assets/characters/ChefV1.png" id="3_shma7"]
 [ext_resource type="Texture2D" uid="uid://clvy808uyc442" path="res://assets/ingredients/baguette.png" id="4_wj7o2"]
 [ext_resource type="Texture2D" uid="uid://bcn8dfkgehrlh" path="res://assets/characters/Chef_player2_sombra_media.png" id="5_stseb"]
-[ext_resource type="Texture2D" uid="uid://bm1ctthtm8dk3" path="res://assets/ingredients/esparrago_afilado.png" id="6_bdpb3"]
+[ext_resource type="Texture2D" uid="uid://btifn6vgal2au" path="res://assets/ingredients/esparrago_afilado.png" id="6_bdpb3"]
 
 [node name="BeginMenu" type="MarginContainer"]
 anchors_preset = 15
