@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://clvy808uyc442" path="res://assets/ingredients/baguette.png" id="2_bxutv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nf5fn"]
+radius = 10.0
 
 [node name="PanHorneado" type="Node2D"]
 scale = Vector2(0.4, 0.4)

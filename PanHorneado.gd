@@ -10,9 +10,7 @@ func _ready():
 
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+
 	
 func iddle(jugador):
 	get_node("Sprite2D").visible = false
@@ -25,21 +23,16 @@ func run(jugador):
 
 
 func atacar(jugador):
-	get_node("Sprite2D").visible = false
 	jugador.animandose = true
 	jugador.anim.play("atack_panhorneado")
 	self.position = jugador.get_node("Sprite2D").position + jugador.ultimoBoton*10	
 	self.get_node("Area2D/CollisionShape2D").disabled = false
+	self.get_node("Area2D/CollisionShape2D").scale = Vector2(50000, 50000)
 	golpesDados += 1
+	
 
 func terminarAtacar(jugador):
-	#ingrediente.hide()#ocultamos el arma y desactivamos su hitbox
-#	ingrediente.show()#mira esta wea solo pa testing lo dejare junto a la linea anterior
-#	ingrediente.position = self.get_node("Sprite2D").position
-#	ingrediente.get_node("Area2D/CollisionShape2D").disabled = true
-#	animandose = false
-#	anim.play("run")
-	get_node("Sprite2D").visible = false
+	
 	self.get_node("Area2D/CollisionShape2D").disabled = true
 	jugador.anim.play("run")
 	jugador.animandose = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cnq44m8t24vxw"]
+[gd_scene load_steps=16 format=3 uid="uid://cnq44m8t24vxw"]
 
 [ext_resource type="Script" path="res://Scripts/Masa.gd" id="4_iwtkv"]
 [ext_resource type="PackedScene" uid="uid://f2aqbu45a6qa" path="res://scenes/player.tscn" id="4_l0bqa"]
@@ -13,7 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://38dw3csij5in" path="res://refrigerador.tscn" id="11_s66jm"]
 [ext_resource type="PackedScene" uid="uid://i5amdvjakpud" path="res://hud.tscn" id="12_th1u2"]
 [ext_resource type="PackedScene" uid="uid://dsq57kv2f3fov" path="res://hud_2.tscn" id="13_nc8k5"]
-[ext_resource type="PackedScene" uid="uid://b6qoekm87f253" path="res://WinMenu.tscn" id="14_fnf6i"]
+[ext_resource type="PackedScene" path="res://WinMenu.tscn" id="14_fnf6i"]
+[ext_resource type="PackedScene" uid="uid://bw3sra5vimcnx" path="res://lavamanos.tscn" id="15_chbts"]
 
 [node name="Main" type="Node2D"]
 
@@ -116,3 +117,9 @@ offset_top = 51.0
 offset_right = 238.0
 offset_bottom = 174.0
 nombrePlayer = "player2"
+
+[node name="Lavamanos" parent="." instance=ExtResource("15_chbts")]
+position = Vector2(25, 95)
+
+[node name="Lavamanos2" parent="." instance=ExtResource("15_chbts")]
+position = Vector2(389, 189)

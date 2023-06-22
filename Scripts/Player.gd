@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-
+var baseSpeed = 200.0
 var SPEED = 200.0
 const VidaMaxima = 100
 @export var Vida = 100
@@ -19,10 +19,12 @@ var ultimoBoton = Vector2(1,0)
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 signal picar
+signal lavarse
 signal hud
 signal winscreen
 
-
+# Effects
+var stunned = false
 
 #Funcion que se llama al inicio de la partida
 func _ready():
@@ -43,6 +45,9 @@ func setSpeed(newSpeed):
 #	Enemigo.Vida = Enemigo.Vida - 10
 	
 func _atacar():
+	print(stunned)
+	if stunned:
+		return
 	if ingrediente != null and ingrediente.has_method("atacar"):
 		ingrediente.atacar(self)
 		
@@ -59,26 +64,20 @@ func recibirDaño(Daño):
 	else:
 		print(str(Vida) + " " + self.get_node(".").name)
 	
-
-#Funcion que posiciona la hitbox del ataque cuerpo a cuerpo
-#func posicionarAtaque(direccion):
-#	anim.play("melee_atack")
-#	ingrediente.show()
-#	var area = ingrediente
-#	area.position = self.get_node("Sprite2D").position + direccion*10	
-#	self.get_node("Area2D/CollisionShape2D").disabled = false
 	
-#func _terminarAtaqueMelee():
-#	ingrediente.hide()#ocultamos el arma y desactivamos su hitbox
-#	ingrediente.show()#mira esta wea solo pa testing lo dejare junto a la linea anterior
-#	ingrediente.position = self.get_node("Sprite2D").position
-#	ingrediente.get_node("Area2D/CollisionShape2D").disabled = true
-#	animandose = false
-#	anim.play("run")
+func stun():
+	stunned = true
+	
+func destun():
+	stunned = false
+
+
 	
 	
 #Funcion que entrega un ingrediente a una herramienta de cocina
 func entregaIngrediente(Cocina):
+	if stunned:
+		return
 	Cocina.recibirIngrediente(ingrediente)
 	$Sprite2D.texture = preload("res://assets/characters/ChefV1.png")
 	
@@ -91,8 +90,7 @@ func recibirIngrediente(Ingrediente):
 	ingrediente = Ingrediente
 	if ingrediente != null:
 		print("ingrediente recibido: " + ingrediente.tipo )
-		add_child(ingrediente)
-		
+		call_deferred("add_child", ingrediente)
 		# If solo es necesario mientras hayan armas que no tengan el método.
 		if ingrediente.has_method("changePlayerTexture"):
 			$Sprite2D.texture = ingrediente.changePlayerTexture()
@@ -106,13 +104,12 @@ func _input(event):
 		var dir = Vector2(Input.get_axis(BtnIzq, BtnDer),Input.get_axis(BtnArr, BtnAbj))
 		if dir.length() == 0: #si no se proporciona direccion se usa la ultima direccion elegida
 			dir = ultimoBoton
-		#animandose = true
-		#posicionarAtaque(dir)
 		ultimoBoton = dir
 		_atacar()
 		
 	if event.is_action_pressed(BtnTesting): #Solo pa la demo
 		picar.emit()
+		lavarse.emit()
 		
 
 
@@ -151,7 +148,3 @@ func _on_area_2d_area_entered(area):
 	if !body.is_in_group(self.get_groups()[0]):
 		if body.is_in_group("Daños") and area.get_node("CollisionShape2D").disabled == false:
 			recibirDaño(body.daño)
-
-		
-		#recibirDaño(area.daño)
-

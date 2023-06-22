@@ -22,6 +22,10 @@ func _lanzar():
 	lanzado = true
 	self.scale.x = 1
 	self.scale.y = 1
+	await get_tree().create_timer(60.0).timeout
+	queue_free()
+	
+	
 func atacar(jugador):
 	jugador.animandose = true
 	jugador.anim.play("melee_atack")
@@ -52,9 +56,15 @@ func terminarAtacar(jugador):
 
 func _on_area_2d_body_entered(body):
 	if lanzado and !self.is_in_group(body.get_groups()[0]):
-		body.setSpeed(body.SPEED/10)
+		if body.baseSpeed == body.SPEED:
+			body.setSpeed(body.SPEED/10)
+
+
+
 
 
 func _on_area_2d_body_exited(body):
-	if lanzado and !self.is_in_group(body.get_groups()[0]):
-		body.setSpeed(body.SPEED*10)
+	if lanzado and !self.is_in_group(body.get_groups()[0]):	
+		if body.baseSpeed != body.SPEED:
+			body.setSpeed(body.SPEED*10)
+
