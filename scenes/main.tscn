@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cnq44m8t24vxw"]
+[gd_scene load_steps=17 format=3 uid="uid://cnq44m8t24vxw"]
 
 [ext_resource type="Script" path="res://Scripts/Masa.gd" id="4_iwtkv"]
 [ext_resource type="PackedScene" uid="uid://f2aqbu45a6qa" path="res://scenes/player.tscn" id="4_l0bqa"]
@@ -15,6 +15,21 @@
 [ext_resource type="PackedScene" uid="uid://dsq57kv2f3fov" path="res://hud_2.tscn" id="13_nc8k5"]
 [ext_resource type="PackedScene" path="res://WinMenu.tscn" id="14_fnf6i"]
 [ext_resource type="PackedScene" uid="uid://bw3sra5vimcnx" path="res://lavamanos.tscn" id="15_chbts"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l64sw"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 8.0
+initial_velocity_max = 8.0
+angular_velocity_min = -2.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_min = -3.0
+scale_min = 5.0
+scale_max = 8.0
+color = Color(0.721569, 0.054902, 0.0588235, 1)
 
 [node name="Main" type="Node2D"]
 
@@ -127,3 +142,13 @@ position = Vector2(25, 95)
 
 [node name="Lavamanos2" parent="." instance=ExtResource("15_chbts")]
 position = Vector2(389, 189)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(73, 84)
+emitting = false
+amount = 6
+process_material = SubResource("ParticleProcessMaterial_l64sw")
+lifetime = 5.0
+one_shot = true
+speed_scale = 10.0
+explosiveness = 0.96

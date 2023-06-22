@@ -57,6 +57,7 @@ func _terminarAtacar():
 
 #Funcion que se llama para quitar vida al personaje de este objeto
 func recibirDaño(Daño):
+	get_node("GPUParticles2D").emitting = true
 	Vida = Vida - Daño
 	hud.emit()
 	if Vida <= 0:

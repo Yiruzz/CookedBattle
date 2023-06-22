@@ -28,7 +28,7 @@ func _crearIngrediente():
 		self.get_node("Sprite2D4").visible = true
 		ingrediente = preload("res://tomate.tscn").instantiate()
 	ingredienteListo = true
-	
+	get_node("GPUParticles2D").emitting = true
 	
 	
 
