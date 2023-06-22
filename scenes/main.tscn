@@ -34,6 +34,10 @@ scale = Vector2(2.209, 2.209)
 
 [node name="player1" parent="." groups=["Player1", "Players"] instance=ExtResource("4_l0bqa")]
 position = Vector2(81, 91)
+BtnDer = "ui_right1"
+BtnIzq = "ui_left1"
+BtnArr = "ui_up1"
+BtnAbj = "ui_down1"
 
 [node name="player2" parent="." groups=["Player2", "Players"] instance=ExtResource("4_l0bqa")]
 position = Vector2(211, 85)
