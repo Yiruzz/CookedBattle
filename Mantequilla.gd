@@ -1,5 +1,5 @@
 extends Node
-var tipo = "Jalea" #no pregunten y no juzgen xfavor
+var tipo = "Mantequilla" #no pregunten y no juzgen xfavor
 #var daño = 15
 const SPEED = 50.0
 var lanzado = false

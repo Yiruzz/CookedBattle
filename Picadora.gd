@@ -2,7 +2,7 @@ extends Node
 
 @onready var Anim = $AnimationPlayer
 var listaIngredientes = []
-
+var jugadorPicando = null
 var ingredienteListo = false
 var ingredienteARecoger = null
 var porcentajeDePicado = 0
@@ -63,6 +63,7 @@ func terminarCocina():
 	ingredienteListo = true
 	porcentajeDePicado = 0
 	progressbar.visible = false
+	_entregarIngrediente(jugadorPicando)
 	
 
 func _entregarIngrediente(player):
@@ -82,11 +83,9 @@ func _on_area_2d_body_entered(body): #COLISION
 	
 	if body.is_in_group("Players"): #Caso choca con un jugador
 		body.picar.connect(_picar)
-		#esta listo la cocina
-		if ingredienteListo:
-			
-			_entregarIngrediente(body)
-		#caso contrario
+		jugadorPicando = body
+		
+		#caso jugador no tiene ingrediente equipado
 		if body.ingrediente == null:
 			return
 		#caso se entrega ingrediente 
