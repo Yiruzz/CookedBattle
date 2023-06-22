@@ -1,19 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://ccig6cxe4q0l7"]
 
-[ext_resource type="Script" path="res://Yoghurt.gd" id="1_uqcyb"]
-[ext_resource type="Texture2D" uid="uid://cxigqrd6ksgcq" path="res://icon.svg" id="2_mpd6j"]
+[ext_resource type="Script" path="res://Mantequilla.gd" id="1_whvit"]
+[ext_resource type="Texture2D" uid="uid://bnsfvhbskds1h" path="res://assets/ingredients/butter.png" id="2_003rn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l210u"]
 
-[node name="yoghurt" type="Node2D"]
+[node name="mantequilla" type="Node2D"]
 scale = Vector2(0.4, 0.4)
-script = ExtResource("1_uqcyb")
+script = ExtResource("1_whvit")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.129412, 0.882353, 1)
 position = Vector2(-4.76837e-07, -1.90735e-06)
-scale = Vector2(0.15625, 0.15625)
-texture = ExtResource("2_mpd6j")
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_003rn")
 
 [node name="Area2D" type="Area2D" parent="."]
 

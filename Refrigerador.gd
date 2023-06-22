@@ -42,7 +42,7 @@ func _receta():
 		ingredienteARecoger = preload("res://jalea.tscn").instantiate()
 		return
 	if listaIngredientes.count("Leche") == 2: #Se cocina un yogurt
-		ingredienteARecoger = preload("res://yoghurt.tscn").instantiate()
+		ingredienteARecoger = preload("res://mantequilla.tscn").instantiate()
 		return
 
 func cocinarIngrediente():
