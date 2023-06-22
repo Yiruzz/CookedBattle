@@ -28,7 +28,7 @@ func atacar(jugador):
 	self.position = jugador.get_node("Sprite2D").position + jugador.ultimoBoton*10	
 	self.get_node("Area2D/CollisionShape2D").disabled = false
 	self.get_node("Area2D/CollisionShape2D").scale = Vector2(50000, 50000)
-	golpesDados += 1
+	#golpesDados += 1
 	
 
 func terminarAtacar(jugador):
