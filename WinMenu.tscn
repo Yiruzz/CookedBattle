@@ -41,9 +41,19 @@ horizontal_alignment = 1
 [node name="Play_Again" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_top = NodePath("../Main_Menu")
+focus_neighbor_bottom = NodePath("../Main_Menu")
+focus_next = NodePath("../Main_Menu")
+focus_previous = NodePath("../Main_Menu")
+mouse_filter = 2
 text = "Play Again"
 
 [node name="Main_Menu" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_top = NodePath("../Play_Again")
+focus_neighbor_bottom = NodePath("../Play_Again")
+focus_next = NodePath("../Play_Again")
+focus_previous = NodePath("../Play_Again")
+mouse_filter = 2
 text = "Main Menu"

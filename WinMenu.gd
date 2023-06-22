@@ -17,10 +17,10 @@ func _ready():
 	
 
 func _display():
-	print("hola")
 	play_again.pressed.connect(_on_playAgain_pressed)
 	main_menu.pressed.connect(_on_main_menu_pressed)
 	show()
+	%Play_Again.grab_focus()
 	get_tree().paused = true
 	
 	

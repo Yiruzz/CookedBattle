@@ -13,6 +13,7 @@ func _input(event):
 	if event.is_action_pressed("pause"):
 		show()
 		get_tree().paused = true
+		%Resume.grab_focus()
 	
 	
 func _on_resume_pressed():
