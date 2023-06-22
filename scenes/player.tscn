@@ -228,7 +228,7 @@ height = 16.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.118182), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_xrked"]
+[sub_resource type="CurveTexture" id="CurveTexture_fu4ba"]
 curve = SubResource("Curve_neqx1")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hn4gi"]
@@ -244,7 +244,7 @@ orbit_velocity_max = 0.0
 linear_accel_min = -3.0
 scale_min = 5.0
 scale_max = 8.0
-scale_curve = SubResource("CurveTexture_xrked")
+scale_curve = SubResource("CurveTexture_fu4ba")
 color = Color(0.721569, 0.054902, 0.0588235, 1)
 
 [node name="player" type="CharacterBody2D"]

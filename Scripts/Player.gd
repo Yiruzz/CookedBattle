@@ -58,12 +58,14 @@ func _terminarAtacar():
 #Funcion que se llama para quitar vida al personaje de este objeto
 func recibirDaño(Daño):
 	get_node("GPUParticles2D").emitting = true
+	
 	Vida = Vida - Daño
 	hud.emit()
 	if Vida <= 0:
 		winscreen.emit()
-	else:
-		print(str(Vida) + " " + self.get_node(".").name)
+	$Sprite2D.modulate = Color(1, 0, 0)
+	await get_tree().create_timer(0.3).timeout
+	$Sprite2D.modulate = Color(1, 1, 1)
 	
 	
 func stun():
