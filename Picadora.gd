@@ -2,6 +2,7 @@ extends Node
 
 @onready var Anim = $AnimationPlayer
 var listaIngredientes = []
+var listaIngredientesAceptados = ["Apio","Tomate"]
 var jugadorPicando = null
 var ingredienteListo = false
 var ingredienteARecoger = null

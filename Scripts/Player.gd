@@ -81,6 +81,9 @@ func destun():
 func entregaIngrediente(Cocina):
 	if stunned:
 		return
+	#si no es alguno de los ingredientes que admite la cocina entonces no hace nada
+	if ingrediente.tipo not in Cocina.listaIngredientesAceptados:
+		return
 	Cocina.recibirIngrediente(ingrediente)
 	$Sprite2D.texture = preload("res://assets/characters/ChefV1.png")
 	

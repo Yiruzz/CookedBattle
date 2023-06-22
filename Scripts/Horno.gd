@@ -2,9 +2,10 @@ extends Node
 
 @onready var Anim = $AnimationPlayer
 var listaIngredientes = []
-
+var listaIngredientesAceptados = ["Masa","TomatePicado"]
 var ingredienteListo = false
 var ingredienteARecoger = null
+var equivocado = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,9 +18,6 @@ func _process(delta):
 	pass
 #funcion que entrega un ingrediente al horno
 func recibirIngrediente(ingrediente):
-	#si no es alguno de los ingredientes que admite el horno entonces no hace nada
-	if ingrediente.tipo != "Masa" and ingrediente.tipo != "TomatePicado": 
-		return
 	#se agrega a la lista de ingredientes que estan dentro del horno
 	listaIngredientes.append(ingrediente.tipo)
 	print("recibido: " + ingrediente.tipo)
@@ -30,7 +28,7 @@ func recibirIngrediente(ingrediente):
 		print(ingredienteARecoger)
 		if ingredienteARecoger == null: #en caso se equivoco al colocar los ingredientes no se cocina nada
 			return
-			
+		
 		print(ingredienteARecoger)
 		cocinarIngrediente() #se empieza a cocinar
 		listaIngredientes = [] #la lista de ingredientes se resetea
@@ -47,7 +45,16 @@ func _receta():
 		print("pan")
 		ingredienteARecoger = preload("res://sopa.tscn").instantiate()
 		return
+	_ingredienteEquivocadoColocado()
+
+
+func _ingredienteEquivocadoColocado():
+	var ultimoIngrediente = listaIngredientes.pop_back()
+	listaIngredientes = []
+	listaIngredientes.append(ultimoIngrediente)
 	ingredienteARecoger = null
+	
+
 
 func cocinarIngrediente():
 	print("cocinando")
