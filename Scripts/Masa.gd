@@ -1,9 +1,12 @@
 extends Node
 var tipo = "Masa"
 
-func changePlayerTexture():
+func changePlayerTexture(numJugador):
 	self.visible = false
-	return preload("res://assets/characters/ChefV1_grabbing_dough.png")
+	if numJugador == 1:
+		return preload("res://assets/characters/ChefV1_grabbing_dough.png")
+	else:
+		return preload("res://assets/characters/ChefV2_grabbing_dough.png")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

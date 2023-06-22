@@ -12,6 +12,7 @@ const VidaMaxima = 100
 @export var BtnAbj = "ui_down"
 @export var BtnAttck = "ui_attack"
 @export var BtnTesting = "ui_test"
+@export var numJugador = 1
 #Ingrediente inicial para tener en la mano
 var ingrediente = null
 var animandose = false
@@ -75,6 +76,12 @@ func destun():
 	stunned = false
 
 
+# Cambia la textura del jugador a la original, sin ingredientes.
+func defaultTexture(numJugador):
+	if numJugador == 1:
+		$Sprite2D.texture = preload("res://assets/characters/ChefV1.png")
+	else:
+		$Sprite2D.texture = preload("res://assets/characters/ChefV2.png")			
 	
 	
 #Funcion que entrega un ingrediente a una herramienta de cocina
@@ -85,9 +92,7 @@ func entregaIngrediente(Cocina):
 	if ingrediente.tipo not in Cocina.listaIngredientesAceptados:
 		return
 	Cocina.recibirIngrediente(ingrediente)
-	$Sprite2D.texture = preload("res://assets/characters/ChefV1.png")
-	
-	
+	self.defaultTexture(numJugador)
 	
 
 func recibirIngrediente(Ingrediente):
@@ -99,7 +104,7 @@ func recibirIngrediente(Ingrediente):
 		call_deferred("add_child", ingrediente)
 		# If solo es necesario mientras hayan armas que no tengan el método.
 		if ingrediente.has_method("changePlayerTexture"):
-			$Sprite2D.texture = ingrediente.changePlayerTexture()
+			$Sprite2D.texture = ingrediente.changePlayerTexture(numJugador)
 			
 				
 	

@@ -2,9 +2,12 @@ extends Node2D
 var tipo = "Leche"
 
 
-func changePlayerTexture():
+func changePlayerTexture(numJugador):
 	self.visible = false
-	return preload("res://assets/characters/ChefV1_grabbing_milk.png")
+	if numJugador == 1:
+		return preload("res://assets/characters/ChefV1_grabbing_milk.png")
+	else:
+		return preload("res://assets/characters/ChefV2_grabbing_milk.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
