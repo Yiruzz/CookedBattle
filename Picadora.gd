@@ -83,9 +83,9 @@ func _on_area_2d_body_entered(body): #COLISION
 	if body.is_in_group("Players"): #Caso choca con un jugador
 		body.picar.connect(_picar)
 		#esta listo la cocina
-		#if ingredienteListo:
+		if ingredienteListo:
 			
-			#_entregarIngrediente(body)
+			_entregarIngrediente(body)
 		#caso contrario
 		if body.ingrediente == null:
 			return

@@ -53,6 +53,7 @@ func terminarCocina():
 	print("termino")
 	Anim.play("Listo")
 	ingredienteListo = true
+	_agregarHUD()
 
 func _entregarIngrediente(player):
 	print("ingrediente entregado")
@@ -63,9 +64,26 @@ func _entregarIngrediente(player):
 															#se detecten por grupos si el arma que recibe no detecta
 															#que es por ejempplo parte del player 1, le pegaran sus
 															#propios wates 
+	_quitarHUD()
 	player.recibirIngrediente(ingredienteARecoger)
 	ingredienteARecoger = null
 	
+func _agregarHUD():
+	get_node("Panel").add_child(ingredienteARecoger)
+	get_node("Panel").visible = true
+	ingredienteARecoger.position = Vector2(get_node("Panel").size.x/2,get_node("Panel").size.y/2)
+	ingredienteARecoger.scale.x = 2*ingredienteARecoger.scale.x
+	ingredienteARecoger.scale.y = 2*ingredienteARecoger.scale.y
+	ingredienteARecoger.get_node("Area2D").set_process(false)
+
+func _quitarHUD():
+	get_node("Panel").remove_child(ingredienteARecoger)
+	ingredienteARecoger.get_node("Area2D").set_process(true)
+	get_node("Panel").visible = false
+	ingredienteARecoger.position = Vector2(0,0)
+	ingredienteARecoger.scale.x = 0.5*ingredienteARecoger.scale.x
+	ingredienteARecoger.scale.y = 0.5*ingredienteARecoger.scale.y
+
 
 func _on_area_2d_body_entered(body): #COLISION
 	

@@ -2,7 +2,7 @@ extends Node2D
 var tipo = "Tomate"
 
 func changePlayerTexture():
-	self.visible = false
+	get_node("Sprite2D").visible = false
 	return preload("res://assets/characters/ChefV1_grabbing_tomato.png")
 # Called when the node enters the scene tree for the first time.
 func _ready():

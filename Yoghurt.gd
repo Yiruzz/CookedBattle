@@ -1,5 +1,5 @@
 extends Node
-var tipo = "Yoghurt" #no pregunten y no juzgen xfavor
+var tipo = "Jalea" #no pregunten y no juzgen xfavor
 #var daño = 15
 const SPEED = 50.0
 var lanzado = false
@@ -31,6 +31,7 @@ func atacar(jugador):
 	new_parent.add_child(self)
 
 	self.global_position  = jugador.get_node("Sprite2D").global_position
+	
 	_lanzar()	
 	self.get_node("Area2D/CollisionShape2D").disabled = false
 
@@ -48,11 +49,9 @@ func terminarAtacar(jugador):
 		
 		
 
+
+
 func _on_area_2d_body_entered(body):
 	if lanzado and !self.is_in_group(body.get_groups()[0]):
-		body.setSpeed(body.SPEED/10)
-
-
-func _on_area_2d_body_exited(body):
-	if lanzado and !self.is_in_group(body.get_groups()[0]):
-		body.setSpeed(body.SPEED*10)
+		body.stun()
+		queue_free()

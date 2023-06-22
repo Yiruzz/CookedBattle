@@ -216,7 +216,7 @@ states/run/position = Vector2(596, 64)
 states/run_panhorneado/node = SubResource("AnimationNodeAnimation_df73a")
 states/run_panhorneado/position = Vector2(892, 137)
 transitions = ["run", "Idle", SubResource("AnimationNodeStateMachineTransition_b76w2"), "Idle", "run", SubResource("AnimationNodeStateMachineTransition_a085q"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_7wsf6"), "run", "melee_atack", SubResource("AnimationNodeStateMachineTransition_enurl"), "Idle", "melee_atack", SubResource("AnimationNodeStateMachineTransition_4ffrb"), "melee_atack", "run", SubResource("AnimationNodeStateMachineTransition_ybs3t"), "melee_atack", "Idle", SubResource("AnimationNodeStateMachineTransition_rn5c1")]
-graph_offset = Vector2(118, -11)
+graph_offset = Vector2(133, 22)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_fh6cc"]
 
