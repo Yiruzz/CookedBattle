@@ -1,0 +1,314 @@
+[gd_scene load_steps=21 format=3 uid="uid://bv7sbaqwsvfe8"]
+
+[ext_resource type="Texture2D" uid="uid://clvy808uyc442" path="res://assets/ingredients/baguette.png" id="1_y7g83"]
+[ext_resource type="Texture2D" uid="uid://beism0rwd0cw3" path="res://assets/tileset/activated-oven.png" id="2_vc3sn"]
+[ext_resource type="Texture2D" uid="uid://b82gwnhxpject" path="res://assets/ingredients/masa.png" id="2_w5nxo"]
+[ext_resource type="Texture2D" uid="uid://dyc2o1rrp2nau" path="res://assets/ingredients/esparrago.png" id="4_bx0n1"]
+[ext_resource type="Texture2D" uid="uid://btifn6vgal2au" path="res://assets/ingredients/esparrago_afilado.png" id="5_17tjf"]
+[ext_resource type="Texture2D" uid="uid://banoj6kv827k" path="res://assets/tileset/cuttingtable.png" id="6_f1tba"]
+[ext_resource type="Texture2D" uid="uid://b2xoxf6ejpiyr" path="res://assets/ingredients/milk_02.png" id="7_umvvy"]
+[ext_resource type="Texture2D" uid="uid://dskelrrmpvaco" path="res://assets/tileset/Heladera.png" id="8_aq0q6"]
+[ext_resource type="Texture2D" uid="uid://bnsfvhbskds1h" path="res://assets/ingredients/butter.png" id="9_1qneb"]
+[ext_resource type="Texture2D" uid="uid://bk7l5n8x68a7i" path="res://assets/ingredients/tomate2.png" id="10_8ibk1"]
+[ext_resource type="Texture2D" uid="uid://dtpjxxl3bvo0q" path="res://assets/ingredients/sliced_tomato.png" id="11_4uxdd"]
+[ext_resource type="Texture2D" uid="uid://1xbras5xwlg8" path="res://assets/ingredients/59_jelly.png" id="12_7v2en"]
+[ext_resource type="Texture2D" uid="uid://d367lan34nt15" path="res://assets/ingredients/pizza.png" id="13_vcde2"]
+[ext_resource type="Texture2D" uid="uid://lue2qo02a33p" path="res://assets/ingredients/sopa_sin_fuego_sin_cuchara.png" id="14_0imho"]
+[ext_resource type="FontFile" uid="uid://blbbf16plyp18" path="res://resources/monogram.ttf" id="15_s101c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oq68h"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_tphtd"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_orfwi"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_y3kph"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_hay74"]
+font_size = 14
+
+[node name="RecipiesMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -19.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+offset_left = -124.0
+offset_top = -69.0
+offset_right = 152.0
+offset_bottom = 93.0
+scale = Vector2(0.9, 0.9)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_top = -2
+theme_override_constants/margin_bottom = -2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "                 x 2    +            = "
+label_settings = SubResource("LabelSettings_oq68h")
+vertical_alignment = 1
+
+[node name="Sprite2D3" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer/MarginContainer"]
+position = Vector2(46.3333, 10.3333)
+scale = Vector2(0.699998, 0.824073)
+texture = ExtResource("2_w5nxo")
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer/MarginContainer"]
+position = Vector2(125.222, 9.22222)
+scale = Vector2(0.437504, 0.402777)
+texture = ExtResource("2_vc3sn")
+
+[node name="Sprite2D4" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer/MarginContainer"]
+position = Vector2(178.556, 9.22222)
+scale = Vector2(0.552087, 0.777777)
+texture = ExtResource("1_y7g83")
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_top = -2
+theme_override_constants/margin_bottom = -2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/MarginContainer2"]
+layout_mode = 2
+text = "                         +             ="
+label_settings = SubResource("LabelSettings_tphtd")
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer2/MarginContainer2"]
+position = Vector2(70.7778, 10.3333)
+scale = Vector2(0.628788, 0.65404)
+texture = ExtResource("4_bx0n1")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer2/MarginContainer2"]
+position = Vector2(177.444, 9.22222)
+scale = Vector2(0.780303, 0.856061)
+texture = ExtResource("5_17tjf")
+
+[node name="Sprite2D3" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer2/MarginContainer2"]
+position = Vector2(125.222, 9.22223)
+scale = Vector2(0.143617, 0.149758)
+texture = ExtResource("6_f1tba")
+
+[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer3"]
+layout_mode = 2
+theme_override_constants/margin_top = -2
+theme_override_constants/margin_bottom = -2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer3/MarginContainer"]
+layout_mode = 2
+text = "                 x 2    +            =  "
+label_settings = SubResource("LabelSettings_orfwi")
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer3/MarginContainer"]
+position = Vector2(47.4444, 9.22222)
+scale = Vector2(0.493056, 0.576389)
+texture = ExtResource("7_umvvy")
+
+[node name="Sprite2D3" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer3/MarginContainer"]
+position = Vector2(125.222, 10.3333)
+scale = Vector2(0.206597, 0.162326)
+texture = ExtResource("8_aq0q6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer3/MarginContainer"]
+position = Vector2(176.333, 10.3333)
+texture = ExtResource("9_1qneb")
+
+[node name="PanelContainer4" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer4"]
+layout_mode = 2
+theme_override_constants/margin_top = -2
+theme_override_constants/margin_bottom = -2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer4/MarginContainer"]
+layout_mode = 2
+text = "                         +             ="
+label_settings = SubResource("LabelSettings_y3kph")
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer4/MarginContainer"]
+position = Vector2(70.7778, 9.22223)
+texture = ExtResource("10_8ibk1")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer4/MarginContainer"]
+position = Vector2(127.444, 10.3333)
+scale = Vector2(0.144036, 0.137077)
+texture = ExtResource("6_f1tba")
+
+[node name="Sprite2D3" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer4/MarginContainer"]
+position = Vector2(175.222, 9.22222)
+texture = ExtResource("11_4uxdd")
+
+[node name="PanelContainer5" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer5"]
+layout_mode = 2
+theme_override_constants/margin_top = -2
+theme_override_constants/margin_bottom = -2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer5/MarginContainer"]
+layout_mode = 2
+text = "                    +         +          ="
+label_settings = SubResource("LabelSettings_hay74")
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer5/MarginContainer"]
+position = Vector2(56.3333, 10.3333)
+scale = Vector2(0.493056, 0.576389)
+texture = ExtResource("7_umvvy")
+
+[node name="Sprite2D3" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer5/MarginContainer"]
+position = Vector2(96.3334, 8.11111)
+texture = ExtResource("11_4uxdd")
+
+[node name="Sprite2D4" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer5/MarginContainer"]
+position = Vector2(140.778, 10.3334)
+scale = Vector2(0.206597, 0.162326)
+texture = ExtResource("8_aq0q6")
+
+[node name="Sprite2D5" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer5/MarginContainer"]
+modulate = Color(1, 0.12549, 0.247059, 1)
+position = Vector2(186.333, 10.3333)
+scale = Vector2(0.677778, 0.677778)
+texture = ExtResource("12_7v2en")
+
+[node name="PanelContainer6" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer6"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer6/MarginContainer"]
+layout_mode = 2
+text = "                    +         +          ="
+label_settings = SubResource("LabelSettings_hay74")
+vertical_alignment = 1
+
+[node name="Sprite2D3" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer6/MarginContainer"]
+position = Vector2(55.2222, 10.7778)
+scale = Vector2(0.699998, 0.824073)
+texture = ExtResource("2_w5nxo")
+
+[node name="Sprite2D4" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer6/MarginContainer"]
+position = Vector2(95.5926, 10.7408)
+texture = ExtResource("11_4uxdd")
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer6/MarginContainer"]
+position = Vector2(186.333, 9.66667)
+scale = Vector2(0.559028, 0.683333)
+texture = ExtResource("13_vcde2")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer6/MarginContainer"]
+position = Vector2(140.778, 10.7778)
+scale = Vector2(0.437504, 0.402777)
+texture = ExtResource("2_vc3sn")
+
+[node name="PanelContainer7" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer7"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer7/MarginContainer"]
+layout_mode = 2
+text = "                 x 2    +            =  "
+label_settings = SubResource("LabelSettings_orfwi")
+vertical_alignment = 1
+
+[node name="Sprite2D4" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer7/MarginContainer"]
+position = Vector2(49.6667, 11.1111)
+texture = ExtResource("11_4uxdd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer7/MarginContainer"]
+position = Vector2(124.111, 11.1111)
+scale = Vector2(0.437504, 0.402777)
+texture = ExtResource("2_vc3sn")
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer7/MarginContainer"]
+position = Vector2(179.667, 11.1111)
+scale = Vector2(0.534722, 0.569444)
+texture = ExtResource("14_0imho")
+
+[node name="PanelContainer8" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer8"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer8/MarginContainer2"]
+layout_mode = 2
+text = "                    +         +          =   Pastel"
+label_settings = SubResource("LabelSettings_hay74")
+vertical_alignment = 1
+
+[node name="Sprite2D3" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer8/MarginContainer2"]
+position = Vector2(55.2222, 10.7778)
+scale = Vector2(0.699998, 0.824073)
+texture = ExtResource("2_w5nxo")
+
+[node name="Sprite2D4" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer8/MarginContainer2"]
+position = Vector2(97.4445, 11.5556)
+scale = Vector2(0.493056, 0.576389)
+texture = ExtResource("7_umvvy")
+
+[node name="Sprite2D5" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer8/MarginContainer2"]
+position = Vector2(140.778, 11.5556)
+scale = Vector2(0.206597, 0.162326)
+texture = ExtResource("8_aq0q6")
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer8/MarginContainer2"]
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 3
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 0
+theme_override_fonts/font = ExtResource("15_s101c")
+theme_override_font_sizes/font_size = 30
+text = "Play"
