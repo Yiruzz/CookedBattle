@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dr55s4lugef1p"]
+[gd_scene load_steps=5 format=3 uid="uid://dr55s4lugef1p"]
 
 [ext_resource type="Script" path="res://pause_menu.gd" id="1_65rtx"]
 [ext_resource type="Theme" uid="uid://c4jjocbci4vgw" path="res://resources/uiTheme.tres" id="1_i1uli"]
+[ext_resource type="AudioStream" uid="uid://bp7wq7acweege" path="res://assets/music/Text 1.wav" id="3_hktmq"]
+[ext_resource type="AudioStream" uid="uid://db02ltt171xng" path="res://assets/music/Select 1.wav" id="4_ggcf2"]
 
 [node name="PauseMenu" type="MarginContainer"]
 process_mode = 3
@@ -57,3 +59,12 @@ focus_next = NodePath("../Resume")
 focus_previous = NodePath("../Resume")
 mouse_filter = 2
 text = "Main Menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hktmq")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ggcf2")
+
+[connection signal="focus_exited" from="PanelContainer/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_focus_exited"]
+[connection signal="focus_exited" from="PanelContainer/MarginContainer/VBoxContainer/Main_Menu" to="." method="_on_main_menu_focus_exited"]

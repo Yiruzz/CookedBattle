@@ -9,4 +9,6 @@ func _ready():
 	play.grab_focus()
 
 func _on_play_pressed():
+	$"../../AudioStreamPlayer".play()
+	await get_tree().create_timer(0.25).timeout
 	get_tree().change_scene_to_file("res://scenes/main.tscn")

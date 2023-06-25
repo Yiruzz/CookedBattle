@@ -11,6 +11,7 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("pause"):
+		$AudioStreamPlayer2.play()
 		show()
 		get_tree().paused = true
 		%Resume.grab_focus()
@@ -18,8 +19,18 @@ func _input(event):
 	
 func _on_resume_pressed():
 	get_tree().paused = false
+	$AudioStreamPlayer.play()
 	hide()
 
 func _on_main_menu_pressed():
+	$AudioStreamPlayer.play()
+	await get_tree().create_timer(0.25).timeout
 	get_tree().change_scene_to_file("res://beginScreen.tscn")
 	get_tree().paused = false
+
+
+func _on_resume_focus_exited():
+	$AudioStreamPlayer2.play()
+	
+func _on_main_menu_focus_exited():
+	$AudioStreamPlayer2.play()

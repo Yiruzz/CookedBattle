@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ejc5i2miu40o"]
+[gd_scene load_steps=5 format=3 uid="uid://ejc5i2miu40o"]
 
 [ext_resource type="PackedScene" uid="uid://bv7sbaqwsvfe8" path="res://scenes/recipies_menu.tscn" id="1_x3t7r"]
 [ext_resource type="FontFile" uid="uid://blbbf16plyp18" path="res://resources/monogram.ttf" id="2_yndw0"]
 [ext_resource type="Script" path="res://load_menu.gd" id="3_bvw5i"]
+[ext_resource type="AudioStream" uid="uid://bp7wq7acweege" path="res://assets/music/Text 1.wav" id="4_a88ox"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -47,3 +48,6 @@ theme_override_fonts/font = ExtResource("2_yndw0")
 theme_override_font_sizes/font_size = 30
 text = "Play"
 script = ExtResource("3_bvw5i")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_a88ox")
