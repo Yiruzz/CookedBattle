@@ -40,9 +40,10 @@ func _destun():
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Players"): #Caso choca con un jugador")
-		progressbar.visible = true
-		body.lavarse.connect(_lavarse)
-		player = body
+		if body.stunned:
+			progressbar.visible = true
+			body.lavarse.connect(_lavarse)
+			player = body
 
 
 

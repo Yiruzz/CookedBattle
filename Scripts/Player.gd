@@ -71,9 +71,14 @@ func recibirDaño(Daño):
 	
 func stun():
 	stunned = true
+	if numJugador == 1:
+		$Sprite2D.texture = preload("res://assets/characters/ChefV1_buttered.png")
+	else:
+		$Sprite2D.texture = preload("res://assets/characters/ChefV2_buttered.png")
 	
 func destun():
 	stunned = false
+	defaultTexture(self.numJugador)
 
 
 # Cambia la textura del jugador a la original, sin ingredientes.
