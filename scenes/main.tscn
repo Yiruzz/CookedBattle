@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cnq44m8t24vxw"]
+[gd_scene load_steps=19 format=3 uid="uid://cnq44m8t24vxw"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_yywcm"]
 [ext_resource type="Script" path="res://Scripts/Masa.gd" id="4_iwtkv"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dsq57kv2f3fov" path="res://hud_2.tscn" id="13_nc8k5"]
 [ext_resource type="PackedScene" uid="uid://b6qoekm87f253" path="res://WinMenu.tscn" id="14_fnf6i"]
 [ext_resource type="PackedScene" uid="uid://bw3sra5vimcnx" path="res://lavamanos.tscn" id="15_chbts"]
+[ext_resource type="PackedScene" uid="uid://b0wb8b8dd17ih" path="res://timerScene.tscn" id="17_7fgmd"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l64sw"]
 particle_flag_disable_z = true
@@ -51,14 +52,14 @@ position = Vector2(113, 34)
 scale = Vector2(2.209, 2.209)
 
 [node name="player1" parent="." groups=["Player1", "Players"] instance=ExtResource("4_l0bqa")]
-position = Vector2(81, 91)
+position = Vector2(68, 143)
 BtnDer = "ui_right1"
 BtnIzq = "ui_left1"
 BtnArr = "ui_up1"
 BtnAbj = "ui_down1"
 
 [node name="player2" parent="." groups=["Player2", "Players"] instance=ExtResource("4_l0bqa")]
-position = Vector2(211, 85)
+position = Vector2(350.5, 137.5)
 BtnDer = "ui_right2"
 BtnIzq = "ui_left2"
 BtnArr = "ui_up2"
@@ -155,3 +156,6 @@ lifetime = 5.0
 one_shot = true
 speed_scale = 10.0
 explosiveness = 0.96
+
+[node name="timer" parent="." instance=ExtResource("17_7fgmd")]
+position = Vector2(82, -61)
