@@ -19,7 +19,7 @@ texture = ExtResource("2_bxutv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_nf5fn")
 
-[node name="AttackSound" type="AudioStreamPlayer" parent="."]
+[node name="attackSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_3svk3")
 volume_db = -8.0
-pitch_scale = 0.69
+pitch_scale = 0.84

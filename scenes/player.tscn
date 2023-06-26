@@ -289,7 +289,7 @@ one_shot = true
 speed_scale = 10.0
 explosiveness = 0.96
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_4wahs")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
