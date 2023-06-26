@@ -20,7 +20,8 @@ func run(jugador):
 	get_node("Sprite2D").visible = false
 	jugador.anim.play("run_panhorneado")
 	
-
+func dannar_arma():
+	self.golpesDados += 1
 
 func atacar(jugador):
 	jugador.animandose = true

@@ -19,7 +19,8 @@ func iddle(jugador):
 func run(jugador):
 	jugador.anim.play("run_panhorneado")
 	
-
+func dannar_arma():
+	self.golpesDados += 1
 
 func atacar(jugador):
 	jugador.animandose = true
