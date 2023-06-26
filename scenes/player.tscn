@@ -1,7 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://f2aqbu45a6qa"]
+[gd_scene load_steps=33 format=3 uid="uid://f2aqbu45a6qa"]
 
 [ext_resource type="Texture2D" uid="uid://creabd3afvmbp" path="res://assets/characters/ChefV1.png" id="1_tqq36"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="2_5f5bp"]
+[ext_resource type="AudioStream" uid="uid://d3uh8pxmmk3aw" path="res://assets/music/Take Impact_1.wav" id="3_eua6s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iyovv"]
 radius = 3.0
@@ -287,5 +288,10 @@ lifetime = 5.0
 one_shot = true
 speed_scale = 10.0
 explosiveness = 0.96
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_eua6s")
+volume_db = -10.0
+pitch_scale = 1.54
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
