@@ -27,6 +27,7 @@ func atacar(jugador):
 	self.position = jugador.get_node("Sprite2D").position + jugador.ultimoBoton*10	
 	self.get_node("Area2D/CollisionShape2D").disabled = false
 	#golpesDados += 1
+	$HitSound.play()
 
 func terminarAtacar(jugador):
 	#ingrediente.hide()#ocultamos el arma y desactivamos su hitbox
