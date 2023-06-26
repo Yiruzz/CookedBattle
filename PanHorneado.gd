@@ -30,6 +30,7 @@ func atacar(jugador):
 	self.get_node("Area2D/CollisionShape2D").disabled = false
 	self.get_node("Area2D/CollisionShape2D").scale = Vector2(50000, 50000)
 	#golpesDados += 1
+	$attackSound.play()
 	
 
 func terminarAtacar(jugador):
