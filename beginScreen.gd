@@ -10,7 +10,7 @@ func _ready():
 	play.pressed.connect(_on_play_pressed)
 	credits.pressed.connect(_on_credits_pressed)
 	exit.pressed.connect(_on_exit_pressed)
-	%Play.grab_focus()
+	play.grab_focus()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func _on_play_pressed():
@@ -28,7 +28,7 @@ func _on_exit_pressed():
 	$AudioStreamPlayer.play()
 	await get_tree().create_timer(0.25).timeout
 	get_tree().quit()
-
+	
 func _on_credits_focus_exited():
 	$AudioStreamPlayer2.play()
 
