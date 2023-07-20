@@ -1,5 +1,6 @@
 extends Node
 
+@onready var audio = $Audio
 
 var porcentajeDePicado = 0
 @onready var progressbar = null
@@ -19,6 +20,7 @@ func _lavarse():
 	print("lavandose")
 	porcentajeDePicado += 34
 	progressbar.value = porcentajeDePicado
+	audio.play()
 	if porcentajeDePicado >= 100:
 		_destun()
 	

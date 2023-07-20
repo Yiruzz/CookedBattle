@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bw3sra5vimcnx"]
+[gd_scene load_steps=5 format=3 uid="uid://bw3sra5vimcnx"]
 
 [ext_resource type="Script" path="res://Lavamanos.gd" id="1_753g3"]
 [ext_resource type="Theme" uid="uid://c4jjocbci4vgw" path="res://resources/uiTheme.tres" id="2_pvxht"]
+[ext_resource type="AudioStream" uid="uid://c60j5w88owlgq" path="res://assets/music/Shoot_1.wav" id="3_kawwq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tm6fm"]
 
@@ -24,6 +25,11 @@ size_flags_horizontal = 0
 theme = ExtResource("2_pvxht")
 theme_type_variation = &"WorkProgress"
 show_percentage = false
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_kawwq")
+volume_db = -17.0
+pitch_scale = 0.9
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
