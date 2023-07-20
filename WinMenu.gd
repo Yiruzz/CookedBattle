@@ -22,6 +22,7 @@ func _display():
 	show()
 	%Play_Again.grab_focus()
 	get_tree().paused = true
+	$AudioStreamPlayer3.play()
 	
 	
 func _on_playAgain_pressed():

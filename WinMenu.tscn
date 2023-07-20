@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6qoekm87f253"]
+[gd_scene load_steps=6 format=3 uid="uid://b6qoekm87f253"]
 
 [ext_resource type="Script" path="res://WinMenu.gd" id="1_sk4rj"]
 [ext_resource type="Theme" uid="uid://c4jjocbci4vgw" path="res://resources/uiTheme.tres" id="2_70eg7"]
 [ext_resource type="AudioStream" uid="uid://bp7wq7acweege" path="res://assets/music/Text 1.wav" id="3_g3f58"]
 [ext_resource type="AudioStream" uid="uid://db02ltt171xng" path="res://assets/music/Select 1.wav" id="4_gh3ru"]
+[ext_resource type="AudioStream" uid="uid://crcg44g7of5wa" path="res://assets/music/microwave-end-sound-98680.mp3" id="5_uo7sv"]
 
 [node name="WinMenu" type="MarginContainer"]
 process_mode = 3
@@ -65,6 +66,11 @@ stream = ExtResource("3_g3f58")
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_gh3ru")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_uo7sv")
+volume_db = -1.0
+pitch_scale = 1.2
 
 [connection signal="focus_exited" from="PanelContainer/MarginContainer/VBoxContainer/Play_Again" to="." method="_on_play_again_focus_exited"]
 [connection signal="focus_exited" from="PanelContainer/MarginContainer/VBoxContainer/Main_Menu" to="." method="_on_main_menu_focus_exited"]
