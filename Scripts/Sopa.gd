@@ -70,5 +70,4 @@ func terminarAtacar(jugador):
 
 
 func _on_area_2d_body_entered(body):
-	if lanzado:
-		_tocarSuelo()
+	
