@@ -38,7 +38,7 @@ func _tocarSuelo():
 	self.get_node("Area2D/CollisionShape2D").disabled = false
 	get_node("Sprite2D2").visible = false
 	get_node("GPUParticles2D").emitting = true
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(0.5).timeout
 	queue_free()
 
 func atacar(jugador):
@@ -68,6 +68,3 @@ func terminarAtacar(jugador):
 		
 		
 
-
-func _on_area_2d_body_entered(body):
-	
