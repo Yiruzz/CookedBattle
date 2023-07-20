@@ -5,6 +5,7 @@ var SPEED = 200.0
 const VidaMaxima = 100
 @export var Vida = 100
 @onready var anim = $AnimationPlayer
+@onready var butterSound = $ButterSound
 #Botones para el player
 @export var BtnDer = "ui_right"
 @export var BtnIzq = "ui_left"
@@ -72,6 +73,7 @@ func recibirDaño(Daño):
 	
 func stun():
 	stunned = true
+	butterSound.play()
 	if numJugador == 1:
 		$Sprite2D.texture = preload("res://assets/characters/ChefV1_buttered.png")
 	else:
