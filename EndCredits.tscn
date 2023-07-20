@@ -1,0 +1,207 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctuspf774d34v"]
+
+[ext_resource type="Script" path="res://EndCredits.gd" id="1_2nhp4"]
+[ext_resource type="Texture2D" uid="uid://g5x52i2n8bya" path="res://assets/black.png" id="2_fna0q"]
+[ext_resource type="Texture2D" uid="uid://bm6oegcuxe8r3" path="res://assets/CookedBattleLogo.png" id="3_gwymq"]
+[ext_resource type="AudioStream" uid="uid://3jrnhyf8enaj" path="res://assets/music/Ludum Dare 30 - Track 6.wav" id="4_yexn7"]
+[ext_resource type="Texture2D" uid="uid://cxigqrd6ksgcq" path="res://icon.svg" id="5_tsoqe"]
+
+[node name="EndCredits" type="Node2D"]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_2nhp4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(486.667, 273.333)
+scale = Vector2(6.87826, 7.03571)
+texture = ExtResource("2_fna0q")
+
+[node name="godotSprite" type="Sprite2D" parent="."]
+position = Vector2(440, 333.333)
+texture = ExtResource("5_tsoqe")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 676.667
+offset_right = 828.0
+offset_bottom = 3718.67
+size_flags_horizontal = 4
+text = "CookedBattle
+
+
+
+
+A game done by GoodSoup
+
+
+
+
+
+
+
+
+
+
+
+Developed by
+
+Arturo Kullmer
+Vicente Olivares
+Juan Pablo Tacchi
+
+
+
+
+
+
+
+
+
+Art and Sprites
+
+Recipies background
+https://www.redbubble.com/es/people/malevolentmask/works/16312059
+
+Fridge by Santoniche
+https://opengameart.org/content/fridge
+
+Chef by Umz
+https://opengameart.org/content/chef-animated-classic-hero-edit
+
+Wooden TileSet by bluecarrot16
+https://opengameart.org/content/lpc-wooden-furniture
+Liberated Pixel Cup (LPC) Base Assets (sprites & map tiles)
+Lanea Zimmerman (Sharm)
+CC-BY-SA 3.0 / GPL 3.0
+http://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles
+
+LPC: Modified base tiles
+Lanea Zimmerman (Sharm), William Thompson
+CC-BY 3.0 / CC-BY-SA 3.0 / GPL 3.0 / OGA-BY 3.0
+http://opengameart.org/content/lpc-modified-base-tiles
+
+[LPC] House interior and decorations
+Tuomo Untinen (Reemax)
+CC-BY-SA 3.0 / GPL 3.0 / GPL 2.0
+http://opengameart.org/content/lpc-house-interior-and-decorations
+
+Flowers, buildings and boxes; Interior wooden tiles; some old castle stuff
+CC-BY-SA 3.0 / GPL 3.0
+Guido Bos
+https://opengameart.org/content/flowers-buildings-and-boxes-interior-wooden-tiles-some-old-castle-stuff
+
+[LPC] Dungeon Elements
+Lanea Zimmerman (Sharm), William.Thompsonj
+CC-BY 3.0 / GPL 3.0 / GPL 2.0 / OGA-BY 3.0
+https://opengameart.org/content/lpc-dungeon-elements
+
+LPC: Interior Castle Tiles
+Lanea Zimmerman (Sharm)
+CC-BY 3.0 / CC-BY-SA 3.0 / GPL 3.0 / OGA-BY 3.0
+https://opengameart.org/content/lpc-interior-castle-tiles
+
+Home Objects
+Janna/Lilius/Jannax
+CC0
+https://opengameart.org/content/home-objects
+
+[LPC] Clock Animation
+Lanea Zimmerman (Sharm), William.Thompsonj
+CC-BY 3.0 / GPL 3.0
+https://opengameart.org/content/lpc-clock-animation
+
+Asparagus, Butter, Baguette, Tomatoe
+Created by
+bluecarrot16
+Daniel Eddeland (daneeklu)
+Joshua Taylor
+Richard Kettering (Jetrel)
+thekingphoenix, RedVoxel
+Molly \"Cougarmint\" Willits.
+https://opengameart.org/content/lpc-food
+
+Soup Cauldron (edited), milk
+Created by AntumDeluge
+https://opengameart.org/content/cc0-food-icons
+
+Pizza (plain) by PancInteractive
+https://opengameart.org/content/food-items-from-crosstown-smash
+
+Jelly by ghostpixxells
+https://ghostpixxells.itch.io/pixelfood
+
+Bit Font by datagoblin
+https://datagoblin.itch.io/monogram
+
+
+
+
+
+
+
+
+Sound Effects
+
+8-bit / 16-bit Sound Effects (x25) Pack by JDWasabi
+https://jdwasabi.itch.io/8-bit-16-bit-sound-effects-pack
+
+200 Free SFX by Kronbits
+https://kronbits.itch.io/freesfx
+
+Attack sound by K00sin
+https://bbunsik.itch.io/cooknightasset
+https://creativecommons.org/licenses/by/2.0/kr/deed.en
+
+Fantasy interior Tiles by Rostislav Gnatovsky
+https://cardinalzebra.itch.io/
+
+UI sounds by Dagarasu
+https://dagurasusketch.itch.io/retrosounds
+
+
+
+
+
+
+
+
+Music
+
+Ludum Dare 30 - Track 6 & 7 by Abstraction
+http://www.abstractionmusic.com/
+
+
+
+
+
+
+
+
+
+
+Special Thanks to
+
+Elías Zelada
+Diego García
+
+
+
+
+
+
+
+
+
+
+
+Developed with Godot Engine"
+horizontal_alignment = 1
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(433.333, 223.333)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gwymq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_yexn7")
+volume_db = -2.0
+autoplay = true
