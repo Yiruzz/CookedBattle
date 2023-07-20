@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccig6cxe4q0l7"]
+[gd_scene load_steps=5 format=3 uid="uid://ccig6cxe4q0l7"]
 
 [ext_resource type="Script" path="res://Mantequilla.gd" id="1_whvit"]
 [ext_resource type="Texture2D" uid="uid://bnsfvhbskds1h" path="res://assets/ingredients/butter.png" id="2_003rn"]
+[ext_resource type="AudioStream" uid="uid://0otqlm03s0x4" path="res://assets/music/muddy-boots-99967.mp3" id="3_2q48l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l210u"]
 
@@ -18,5 +19,10 @@ texture = ExtResource("2_003rn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_l210u")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_2q48l")
+volume_db = -4.0
+pitch_scale = 2.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

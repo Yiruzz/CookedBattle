@@ -1,5 +1,6 @@
 extends Node
 var tipo = "Mantequilla" #no pregunten y no juzgen xfavor
+@onready var audio = $Audio
 #var daño = 15
 const SPEED = 50.0
 var lanzado = false
@@ -22,6 +23,7 @@ func _lanzar():
 	lanzado = true
 	self.scale.x = 1
 	self.scale.y = 1
+	audio.play()
 func atacar(jugador):
 	jugador.animandose = true
 	jugador.anim.play("melee_atack")
