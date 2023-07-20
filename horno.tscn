@@ -57,6 +57,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Panel:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
 
 [sub_resource type="Animation" id="Animation_ehi0o"]
 resource_name = "Idle"
@@ -221,7 +233,8 @@ shape = SubResource("RectangleShape2D_y8box")
 [node name="Panel" type="Panel" parent="."]
 visible = false
 offset_left = -5.0
-offset_top = -9.0
+offset_top = -4.0
 offset_right = 4.0
+offset_bottom = 5.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
