@@ -1,6 +1,6 @@
 extends Node2D
 
-const base_speed = 100
+const base_speed = 200
 var contador = 0
 @onready var music = $AudioStreamPlayer2D
 
