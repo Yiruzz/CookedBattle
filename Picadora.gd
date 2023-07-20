@@ -10,6 +10,8 @@ var ingredienteARecoger = null
 var porcentajeDePicado = 0
 @onready var progressbar = null
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	progressbar = self.get_node("ProgressBar")
@@ -22,17 +24,22 @@ func _process(delta):
 	pass
 
 func recibirIngrediente(ingrediente):			
-	if ingrediente.tipo != "Apio" and ingrediente.tipo != "Tomate": 
-		return
 	#se agrega a la lista de ingredientes que estan dentro del horno
-	listaIngredientes.append(ingrediente.tipo)
-	ingrediente.queue_free() #se destruye el objeto del ingrediente ya que no es necesario ya
-	if (listaIngredientes.size() >= 1): #si hay mas de 2 ingredientes entonces empieza a cocinar
+	listaIngredientes.append(ingrediente)
+	if (listaIngredientes.size() >= 1): #si hay mas de 1 ingredientes entonces empieza a cocinar
 		_receta() #se crea el resultado a partir de las recetas
 		if ingredienteARecoger == null: #en caso se equivoco al colocar los ingredientes no se cocina nada
 			return
+		print(ingredienteARecoger)
 		cocinarIngrediente() #se empieza a cocinar
-		listaIngredientes = [] #la lista de ingredientes se resetea
+		_agregarHUD(ingrediente)
+		return
+
+	
+func _liberarIngredientes():
+	while !listaIngredientes.is_empty():
+		listaIngredientes.pop_back().queue_free()
+	listaIngredientes = [] #la lista de ingredientes se resetea
 	
 func _picar():
 	if ingredienteARecoger == null:
@@ -45,14 +52,47 @@ func _picar():
 		terminarCocina()
 	
 func _receta():
-	if listaIngredientes.count("Apio") == 1: #Se cocina un apio afilado
+	var listaTiposIngredientes = []
+	for item in listaIngredientes:	#NO PREGUNTEN PORQUE HISE ESTA INEFICIENCIA Y DOLOR DE TENER 2 LISTAS
+		#DE INGREDIENTES, CUESTIONENSE MEJOR PORQUE SI DIOS ES TAN BENEVOLENTE ME TIENE EN ESTA SITUACION
+		listaTiposIngredientes.append(item.tipo)
+
+	if listaTiposIngredientes.count("Apio") == 1: #Se cocina un apio afilado
 		ingredienteARecoger = preload("res://apio_afilado.tscn").instantiate()
 		return
-	if listaIngredientes.count("Tomate") == 1: #Se cocina un tomate picado
+	if listaTiposIngredientes.count("Tomate") == 1: #Se cocina un tomate picado
 		ingredienteARecoger = preload("res://tomate_picado.tscn").instantiate()
 		return
-	else:
-		ingredienteARecoger = null
+	_ingredienteEquivocadoColocado()
+		
+func _ingredienteEquivocadoColocado():
+	var ultimoIngrediente = listaIngredientes.pop_back()
+	listaIngredientes = []
+	listaIngredientes.append(ultimoIngrediente)
+	ingredienteARecoger = null
+	_agregarHUD(ultimoIngrediente)
+
+
+func _agregarHUD(ingrediente):
+	ingrediente.get_node("Sprite2D").visible = true
+	ingrediente.visible = true
+	get_node("Panel").call_deferred("add_child", ingrediente)
+	get_node("Panel").visible = true
+	ingrediente.position = Vector2(get_node("Panel").size.x/2,get_node("Panel").size.y/2)
+	ingrediente.scale.x = 25/10*ingrediente.scale.x
+	ingrediente.scale.y = 25/10*ingrediente.scale.y
+	ingrediente.get_node("Area2D").set_process(false)
+	
+func _quitarHUD():
+	var ingrediente = get_node("Panel").get_children()[0]
+	get_node("Panel").remove_child(ingrediente)
+	ingrediente.get_node("Area2D").set_process(true)
+	get_node("Panel").visible = false
+	ingrediente.position = Vector2(0,0)
+	ingrediente.scale.x = 10/25*ingrediente.scale.x
+	ingrediente.scale.y = 10/25*ingrediente.scale.y
+
+		
 func cocinarIngrediente():
 	print("empezo")
 	porcentajeDePicado = 0
@@ -62,6 +102,8 @@ func cocinarIngrediente():
 
 func terminarCocina():
 	print("termino")
+	_quitarHUD()
+	_liberarIngredientes()
 	Anim.play("Listo")
 	ingredienteListo = true
 	porcentajeDePicado = 0
