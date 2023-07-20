@@ -40,9 +40,10 @@ func terminarAtacar(jugador):
 		self.queue_free()
 		jugador.defaultTexture(jugador.numJugador)
 
-func changePlayerTexture(numJugador):
+func changePlayerTexture(jugador):
 	self.visible = false
-	if numJugador == 1:
+	jugador.armado = true
+	if jugador.numJugador == 1:
 		return preload("res://assets/characters/ChefV1_grabbing_asparagus_sword.png")
 	else:
 		return preload("res://assets/characters/ChefV2_grabbing_asparagus_sword.png")

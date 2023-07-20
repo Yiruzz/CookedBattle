@@ -70,17 +70,19 @@ func terminarCocina():
 	
 
 func _entregarIngrediente(player):
-	print("ingrediente entregado")
-	ingredienteListo = false
-	Anim.play("Idle")
-	ingredienteARecoger.add_to_group(player.get_groups()[0]) #mira si lees esto y no entiendes esta linea de codigo
-															#es porque son las 4 am y literal hise todas las colisiones
-															#se detecten por grupos si el arma que recibe no detecta
-															#que es por ejempplo parte del player 1, le pegaran sus
-															#propios wates 
-	player.recibirIngrediente(ingredienteARecoger)
-	ingredienteARecoger = null
-	
+	if !player.armado or ingredienteARecoger.tipo != "TomatePicado":
+		
+		print("ingrediente entregado")
+		ingredienteListo = false
+		Anim.play("Idle")
+		ingredienteARecoger.add_to_group(player.get_groups()[0]) #mira si lees esto y no entiendes esta linea de codigo
+																#es porque son las 4 am y literal hise todas las colisiones
+																#se detecten por grupos si el arma que recibe no detecta
+																#que es por ejempplo parte del player 1, le pegaran sus
+																#propios wates 
+		player.recibirIngrediente(ingredienteARecoger)
+		ingredienteARecoger = null
+		
 
 func _on_area_2d_body_entered(body): #COLISION
 	

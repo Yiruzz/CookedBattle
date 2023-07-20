@@ -1,12 +1,13 @@
 extends Node2D
 var tipo = "Apio"
 
-func changePlayerTexture(numJugador):
+func changePlayerTexture(jugador):
 	self.visible = false
-	if numJugador == 1:
+	if jugador.numJugador == 1:
 		return preload("res://assets/characters/ChefV1_grabbing_asparagus.png")
 	else:
-		return preload("res://assets/characters/ChefV2_grabbing_asparagus.png")
+		return preload("res://assets/characters/ChefV2_grabbing_asparagus.png")	
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

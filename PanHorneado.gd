@@ -9,8 +9,6 @@ func _ready():
 
 
 
-
-
 	
 func iddle(jugador):
 	get_node("Sprite2D").visible = false
@@ -41,4 +39,5 @@ func terminarAtacar(jugador):
 	if golpesDados >= 3:
 		jugador.recibirIngrediente(null)
 		self.queue_free()
+		jugador.armado = false
 		

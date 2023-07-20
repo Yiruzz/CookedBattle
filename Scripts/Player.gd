@@ -18,6 +18,7 @@ const VidaMaxima = 100
 var ingrediente = null
 var animandose = false
 var ultimoBoton = Vector2(1,0)
+var armado = false
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 signal picar
@@ -86,6 +87,7 @@ func destun():
 
 # Cambia la textura del jugador a la original, sin ingredientes.
 func defaultTexture(numJugador):
+	armado = false
 	if numJugador == 1:
 		$Sprite2D.texture = preload("res://assets/characters/ChefV1.png")
 	else:
@@ -105,15 +107,18 @@ func entregaIngrediente(Cocina):
 	
 
 func recibirIngrediente(Ingrediente):
-	if ingrediente != null:
-		ingrediente.queue_free()
-	ingrediente = Ingrediente
-	if ingrediente != null:
-		print("ingrediente recibido: " + ingrediente.tipo )
-		call_deferred("add_child", ingrediente)
-		# If solo es necesario mientras hayan armas que no tengan el método.
-		if ingrediente.has_method("changePlayerTexture"):
-			$Sprite2D.texture = ingrediente.changePlayerTexture(numJugador)
+	if !armado:
+		if ingrediente != null:
+			ingrediente.queue_free()
+		ingrediente = Ingrediente
+		if ingrediente != null:
+			print("ingrediente recibido: " + ingrediente.tipo )
+			call_deferred("add_child", ingrediente)
+			# If solo es necesario mientras hayan armas que no tengan el método.
+			if ingrediente.has_method("changePlayerTexture"):
+				$Sprite2D.texture = ingrediente.changePlayerTexture(self)
+			elif ingrediente.tipo == "PanHorneado":
+				armado = true
 			
 		
 				

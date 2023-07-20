@@ -1,9 +1,9 @@
 extends Node2D
 var tipo = "Tomate"
 
-func changePlayerTexture(numJugador):
+func changePlayerTexture(jugador):
 	get_node("Sprite2D").visible = false
-	if numJugador == 1:
+	if jugador.numJugador == 1:
 		return preload("res://assets/characters/ChefV1_grabbing_tomato.png")
 	else:
 		return preload("res://assets/characters/ChefV2_grabbing_tomato.png")

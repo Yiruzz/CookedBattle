@@ -1,9 +1,9 @@
 extends Node
 var tipo = "Masa"
 
-func changePlayerTexture(numJugador):
+func changePlayerTexture(jugador):
 	self.visible = false
-	if numJugador == 1:
+	if jugador.numJugador == 1:
 		return preload("res://assets/characters/ChefV1_grabbing_dough.png")
 	else:
 		return preload("res://assets/characters/ChefV2_grabbing_dough.png")

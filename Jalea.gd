@@ -12,12 +12,12 @@ func _ready():
 	self.get_node("Area2D/CollisionShape2D").disabled = true
 	
 
-func changePlayerTexture(numJugador):
-	if numJugador == 1:
+func changePlayerTexture(jugador):
+	jugador.armado = true
+	if jugador.numJugador == 1:
 		return preload("res://assets/characters/ChefV1_grabbing_jelly.png")
 	else:
 		return preload("res://assets/characters/ChefV2_grabbing_jelly.png")
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
