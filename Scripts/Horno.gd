@@ -20,8 +20,6 @@ func _process(delta):
 #funcion que entrega un ingrediente al horno
 func recibirIngrediente(ingrediente): #esto es un maruchan despues de trabajar tanto a las 4 am
 	#se agrega a la lista de ingredientes que estan dentro del horno
-	print("AAAA:")
-	print(ingrediente)
 	listaIngredientes.append(ingrediente)
 	if (listaIngredientes.size() >= 2): #si hay mas de 2 ingredientes entonces empieza a cocinar
 		_receta() #se crea el resultado a partir de las recetas
@@ -45,7 +43,6 @@ func _receta():
 		#DE INGREDIENTES, CUESTIONENSE MEJOR PORQUE SI DIOS ES TAN BENEVOLENTE ME TIENE EN ESTA SITUACION
 		listaTiposIngredientes.append(item.tipo)
 
-	print(listaTiposIngredientes)
 	
 	if listaTiposIngredientes.count("Masa") == 1 and listaTiposIngredientes.count("TomatePicado") == 1: #Se cocina una pizza
 		ingredienteARecoger = preload("res://pizza.tscn").instantiate()
