@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://6o0xijosu53v"]
+[gd_scene load_steps=20 format=3 uid="uid://6o0xijosu53v"]
 
 [ext_resource type="Script" path="res://Picadora.gd" id="1_i21w3"]
 [ext_resource type="Texture2D" uid="uid://df0j7kjenytd5" path="res://assets/tileset/oven.png" id="2_4d1c4"]
 [ext_resource type="Theme" uid="uid://c4jjocbci4vgw" path="res://resources/uiTheme.tres" id="3_t268p"]
+[ext_resource type="AudioStream" uid="uid://c60j5w88owlgq" path="res://assets/music/Shoot_1.wav" id="4_sg4gn"]
 
 [sub_resource type="Animation" id="Animation_v33vx"]
 resource_name = "Cocinando"
@@ -163,6 +164,11 @@ theme = ExtResource("3_t268p")
 theme_type_variation = &"WorkProgress"
 value = 100.0
 show_percentage = false
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_sg4gn")
+volume_db = -17.0
+pitch_scale = 1.2
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered" flags=18]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -21,7 +21,7 @@ func _on_play_pressed():
 func _on_credits_pressed():
 	$AudioStreamPlayer.play()
 	await get_tree().create_timer(0.25).timeout
-	pass
+	get_tree().change_scene_to_file("res://EndCredits.tscn")
 
 
 func _on_exit_pressed():

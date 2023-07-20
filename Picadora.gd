@@ -1,6 +1,7 @@
 extends Node
 
 @onready var Anim = $AnimationPlayer
+@onready var audio = $Audio
 var listaIngredientes = []
 var listaIngredientesAceptados = ["Apio","Tomate"]
 var jugadorPicando = null
@@ -37,6 +38,7 @@ func _picar():
 	if ingredienteARecoger == null:
 		return
 	print("picando")
+	audio.play()
 	porcentajeDePicado += 10
 	progressbar.value = porcentajeDePicado
 	if porcentajeDePicado >= 100:
