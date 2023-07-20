@@ -1,6 +1,7 @@
 extends Node
 
 @onready var Anim = $AnimationPlayer
+@onready var audio = $Audio
 var listaIngredientes = []
 var listaIngredientesAceptados = ["Masa","TomatePicado"]
 var ingredienteListo = false
@@ -71,14 +72,17 @@ func _ingredienteEquivocadoColocado():
 
 
 func cocinarIngrediente():
+	
 	print("cocinando")
 	Anim.play("Cocinando")
 	_agregarHUD(ingredienteARecoger)
+	audio.play()
 
 func terminarCocina():
 	print("termino")
 	Anim.play("Listo")
 	ingredienteListo = true
+	audio.stop()
 
 
 func _entregarIngrediente(player):
