@@ -1,10 +1,52 @@
-[gd_scene load_steps=5 format=3 uid="uid://cit4vnrf4nead"]
+[gd_scene load_steps=10 format=3 uid="uid://cit4vnrf4nead"]
 
 [ext_resource type="Script" path="res://Pizza.gd" id="1_peaij"]
 [ext_resource type="Texture2D" uid="uid://d367lan34nt15" path="res://assets/ingredients/pizza.png" id="2_nvves"]
 [ext_resource type="AudioStream" uid="uid://dtobdu04sl7cr" path="res://assets/music/Cooknight_sfx_attack1.wav" id="3_8kslg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l210u"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ky6x0"]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_ttm5n"]
+
+[sub_resource type="Animation" id="Animation_m7ct2"]
+resource_name = "pizza_girando"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_8u52n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pu1aj"]
+_data = {
+"RESET": SubResource("Animation_8u52n"),
+"pizza_girando": SubResource("Animation_m7ct2")
+}
 
 [node name="pizza" type="Node2D"]
 scale = Vector2(0.4, 0.4)
@@ -23,3 +65,13 @@ shape = SubResource("RectangleShape2D_l210u")
 stream = ExtResource("3_8kslg")
 volume_db = -4.0
 pitch_scale = 0.5
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_ky6x0")
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_ttm5n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pu1aj")
+}
