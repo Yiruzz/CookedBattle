@@ -13,7 +13,11 @@ func _ready():
 	self.get_node("Area2D/CollisionShape2D").disabled = true
 	
 
-
+func changePlayerTexture(numJugador):
+	if numJugador == 1:
+		return preload("res://assets/characters/ChefV1_grabbing_pizza.png")
+	else:
+		return preload("res://assets/characters/ChefV2_grabbing_pizza.png")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -38,6 +42,7 @@ func atacar(jugador):
 	self.global_position  = jugador.get_node("Sprite2D").global_position + jugador.ultimoBoton*50	
 	_lanzar(jugador.ultimoBoton)	
 	self.get_node("Area2D/CollisionShape2D").disabled = false
+	jugador.defaultTexture(jugador.numJugador)
 
 
 func terminarAtacar(jugador):
