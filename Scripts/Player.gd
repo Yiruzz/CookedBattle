@@ -122,9 +122,12 @@ func recibirIngrediente(Ingrediente):
 #Funcion que recibe una señal de un input cualquiera
 func _input(event):
 	if event.is_action_pressed(BtnAttck): #Caso se ataca, se obtiene la direccion a atacar
-		var dir = Vector2(Input.get_axis(BtnIzq, BtnDer),Input.get_axis(BtnArr, BtnAbj))
-		if dir.length() == 0: #si no se proporciona direccion se usa la ultima direccion elegida
-			dir = ultimoBoton
+		var dir = Vector2(Input.get_axis(BtnIzq, BtnDer),0)
+		if(velocity.x > 0):
+			dir = Vector2(1,0)
+		else:
+			dir = Vector2(-1,0)
+				
 		ultimoBoton = dir
 		_atacar()
 		

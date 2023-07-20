@@ -1,20 +1,138 @@
-[gd_scene load_steps=5 format=3 uid="uid://ct5tpsabndmlj"]
+[gd_scene load_steps=16 format=3 uid="uid://ct5tpsabndmlj"]
 
 [ext_resource type="Script" path="res://Scripts/Sopa.gd" id="1_tslc7"]
 [ext_resource type="Texture2D" uid="uid://lue2qo02a33p" path="res://assets/ingredients/sopa_sin_fuego_sin_cuchara.png" id="2_6pg6u"]
 [ext_resource type="AudioStream" uid="uid://dtobdu04sl7cr" path="res://assets/music/Cooknight_sfx_attack1.wav" id="3_7ctro"]
+[ext_resource type="Texture2D" uid="uid://cpjvaf70l6j33" path="res://assets/ingredients/sopa_chica.png" id="3_jpxcd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l210u"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_u4eif"]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_nar8h"]
+
+[sub_resource type="Animation" id="Animation_0220s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_kvw2h"]
+resource_name = "sopa_lanzada"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 4.71239]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -100), Vector2(0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_tocarSuelo"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k1qjf"]
+_data = {
+"RESET": SubResource("Animation_0220s"),
+"sopa_lanzada": SubResource("Animation_kvw2h")
+}
+
+[sub_resource type="Curve" id="Curve_hlx7w"]
+min_value = -1.0
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, 0.0545455), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_p6bi5"]
+curve = SubResource("Curve_hlx7w")
+
+[sub_resource type="Curve" id="Curve_fgror"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.272727), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fu4ba"]
+curve = SubResource("Curve_fgror")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gf4o2"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 0.57
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 90.0
+initial_velocity_max = 90.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_min = 15.0
+linear_accel_max = 15.0
+linear_accel_curve = SubResource("CurveTexture_p6bi5")
+scale_min = 5.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_fu4ba")
+color = Color(1, 0.815686, 0, 1)
+attractor_interaction_enabled = false
 
 [node name="sopa" type="Node2D"]
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_tslc7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_6pg6u")
 
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = ExtResource("3_jpxcd")
+
 [node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(5, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_l210u")
@@ -23,5 +141,27 @@ shape = SubResource("RectangleShape2D_l210u")
 stream = ExtResource("3_7ctro")
 volume_db = -4.0
 pitch_scale = 0.5
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_u4eif")
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_nar8h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k1qjf")
+}
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-1.5, 0)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_gf4o2")
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+trail_lifetime = 1.04
+trail_sections = 2
+trail_section_subdivisions = 1
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
