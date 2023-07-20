@@ -104,6 +104,7 @@ position = Vector2(352, 55)
 position = Vector2(64, 56)
 
 [node name="PauseMenu" parent="." instance=ExtResource("11_68vm6")]
+clip_contents = true
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -128,6 +129,7 @@ offset_bottom = 11.0
 nombrePlayer = "player2"
 
 [node name="WinMenu" parent="." instance=ExtResource("14_fnf6i")]
+clip_contents = true
 offset_left = 126.0
 offset_top = 51.0
 offset_right = 238.0
@@ -135,6 +137,7 @@ offset_bottom = 174.0
 nombrePlayer = "player1"
 
 [node name="WinMenu2" parent="." instance=ExtResource("14_fnf6i")]
+clip_contents = true
 offset_left = 126.0
 offset_top = 51.0
 offset_right = 238.0
