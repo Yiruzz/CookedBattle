@@ -127,6 +127,13 @@ size = Vector2(30, 26)
 [node name="Picadora" type="Node2D"]
 script = ExtResource("1_i21w3")
 
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = -8.0
+offset_top = -56.0
+offset_right = 9.0
+offset_bottom = -41.0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_rs70a")
@@ -153,7 +160,6 @@ hframes = 3
 frame = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-visible = false
 custom_minimum_size = Vector2(10, 1)
 offset_left = -15.0
 offset_top = -38.0

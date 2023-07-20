@@ -1,7 +1,7 @@
 extends Node2D
 var tipo = "ApioAfilado"
 var golpesDados = 0
-var daño = 20
+var daño = 12
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.add_to_group("Daños")

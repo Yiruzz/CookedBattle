@@ -128,7 +128,7 @@ func recibirIngrediente(Ingrediente):
 func _input(event):
 	if event.is_action_pressed(BtnAttck): #Caso se ataca, se obtiene la direccion a atacar
 		var dir = Vector2(Input.get_axis(BtnIzq, BtnDer),0)
-		if(velocity.x > 0):
+		if($Sprite2D.flip_h == false):
 			dir = Vector2(1,0)
 		else:
 			dir = Vector2(-1,0)

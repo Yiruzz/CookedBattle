@@ -1,7 +1,7 @@
 extends Node
 var tipo = "PanHorneado"
 var golpesDados = 0
-var daño = 4
+var daño = 8
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.add_to_group("Daños")

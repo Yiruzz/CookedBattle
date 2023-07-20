@@ -2,7 +2,7 @@ extends Node
 var tipo = "Sopa" #no pregunten y no juzgen xfavor
 @onready var audio = $Audio
 @onready var Anim = $AnimationPlayer
-var daño = 17
+var daño = 20
 const SPEED = 100.0
 var lanzado = false
 var tocoSuelo = false

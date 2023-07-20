@@ -75,3 +75,5 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_ttm5n")
 libraries = {
 "": SubResource("AnimationLibrary_pu1aj")
 }
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
