@@ -2,9 +2,10 @@ extends Node
 
 @onready var Anim = $AnimationPlayer
 var listaIngredientes = []
-var listaIngredientesAceptados = ["Leche","TomatePicado","Masa"]
+var listaIngredientesAceptados = ["Leche","TomatePicado"]
 var ingredienteListo = false
 var ingredienteARecoger = null
+var equivocado = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,44 +17,59 @@ func _process(delta):
 	pass
 #esta funcion recibe un ingrediente y lo coloca en la lista de ingredientes del refrigerador
 func recibirIngrediente(ingrediente):
-	#si no es alguno de los ingredientes que admite el horno entonces no hace nada
-	if ingrediente.tipo != "Leche" and ingrediente.tipo != "TomatePicado" and ingrediente.tipo != "Masa": 
-		return
-	#se agrega a la lista de ingredientes que estan dentro del horno
-	listaIngredientes.append(ingrediente.tipo)
-	print("recibido: " + ingrediente.tipo)
-	ingrediente.queue_free() #se destruye el objeto del ingrediente ya que no es necesario ya
-	print(listaIngredientes)
+	listaIngredientes.append(ingrediente)
 	if (listaIngredientes.size() >= 2): #si hay mas de 2 ingredientes entonces empieza a cocinar
 		_receta() #se crea el resultado a partir de las recetas
-		print(ingredienteARecoger)
 		if ingredienteARecoger == null: #en caso se equivoco al colocar los ingredientes no se cocina nada
 			return
-			
 		print(ingredienteARecoger)
 		cocinarIngrediente() #se empieza a cocinar
-		listaIngredientes = [] #la lista de ingredientes se resetea
-	
-func _receta():
-	if listaIngredientes.count("Leche") == 1 and listaIngredientes.count("Masa") == 1: #Se cocina una masa pastelera
-		ingredienteARecoger = preload("res://masa_pastelera.tscn").instantiate()
+		_liberarIngredientes()
 		return
-	if listaIngredientes.count("Leche") == 1 and listaIngredientes.count("TomatePicado") == 1: #Se cocina la sopa
+	print(listaIngredientes)
+	_agregarHUD(ingrediente)
+	
+	
+func _liberarIngredientes():
+	while !listaIngredientes.is_empty():
+		listaIngredientes.pop_back().queue_free()
+	listaIngredientes = [] #la lista de ingredientes se resetea
+
+
+func _receta():
+	var listaTiposIngredientes = []
+	for item in listaIngredientes:	#NO PREGUNTEN PORQUE HISE ESTA INEFICIENCIA Y DOLOR DE TENER 2 LISTAS
+		#DE INGREDIENTES, CUESTIONENSE MEJOR PORQUE SI DIOS ES TAN BENEVOLENTE ME TIENE EN ESTA SITUACION
+		listaTiposIngredientes.append(item.tipo)
+		
+	if listaTiposIngredientes.count("Leche") == 1 and listaTiposIngredientes.count("TomatePicado") == 1: #Se cocina la sopa
 		ingredienteARecoger = preload("res://jalea.tscn").instantiate()
 		return
-	if listaIngredientes.count("Leche") == 2: #Se cocina un yogurt
+	if listaTiposIngredientes.count("Leche") == 2: #Se cocina un yogurt
 		ingredienteARecoger = preload("res://mantequilla.tscn").instantiate()
 		return
+	_ingredienteEquivocadoColocado()
+
+
+func _ingredienteEquivocadoColocado():
+	var ultimoIngrediente = listaIngredientes.pop_back()
+	listaIngredientes = []
+	listaIngredientes.append(ultimoIngrediente)
+	ingredienteARecoger = null
+	_agregarHUD(ultimoIngrediente)
+	
+	
 
 func cocinarIngrediente():
 	print("empezo")
+	_agregarHUD(ingredienteARecoger)
 	Anim.play("Cocinando")
 
 func terminarCocina():
 	print("termino")
 	Anim.play("Listo")
 	ingredienteListo = true
-	_agregarHUD()
+
 
 func _entregarIngrediente(player):
 	print("ingrediente entregado")
@@ -68,22 +84,24 @@ func _entregarIngrediente(player):
 	player.recibirIngrediente(ingredienteARecoger)
 	ingredienteARecoger = null
 	
-func _agregarHUD():
-	get_node("Panel").add_child(ingredienteARecoger)
+func _agregarHUD(ingrediente):
+	ingrediente.get_node("Sprite2D").visible = true
+	ingrediente.visible = true
+	get_node("Panel").call_deferred("add_child", ingrediente)
 	get_node("Panel").visible = true
-	ingredienteARecoger.position = Vector2(get_node("Panel").size.x/2,get_node("Panel").size.y/2)
-	ingredienteARecoger.scale.x = 2*ingredienteARecoger.scale.x
-	ingredienteARecoger.scale.y = 2*ingredienteARecoger.scale.y
-	ingredienteARecoger.get_node("Area2D").set_process(false)
-
+	ingrediente.position = Vector2(get_node("Panel").size.x/2,get_node("Panel").size.y/2)
+	ingrediente.scale.x = 30/10*ingrediente.scale.x
+	ingrediente.scale.y = 30/10*ingrediente.scale.y
+	ingrediente.get_node("Area2D").set_process(false)
+	
 func _quitarHUD():
-	get_node("Panel").remove_child(ingredienteARecoger)
-	ingredienteARecoger.get_node("Area2D").set_process(true)
+	var ingrediente = get_node("Panel").get_children()[0]
+	get_node("Panel").remove_child(ingrediente)
+	ingrediente.get_node("Area2D").set_process(true)
 	get_node("Panel").visible = false
-	ingredienteARecoger.position = Vector2(0,0)
-	ingredienteARecoger.scale.x = 0.5*ingredienteARecoger.scale.x
-	ingredienteARecoger.scale.y = 0.5*ingredienteARecoger.scale.y
-
+	ingrediente.position = Vector2(0,0)
+	ingrediente.scale.x = 10/30*ingrediente.scale.x
+	ingrediente.scale.y = 10/30*ingrediente.scale.y
 
 func _on_area_2d_body_entered(body): #COLISION
 	
