@@ -16,9 +16,6 @@ var logoy = 575
 var xpos = 10
 var ypos = 500
 
-
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	label.set_position(Vector2(xpos, ypos))
