@@ -1,6 +1,7 @@
 extends Node
 var tipo = "Jalea" #no pregunten y no juzgen xfavor
 @onready var audio = $Audio
+@onready var audio2 = $EnteredSound
 #var daño = 15
 const SPEED = 50.0
 var lanzado = false
@@ -58,10 +59,9 @@ func terminarAtacar(jugador):
 
 func _on_area_2d_body_entered(body):
 	if lanzado and !self.is_in_group(body.get_groups()[0]):
+		audio2.play()
 		if body.baseSpeed == body.SPEED:
 			body.setSpeed(body.SPEED/10)
-
-
 
 
 
