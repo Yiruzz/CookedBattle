@@ -1,10 +1,11 @@
 extends Node
 var tipo = "Pizza"
 var daño = 14
-const SPEED = 50.0
+const SPEED = 140.0
 var lanzado = false
 var dir = Vector2(0,0)
 @onready var audio = $Audio
+@onready var Anim = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,6 +23,7 @@ func _physics_process(delta):
 
 func _lanzar(ultimoBoton):
 	audio.play()
+	Anim.play("pizza_girando")
 	dir = ultimoBoton
 	lanzado = true
 
