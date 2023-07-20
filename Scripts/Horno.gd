@@ -100,6 +100,7 @@ func _entregarIngrediente(player):
 	
 func _agregarHUD(ingrediente):
 	ingrediente.get_node("Sprite2D").visible = true
+	ingrediente.visible = true
 	get_node("Panel").call_deferred("add_child", ingrediente)
 	get_node("Panel").visible = true
 	ingrediente.position = Vector2(get_node("Panel").size.x/2,get_node("Panel").size.y/2)

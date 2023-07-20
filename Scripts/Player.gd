@@ -61,7 +61,7 @@ func recibirDaño(Daño):
 	get_node("GPUParticles2D").emitting = true
 	
 	Vida = Vida - Daño
-	$HitSound.play()
+	#$HitSound.play()
 	hud.emit()
 	if Vida <= 0:
 		winscreen.emit()
