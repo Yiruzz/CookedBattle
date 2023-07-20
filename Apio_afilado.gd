@@ -1,7 +1,7 @@
 extends Node2D
 var tipo = "ApioAfilado"
 var golpesDados = 0
-var daño = 4
+var daño = 12
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.add_to_group("Daños")
@@ -13,18 +13,13 @@ func _ready():
 func _process(delta):
 	pass
 	
-func iddle(jugador):
-	jugador.anim.play("iddle_panhorneado")
-	
-func run(jugador):
-	jugador.anim.play("run_panhorneado")
 	
 func dannar_arma():
 	self.golpesDados += 1
 
 func atacar(jugador):
 	jugador.animandose = true
-	jugador.anim.play("atack_panhorneado")
+	jugador.anim.play("melee_atack")
 	self.position = jugador.get_node("Sprite2D").position + jugador.ultimoBoton*10	
 	self.get_node("Area2D/CollisionShape2D").disabled = false
 	#golpesDados += 1
@@ -43,11 +38,11 @@ func terminarAtacar(jugador):
 	if golpesDados >= 1:
 		jugador.recibirIngrediente(null)
 		self.queue_free()
-		
+		jugador.defaultTexture(jugador.numJugador)
 
 func changePlayerTexture(numJugador):
 	self.visible = false
 	if numJugador == 1:
 		return preload("res://assets/characters/ChefV1_grabbing_asparagus_sword.png")
 	else:
-		return preload("res://assets/characters/ChefV2_grabbing_asparagus.png")
+		return preload("res://assets/characters/ChefV2_grabbing_asparagus_sword.png")

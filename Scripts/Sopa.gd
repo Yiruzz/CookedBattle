@@ -2,7 +2,7 @@ extends Node
 var tipo = "Sopa" #no pregunten y no juzgen xfavor
 @onready var audio = $Audio
 @onready var Anim = $AnimationPlayer
-var daño = 17
+var daño = 20
 const SPEED = 100.0
 var lanzado = false
 var tocoSuelo = false
@@ -12,7 +12,11 @@ func _ready():
 	self.add_to_group("Daños")
 	self.get_node("Area2D/CollisionShape2D").disabled = true
 	
-	
+func changePlayerTexture(numJugador):
+	if numJugador == 1:
+		return preload("res://assets/characters/ChefV1_grabbing_soup.png")
+	else:
+		return preload("res://assets/characters/ChefV2_grabbing_soup.png")
 
 
 
@@ -52,7 +56,7 @@ func atacar(jugador):
 	
 	self.global_position  = jugador.get_node("Sprite2D").global_position + jugador.ultimoBoton*50	
 	_lanzar(jugador.ultimoBoton)	
-	
+	jugador.defaultTexture(jugador.numJugador)
 
 
 func terminarAtacar(jugador):
