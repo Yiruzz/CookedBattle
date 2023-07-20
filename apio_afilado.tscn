@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpjwloil2pmj1"]
+[gd_scene load_steps=5 format=3 uid="uid://dpjwloil2pmj1"]
 
 [ext_resource type="Script" path="res://Apio_afilado.gd" id="1_ykgf4"]
 [ext_resource type="Texture2D" uid="uid://btifn6vgal2au" path="res://assets/ingredients/esparrago_afilado.png" id="2_27agq"]
+[ext_resource type="AudioStream" uid="uid://dtobdu04sl7cr" path="res://assets/music/Cooknight_sfx_attack1.wav" id="3_lvr68"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l210u"]
 
@@ -18,3 +19,8 @@ texture = ExtResource("2_27agq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_l210u")
+
+[node name="attackSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_lvr68")
+volume_db = -8.0
+pitch_scale = 0.84

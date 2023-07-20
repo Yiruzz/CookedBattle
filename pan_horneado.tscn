@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhcklqwjyrq6k"]
+[gd_scene load_steps=5 format=3 uid="uid://dhcklqwjyrq6k"]
 
 [ext_resource type="Script" path="res://PanHorneado.gd" id="1_gmold"]
 [ext_resource type="Texture2D" uid="uid://clvy808uyc442" path="res://assets/ingredients/baguette.png" id="2_bxutv"]
+[ext_resource type="AudioStream" uid="uid://dtobdu04sl7cr" path="res://assets/music/Cooknight_sfx_attack1.wav" id="3_3svk3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nf5fn"]
 
@@ -17,3 +18,8 @@ texture = ExtResource("2_bxutv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_nf5fn")
+
+[node name="attackSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3svk3")
+volume_db = -8.0
+pitch_scale = 0.84

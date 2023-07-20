@@ -61,6 +61,7 @@ func recibirDaño(Daño):
 	get_node("GPUParticles2D").emitting = true
 	
 	Vida = Vida - Daño
+	$HitSound.play()
 	hud.emit()
 	if Vida <= 0:
 		winscreen.emit()
@@ -166,4 +167,6 @@ func _on_area_2d_area_entered(area):
 	if !body.is_in_group(self.get_groups()[0]):
 		if body.is_in_group("Daños") and area.get_node("CollisionShape2D").disabled == false:
 			recibirDaño(body.daño)
-			body.golpesDados += 1
+			if body.has_method("dannar_arma"):
+				body.dannar_arma()
+			

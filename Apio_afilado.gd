@@ -19,7 +19,8 @@ func iddle(jugador):
 func run(jugador):
 	jugador.anim.play("run_panhorneado")
 	
-
+func dannar_arma():
+	self.golpesDados += 1
 
 func atacar(jugador):
 	jugador.animandose = true
@@ -27,6 +28,7 @@ func atacar(jugador):
 	self.position = jugador.get_node("Sprite2D").position + jugador.ultimoBoton*10	
 	self.get_node("Area2D/CollisionShape2D").disabled = false
 	#golpesDados += 1
+	$attackSound.play()
 
 func terminarAtacar(jugador):
 	#ingrediente.hide()#ocultamos el arma y desactivamos su hitbox

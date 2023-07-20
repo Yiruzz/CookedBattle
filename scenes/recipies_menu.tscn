@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bv7sbaqwsvfe8"]
+[gd_scene load_steps=44 format=3 uid="uid://bv7sbaqwsvfe8"]
 
 [ext_resource type="Texture2D" uid="uid://clvy808uyc442" path="res://assets/ingredients/baguette.png" id="1_y7g83"]
 [ext_resource type="Texture2D" uid="uid://beism0rwd0cw3" path="res://assets/tileset/activated-oven.png" id="2_vc3sn"]
@@ -15,27 +15,78 @@
 [ext_resource type="Texture2D" uid="uid://1xbras5xwlg8" path="res://assets/ingredients/59_jelly.png" id="12_7v2en"]
 [ext_resource type="Texture2D" uid="uid://d367lan34nt15" path="res://assets/ingredients/pizza.png" id="13_vcde2"]
 [ext_resource type="Texture2D" uid="uid://lue2qo02a33p" path="res://assets/ingredients/sopa_sin_fuego_sin_cuchara.png" id="14_0imho"]
+[ext_resource type="Texture2D" uid="uid://b18d4qquungvl" path="res://assets/tileset/lavaManos.png" id="16_yv1v6"]
 [ext_resource type="Texture2D" uid="uid://creabd3afvmbp" path="res://assets/characters/ChefV1.png" id="17_qjh0t"]
+[ext_resource type="Texture2D" uid="uid://6ar66t0e5jt7" path="res://assets/characters/ChefA_buttered.png" id="17_rwn6v"]
 [ext_resource type="Texture2D" uid="uid://bcn8dfkgehrlh" path="res://assets/characters/Chef_player2_sombra_media.png" id="18_a87wx"]
+[ext_resource type="Texture2D" uid="uid://b7ha1vs6lu0qq" path="res://assets/characters/ChefA1_noButtered.png" id="18_q0vum"]
 
 [sub_resource type="GDScript" id="GDScript_20xx4"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_jheye"]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_xnr6a"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hxrsk"]
+texture = SubResource("CanvasTexture_xnr6a")
+modulate_color = Color(0.164706, 0.164706, 0.164706, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_oq68h"]
 font_size = 14
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_4yc2w"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dnvy5"]
+texture = SubResource("CanvasTexture_4yc2w")
+modulate_color = Color(0.164706, 0.164706, 0.164706, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tphtd"]
 font_size = 14
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_ty1ib"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a8ax3"]
+texture = SubResource("CanvasTexture_ty1ib")
+modulate_color = Color(0.164706, 0.164706, 0.164706, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_orfwi"]
 font_size = 14
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_htaam"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oit0v"]
+texture = SubResource("CanvasTexture_htaam")
+modulate_color = Color(0.164706, 0.164706, 0.164706, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_y3kph"]
 font_size = 14
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_t7qy4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b686o"]
+texture = SubResource("CanvasTexture_t7qy4")
+modulate_color = Color(0.164706, 0.164706, 0.164706, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_hay74"]
 font_size = 14
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_1n6jo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v5q5p"]
+texture = SubResource("CanvasTexture_1n6jo")
+modulate_color = Color(0.164706, 0.164706, 0.164706, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_yqfov"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nrl7j"]
+texture = SubResource("CanvasTexture_yqfov")
+modulate_color = Color(0.164706, 0.164706, 0.164706, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_m1m1m"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7bdvu"]
+texture = SubResource("CanvasTexture_m1m1m")
+modulate_color = Color(0.164706, 0.164706, 0.164706, 1)
 
 [node name="RecipiesMenu" type="Control"]
 layout_mode = 3
@@ -76,6 +127,7 @@ theme_override_constants/separation = 1
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_hxrsk")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
@@ -107,6 +159,7 @@ texture = ExtResource("1_y7g83")
 
 [node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dnvy5")
 
 [node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2"]
 layout_mode = 2
@@ -137,6 +190,7 @@ texture = ExtResource("6_f1tba")
 
 [node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_a8ax3")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer3"]
 layout_mode = 2
@@ -166,6 +220,7 @@ texture = ExtResource("9_1qneb")
 
 [node name="PanelContainer4" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_oit0v")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer4"]
 layout_mode = 2
@@ -194,6 +249,7 @@ texture = ExtResource("11_4uxdd")
 
 [node name="PanelContainer5" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_b686o")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer5"]
 layout_mode = 2
@@ -229,6 +285,7 @@ texture = ExtResource("12_7v2en")
 
 [node name="PanelContainer6" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_v5q5p")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer6"]
 layout_mode = 2
@@ -261,6 +318,7 @@ texture = ExtResource("2_vc3sn")
 
 [node name="PanelContainer7" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_nrl7j")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer7"]
 layout_mode = 2
@@ -288,6 +346,7 @@ texture = ExtResource("14_0imho")
 
 [node name="PanelContainer8" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7bdvu")
 
 [node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer8"]
 layout_mode = 2
@@ -295,26 +354,24 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer8/MarginContainer2"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.294118, 0.717647, 0.403922, 1)
-text = "                 +         +          =     P"
+text = "                         +            =     "
 label_settings = SubResource("LabelSettings_hay74")
 vertical_alignment = 1
 
 [node name="Sprite2D3" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer8/MarginContainer2"]
-position = Vector2(42.1111, 11.6296)
+position = Vector2(61.8889, 11.3889)
 scale = Vector2(0.699998, 0.824073)
-texture = ExtResource("2_w5nxo")
-
-[node name="Sprite2D4" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer8/MarginContainer2"]
-position = Vector2(86, 11.6296)
-scale = Vector2(0.493056, 0.576389)
-texture = ExtResource("7_umvvy")
+texture = ExtResource("16_yv1v6")
 
 [node name="Sprite2D5" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer8/MarginContainer2"]
-position = Vector2(128.963, 11.6296)
-scale = Vector2(0.206597, 0.162326)
-texture = ExtResource("8_aq0q6")
+position = Vector2(121.148, 11.3889)
+scale = Vector2(1.207, 0.945)
+texture = ExtResource("17_rwn6v")
 
 [node name="Sprite2D" type="Sprite2D" parent="PanelContainer/VBoxContainer/PanelContainer8/MarginContainer2"]
+position = Vector2(173, 11.3889)
+scale = Vector2(1.207, 0.945)
+texture = ExtResource("18_q0vum")
 
 [node name="ChefV1" type="Sprite2D" parent="."]
 position = Vector2(-149.333, 72)

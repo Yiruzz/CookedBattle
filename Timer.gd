@@ -7,6 +7,7 @@ var s2 = true
 func _ready():
 	encendido = true
 	get_tree().paused = true
+	$"../AudioStreamPlayer".play()
 	$"../Panel/TimeLeft".show()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -14,7 +15,7 @@ func _process(delta):
 	if encendido:
 		var labelTextdecimals = fmod($".".get_time_left(), 1)*100
 		var labelTextSeconds = int($".".get_time_left())
-		$"../Panel/TimeLeft".set_text("%2d : %02d" % [labelTextSeconds, labelTextdecimals])
+		$"../Panel/TimeLeft".set_text("%2d" % [labelTextSeconds+1])
 		if s1 and get_time_left()<=2:
 			s1 = false
 			$"../AudioStreamPlayer".play()
