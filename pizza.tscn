@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cit4vnrf4nead"]
+[gd_scene load_steps=5 format=3 uid="uid://cit4vnrf4nead"]
 
 [ext_resource type="Script" path="res://Pizza.gd" id="1_peaij"]
 [ext_resource type="Texture2D" uid="uid://d367lan34nt15" path="res://assets/ingredients/pizza.png" id="2_nvves"]
+[ext_resource type="AudioStream" uid="uid://dtobdu04sl7cr" path="res://assets/music/Cooknight_sfx_attack1.wav" id="3_8kslg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l210u"]
 
@@ -17,3 +18,8 @@ texture = ExtResource("2_nvves")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_l210u")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_8kslg")
+volume_db = -4.0
+pitch_scale = 0.5

@@ -4,6 +4,8 @@ var daño = 14
 const SPEED = 50.0
 var lanzado = false
 var dir = Vector2(0,0)
+@onready var audio = $Audio
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.add_to_group("Daños")
@@ -19,6 +21,7 @@ func _physics_process(delta):
 	
 
 func _lanzar(ultimoBoton):
+	audio.play()
 	dir = ultimoBoton
 	lanzado = true
 

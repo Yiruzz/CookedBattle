@@ -1,5 +1,6 @@
 extends Node
 var tipo = "Sopa" #no pregunten y no juzgen xfavor
+@onready var audio = $Audio
 var daño = 17
 const SPEED = 50.0
 var lanzado = false
@@ -19,6 +20,7 @@ func _physics_process(delta):
 	
 
 func _lanzar(ultimoBoton):
+	audio.play()
 	dir = ultimoBoton
 	lanzado = true
 
