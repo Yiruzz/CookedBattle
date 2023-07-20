@@ -1,5 +1,6 @@
 extends Node
 var tipo = "Jalea" #no pregunten y no juzgen xfavor
+@onready var audio = $Audio
 #var daño = 15
 const SPEED = 50.0
 var lanzado = false
@@ -22,6 +23,7 @@ func _lanzar():
 	lanzado = true
 	self.scale.x = 1
 	self.scale.y = 1
+	audio.play()
 	await get_tree().create_timer(60.0).timeout
 	queue_free()
 	
