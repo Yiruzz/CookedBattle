@@ -89,7 +89,6 @@ func defaultTexture(numJugador):
 	else:
 		$Sprite2D.texture = preload("res://assets/characters/ChefV2.png")			
 	
-	
 #Funcion que entrega un ingrediente a una herramienta de cocina
 func entregaIngrediente(Cocina):
 	if stunned:
@@ -97,7 +96,9 @@ func entregaIngrediente(Cocina):
 	#si no es alguno de los ingredientes que admite la cocina entonces no hace nada
 	if ingrediente.tipo not in Cocina.listaIngredientesAceptados:
 		return
+	remove_child(ingrediente)
 	Cocina.recibirIngrediente(ingrediente)
+	ingrediente = null
 	self.defaultTexture(numJugador)
 	
 
@@ -112,6 +113,7 @@ func recibirIngrediente(Ingrediente):
 		if ingrediente.has_method("changePlayerTexture"):
 			$Sprite2D.texture = ingrediente.changePlayerTexture(numJugador)
 			
+		
 				
 	
 	
