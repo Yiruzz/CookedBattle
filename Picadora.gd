@@ -27,6 +27,8 @@ func recibirIngrediente(ingrediente):
 	#se agrega a la lista de ingredientes que estan dentro del horno
 	listaIngredientes.append(ingrediente)
 	if (listaIngredientes.size() >= 1): #si hay mas de 1 ingredientes entonces empieza a cocinar
+		if(listaIngredientes.size() >=2):
+			listaIngredientes.pop_front().queue_free()
 		_receta() #se crea el resultado a partir de las recetas
 		if ingredienteARecoger == null: #en caso se equivoco al colocar los ingredientes no se cocina nada
 			return
