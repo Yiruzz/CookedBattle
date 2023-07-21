@@ -57,6 +57,9 @@ func _atacar():
 func _terminarAtacar():
 	if ingrediente != null and ingrediente.has_method("terminarAtacar"):
 		ingrediente.terminarAtacar(self)
+	else:
+		anim.play("run")
+		animandose = false
 
 #Funcion que se llama para quitar vida al personaje de este objeto
 func recibirDaño(Daño):
