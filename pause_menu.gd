@@ -24,9 +24,7 @@ func _on_resume_pressed():
 
 func _on_main_menu_pressed():
 	$AudioStreamPlayer.play()
-	await get_tree().create_timer(0.25).timeout
-	get_tree().change_scene_to_file("res://beginScreen.tscn")
-	get_tree().paused = false
+	SceneTransition.change_scene_to_file("res://beginScreen.tscn")
 
 
 func _on_resume_focus_exited():

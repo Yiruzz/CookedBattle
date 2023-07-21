@@ -10,5 +10,5 @@ func _ready():
 
 func _on_play_pressed():
 	$"../../AudioStreamPlayer".play()
-	await get_tree().create_timer(0.5).timeout
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	await get_tree().create_timer(0.25).timeout
+	SceneTransition.change_scene_to_file("res://scenes/main.tscn")

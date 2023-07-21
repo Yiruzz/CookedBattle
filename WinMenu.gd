@@ -27,16 +27,13 @@ func _display():
 	
 func _on_playAgain_pressed():
 	$AudioStreamPlayer.play()
-	await get_tree().create_timer(0.3).timeout
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
-	get_tree().paused = false
+	SceneTransition.change_scene_to_file("res://scenes/main.tscn")
+	await get_tree().create_timer(0.1).timeout
 	hide()
 
 func _on_main_menu_pressed():
 	$AudioStreamPlayer.play()
-	await get_tree().create_timer(0.3).timeout
-	get_tree().change_scene_to_file("res://beginScreen.tscn")
-	get_tree().paused = false
+	SceneTransition.change_scene_to_file("res://beginScreen.tscn")
 
 func _on_play_again_focus_exited():
 	$AudioStreamPlayer2.play()
