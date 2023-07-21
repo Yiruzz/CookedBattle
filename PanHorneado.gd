@@ -40,4 +40,5 @@ func terminarAtacar(jugador):
 		jugador.recibirIngrediente(null)
 		self.queue_free()
 		jugador.armado = false
+		jugador.defaultTexture(jugador.numJugador)
 		
