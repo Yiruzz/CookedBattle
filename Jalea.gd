@@ -63,10 +63,11 @@ func terminarAtacar(jugador):
 
 
 func _on_area_2d_body_entered(body):
-	if lanzado and !self.is_in_group(body.get_groups()[0]):
-		audio2.play()
-		if body.baseSpeed == body.SPEED:
-			body.setSpeed(body.SPEED/10)
+	if body.get_groups().size() > 0:
+		if lanzado and !self.is_in_group(body.get_groups()[0]):
+			audio2.play()
+			if body.baseSpeed == body.SPEED:
+				body.setSpeed(body.SPEED/10)
 
 
 

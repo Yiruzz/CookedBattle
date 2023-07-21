@@ -59,6 +59,7 @@ func terminarAtacar(jugador):
 
 
 func _on_area_2d_body_entered(body):
-	if lanzado and !self.is_in_group(body.get_groups()[0]):
-		body.stun()
-		queue_free()
+	if body.get_groups().size() > 0:
+		if lanzado and !self.is_in_group(body.get_groups()[0]):
+			body.stun()
+			queue_free()
