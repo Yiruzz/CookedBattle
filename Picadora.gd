@@ -139,8 +139,8 @@ func _on_area_2d_body_entered(body): #COLISION
 			return
 		#caso se entrega ingrediente 
 		else:	
-			
-			body.entregaIngrediente(self)
+			if !body.armado:
+				body.entregaIngrediente(self)
 			#if body.ingrediente.has_method('cocinarHorno') :  DEPRECADO
 			#	print("ingrediente tiene metodo")
 			#	body.ingrediente.cocinarHorno(self)

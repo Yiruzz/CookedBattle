@@ -118,7 +118,7 @@ func _on_area_2d_body_entered(body): #COLISION
 
 	if body.is_in_group("Players"): #Caso choca con un jugador
 		#esta listo la cocina
-		if ingredienteListo:
+		if ingredienteListo and !body.armado:
 			print("recogiendo ingrediente")
 			_entregarIngrediente(body)
 			return
